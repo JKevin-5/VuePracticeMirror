@@ -1,3 +1,4 @@
+Vue.http.options.root = 'https://free-api.heweather.net/';
 var app = new Vue({
     el: '#app',
     data: {

@@ -54,3 +54,31 @@ let someDate = new Date("May 23, 2019");
 
 
 
+## 5.3 原始值包装类型
+
+ECMAScript提供了3种引用类型：Boolean、Number和String。
+
+```js
+let s1 = "some text";
+let s2 = s1.substring(2);// s1对象仅存活在该代码的执行生命周期
+```
+
+原始值本身不是对象，因此在逻辑上也不应有方法。
+
+后台执行三个步骤：
+
+1. 创建一个String类型的实例；
+2. 调用实例上的特定方法；
+3. 销毁实例；
+
+```js
+// 可想象为以下执行过程
+let s1 = new String("some text");
+let s2 = s1.substring(2);
+s1 = null;
+```
+
+
+
+### 5.3.1
+

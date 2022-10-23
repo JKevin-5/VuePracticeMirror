@@ -3,3 +3,4 @@ VuePress/package-lock.json
 VuePress/docs/.vuepress/.cache/
 VuePress/docs/.vuepress/.temp/
 VuePress/node_modules/
+VuePress/docs/.vuepress/dist/

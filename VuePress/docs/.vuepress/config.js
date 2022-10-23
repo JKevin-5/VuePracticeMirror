@@ -11,7 +11,7 @@ export default defineUserConfig({
     }),
   ],
   lang: "zh-CN",
-  title: "你好， VuePress ！",
+  title: "Kevin's Notes",
   port:8090,
   description: "这是我的第一个 VuePress 站点",
   //新增导航条的配置
@@ -22,25 +22,16 @@ export default defineUserConfig({
     navbar: [
       {
         text: "介绍",
-        link: "/pages/introduce.md",
+        link: "/guide/",
       }, // NavbarGroup
       {
-        text: "教程",
+        text: "红宝书学习笔记",
         children: [
           {
-            text: "安装指南",
-            link: "/pages/learnJTs/install_guide.md", // 该元素将一直处于激活状态
-            activeMatch: "/pages/learnJTs/install_guide.md",
-          },
-          {
-            text: "API使用",
-            link: "/pages/learnJTs/detail_usage.md",
-            activeMatch: "/pages/learnJTs/detail_usage.md",
-          },
-          {
-            text: "待定...",
-            link: "/pages/other/other.md",
-          },
+            text: "介绍",
+            link: "/redBook/", // 该元素将一直处于激活状态
+            activeMatch: "/redBook/"
+          }
         ],
       },
     ],
@@ -57,6 +48,13 @@ export default defineUserConfig({
           children: ["/guide/README.md", "/guide/getting-started.md"],
         },
       ],
+      "/redBook/": [
+        {
+          text: "Chapter5",
+          collapsible: true,
+          children: ["/redBook/Chapter5.md"],
+        }
+      ]
     },
     // github地址
     repo: "https://github.com/JKevin-5/Font-endPractice",

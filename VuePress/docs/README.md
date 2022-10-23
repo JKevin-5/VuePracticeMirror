@@ -1,16 +1,16 @@
 ---
 home: true
 heroImage: https://vuejs.org/images/logo.png
-heroText: Hero 标题
-tagline: Hero 副标题
+heroText: 
+tagline: Kevin's Notes
 actionText: 快速上手 →
-actionLink: /zh/guide/
+actionLink: /guide/
 actions:
-  - text: 快速上手
-    link: /zh/guide/getting-started.html
-    type: primary
-  - text: 项目简介
+  - text: 快速上手VuePress
     link: /guide/
+    type: primary
+  - text: 红宝书学习笔记
+    link: /redBook/
     type: secondary
 features:
 - title: 简洁至上
@@ -19,13 +19,5 @@ features:
   details: 享受 Vue + webpack 的开发体验，在 Markdown 中使用 Vue 组件，同时可以使用 Vue 来开发自定义主题。
 - title: 高性能
   details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
-- title: 高性能
-  details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
-- title: 高性能
-  details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
-- title: 高性能
-  details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
-- title: 高性能
-  details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
-footer: MIT Licensed | Copyright © 2018-present Evan You
+footer: Copyright © 2022-present Kevin Jiang
 ---

@@ -1,6 +1,9 @@
+---
+title: 红宝书第五章
+description: Charpter5
+sidebar: auto
+---
 # Chapter5 基本引用类型
-
-[TOC]
 
 > 本章内容：
 >

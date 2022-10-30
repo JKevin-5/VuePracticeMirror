@@ -2,6 +2,7 @@
 title: 红宝书第五章
 description: Charpter5
 sidebar: auto
+prev: /redBook/Chapter4.md
 ---
 # Chapter5 基本引用类型
 

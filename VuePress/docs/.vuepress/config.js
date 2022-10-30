@@ -50,6 +50,14 @@ export default defineUserConfig({
       ],
       "/redBook/": [
         {
+          text: "Chapter3",
+          collapsible: true,
+          children: ["/redBook/Chapter3.md"],
+        },{
+          text: "Chapter4",
+          collapsible: true,
+          children: ["/redBook/Chapter4.md"],
+        },{
           text: "Chapter5",
           collapsible: true,
           children: ["/redBook/Chapter5.md"],

@@ -1,3 +1,10 @@
+---
+title: 红宝书第三章
+description: Charpter3
+sidebar: auto
+next: /redBook/Chapter4.md
+---
+
 # Chapter3 语言基础
 
 ## 3.7 函数

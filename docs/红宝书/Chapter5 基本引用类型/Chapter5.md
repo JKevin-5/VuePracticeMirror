@@ -80,5 +80,78 @@ s1 = null;
 
 
 
-### 5.3.1
+### 5.3.1 Boolean
+
+创建Boolean对象。
+
+```js
+let booleanObject = new Boolean(true);
+```
+
+区别1：
+
+```js
+let falseObject = new Boolean(false);
+let result = falseObject && true;
+console.log(result); // true
+```
+
+<b>所有对象在布尔表达式中都会自动转换为true。</b>
+
+区别2:
+
+```js
+typeof falseObject; // object
+typeof falseValue;	// boolean
+falseObject instanceof Boolean; // true
+falseValue instanceof Boolean;	// false
+```
+
+ps：强烈建议不要使用Boolean包装类型。
+
+### 5.3.2 Number
+
+创建Number对象
+
+```js
+let numberObject = new Number(10);
+```
+
+isInteger()方法
+
+Es6新增了这个方法，用于判断是否为整数。
+
+### 5.3.3 String
+
+创建String对象
+
+```js
+let stringObject = new String(“hello world”)；
+```
+
+| 方法名、属性                            | 作用                                             |
+| --------------------------------------- | ------------------------------------------------ |
+| valueOf()、toLocaleString()、toString() | 返回对象原始字符串值                             |
+| length                                  | 字符串中字符的数量                               |
+| chartAt(x)                              | 返回索引位置对应的字符                           |
+| fromCharCode()                          | 方法用于根据给定的 UTF-16 码元创建字符串中的字符 |
+| ....                                    | 一些跟字符字符串码有关的函数                     |
+
+#### 3. 字符串操作方法（重要）
+
+- concat()
+
+​	用于将一个或多个字符串拼接成一个新的字符串。
+
+```js
+let stringValue = "hello ";
+let result = stringValue.concat("world");
+console.log(result); 			// "hello world"
+console.log(stringValue); // "hello" 
+```
+
+​	不会修改原有的字符串，可以同时拼接多个字符串。
+
+- slice()
+- substring()
 

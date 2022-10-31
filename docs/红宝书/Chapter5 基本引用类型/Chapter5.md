@@ -153,5 +153,31 @@ console.log(stringValue); // "hello"
 ​	不会修改原有的字符串，可以同时拼接多个字符串。
 
 - slice()
+- substr()
 - substring()
+
+第一个参数标识子字符串开始的位置，第二个参数标识子字符串结束的位置。任何情况下，省略第二个参数都意味着提取到字符串末尾。和concat一样，不会修改调用它们的字符串。
+
+第二个参数是正数的情况下是差不多的，如果是负数的情况。
+
+```js
+let stringValue = "hello world"; 
+// slice 字符串的长度加上负数条件
+console.log(stringValue.slice(-3)); // "rld"
+// substring 方法会将所有负值都转换为0
+console.log(stringValue.substring(-3)); // "hello world"
+// substr 方法会将第一个负值当作字符串长度加上负值，将第二个负参数值转换为0
+console.log(stringValue.substr(-3)); // "rld" 
+```
+
+#### 4.字符串位置方法
+
+- indexOf()
+- lastIndexOf()
+
+两个方法从字符串中搜索传入的字符串，并返回位置，如果没找到，则返回-1。
+
+区别在于：indexOf是正向查询，lastIndexOf是反向查询。
+
+indexOf('目标字符串',)
 

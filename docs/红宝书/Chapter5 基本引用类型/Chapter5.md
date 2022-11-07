@@ -181,3 +181,45 @@ console.log(stringValue.substr(-3)); // "rld"
 
 indexOf('目标字符串',)
 
+...(有空需要将这些方法进行汇总)
+
+### 5.4 单例内置对象
+
+#### 5.4.1 Global
+
+代码不会显式访问，在全局作用域中定义的变量和函数都会变成Global对象的属性。
+
+#### 5.4.2 window对象
+
+虽然没有直接访问Global对象的方式，浏览器将window对象实现为Global对象的代理。
+
+方法1：直接使用window对象可以直接调用Global对象的属性和函数。
+
+方法2：
+
+```js
+let global = function(){
+  return this;
+}();
+```
+
+#### 5.4.3 Math
+
+各种数学计算的函数和数值。
+
+### 5.5 小结
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

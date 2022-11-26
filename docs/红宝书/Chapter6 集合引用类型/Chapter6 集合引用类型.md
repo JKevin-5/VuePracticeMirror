@@ -85,7 +85,7 @@ person[propertyName]
 
 ### 6.2.1 创建数组
 
-#### 创建几种方式：
+**创建方法**
 
 1. 使用Array构造函数
 
@@ -110,9 +110,45 @@ person[propertyName]
 3. ES6新增静态方法：
 
    - from()：用于将类数组结构转换为数组实例
+
+     第一个参数是一个类数组对象，即任何可迭代的结构。
+
+     ```js
+     // 字符串拆分为单字符数组
+     Array.from("Matt");// ["M","a","t","t"]
+     // 将集合和映射转换为一个新数组
+     const m = new Map().set(1,2).set(3,4);
+     const s = new Set().add(1).add(2).add(3);
+     Array.from(m);// [[1,2],[3,4]]
+     Array.from(s);// [1,2,3,4]
+     // 对现有的数组执行浅复制
+     const a1 = [1,2,3,4];
+     const a2 = Array.from(a1);
+     // 可以使用任何可迭代对象*
+     // arguments对象可以被轻松地转换为数组*
+     // from()也能转换带有必要属性的自定义对象*
+     ```
+
+     第二个可选的映射函数参数。这个函数可以直接增强新数组的值，无需调用一个Array.from().map()先创建一个中间数组。
+
+     第三个可选参数，用于指定映射函数中this的值，这个重写this在箭头函数中不适用。
+
+     ```js
+     const a1 = [1, 2, 3, 4];
+     const a2 = Array.from(a1, x => x**2);
+     const a3 = Array.from(a1, function(x) {return x**this.exponent}, {exponent: 2});
+     console.log(a2); // [1, 4, 9, 16]
+     console.log(a3); // [1, 4, 9, 16] 
+     ```
+
    - of()：用于将一组参数转换为数组实例
 
-   
+     ```js
+     console.log(Array.of(1, 2, 3, 4)); // [1, 2, 3, 4]
+     console.log(Array.of(undefined)); // [undefined] 
+     ```
+
+     
 
 4. 
 

@@ -8,9 +8,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@nutui/babel-plugin-separate-import": "^1.2.2",
-    "@nutui/nutui": "^3.3.1",
     "core-js": "^3.8.3",
+    "unplugin-vue-components": "^0.22.12",
+    "vant": "^2.12.53",
     "vue": "^2.6.14",
     "vue-router": "^3.5.1"
   },

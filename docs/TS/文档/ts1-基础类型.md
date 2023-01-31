@@ -41,27 +41,3 @@ let v2:void = null
 与void类型的不一样的地方在于，null和undefined是所有类型的子类型，所有类型包括：基础类型以及对象。
 
 在严格模式下，null不能赋予void类型。
-
-# 二、任意类型
-变量类型声明为any类型，可以进行任意赋值。
-
-没有指定变量类型时，默认会声明为any。
-
-ts3中引入了unknown类型，所有类型都可以赋值给unknown。
-
-any和unknown的差异
-- unknown只能赋值给unknown和any类型。
-- any变量赋值对象的时候，输出该对象没有的属性不会报错，unknown变量不能赋值对象。
-    ```ts
-    let obj:any = {a:1}
-    console.log(obj.b) // undefined
-    ```
-
-# 三、接口和对象类型
-我们定义对象的方式要用关键字interface（接口）。
-
-关于接口的几个特性：
-1. 属性必须声明，与接口保持一致；
-2. 接口可以使用?可选操作符；
-3. 添加任意新属性：`[propName: string]: any;`
-

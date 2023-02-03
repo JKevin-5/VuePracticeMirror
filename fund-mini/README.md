@@ -1,5 +1,13 @@
 # fund-mini
 
+## vscode插件：
+- Vetur：</br>
+    vue代码高亮
+- Vue Vscode Snippets: </br>
+    自动生成vue模板文件，
+    输入`vue`就可以快捷输入模板，可通过修改vue.json进行自定义
+- 
+
 ## Project setup
 ```
 npm install

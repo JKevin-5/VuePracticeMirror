@@ -1,14 +1,31 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomePage from '../views/HomePage.vue'
-
+import Home from '../views/Home.vue'
+import MainPage from '../views/MainPage.vue'
+import MyPage from '../views/MyPage.vue'
+import SearchPage from '../views/SearchPage.vue'
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomePage
+    name: 'Home',
+    component: Home,
+    children: [
+      { 
+        path: 'main', 
+        name: 'MainPage', 
+        component: MainPage
+      },{ 
+        path: 'my', 
+        name: 'MyPage', 
+        component: MyPage
+      },{ 
+        path: 'search', 
+        name: 'SearchPage', 
+        component: SearchPage
+      },
+    ],
   },
   // {
   //   path: '/about',

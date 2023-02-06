@@ -69,16 +69,73 @@
 // }
 // xiaoman({age: 1, height:180,sex: 'male'})
 
-interface A {
-    run: string
-}
-interface B {
-    run: string,
-    build: string
-}
+// interface A {
+//     run: string
+// }
+// interface B {
+//     run: string,
+//     build: string
+// }
 
-const fn = (type: A | B,a:A): string => {
-    return type.run // 类型断言，运行失败
-}
+// const fn = (type: A | B,a:A): string => {
+//     return type.run // 类型断言，运行失败
+// }
 
-console.log(fn({run: 'a'},{run: 'a'}))
+// console.log(fn({run: 'a'},{run: 'a'}))
+
+// function promise():Promise<number>{
+//     return new Promise<number>((resolve,reject)=>{
+//         resolve(1)
+//     })
+//  }
+  
+//  promise().then(res=>{
+//      console.log(res)
+//  })
+
+// class Person {
+//     name:string
+//     age:number
+//     constructor (name:string,age:number) {
+//         this.name = name
+//         this.age = age
+//     }
+//     run(){
+        
+//     }
+// }
+
+// enum Types{
+//     Red = 10,
+//     Green,
+//     Blue
+// }
+
+// console.log(Types.Blue)
+
+// function Never():void {
+//     throw new Error('aaa')
+// }
+
+// Never()
+
+const symbol1 = Symbol('666')
+const symbol2 = Symbol('777')
+const obj1= {
+   [symbol1]: '小满',
+   [symbol2]: '二蛋',
+   age: 19,
+   sex: '女'
+}
+// 1 for in 遍历
+// for (const key in obj1) {
+//    // 注意在console看key,是不是没有遍历到symbol1
+//    console.log(key)
+// }
+// 2 Object.keys 遍历
+// Object.keys(obj1)
+// console.log(Object.keys(obj1))
+// // 3 getOwnPropertyNames
+// console.log(Object.getOwnPropertyNames(obj1))
+// // 4 JSON.stringfy
+console.log(JSON.stringify(obj1))

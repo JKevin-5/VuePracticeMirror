@@ -6,7 +6,15 @@
 - Vue Vscode Snippets: </br>
     自动生成vue模板文件，
     输入`vue`就可以快捷输入模板，可通过修改vue.json进行自定义
-- 
+
+## 加入axios插件
+1. npm 安装
+```sh
+npm install axios
+```
+
+2. 
+
 
 ## Project setup
 ```

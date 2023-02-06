@@ -138,4 +138,43 @@ const obj1= {
 // // 3 getOwnPropertyNames
 // console.log(Object.getOwnPropertyNames(obj1))
 // // 4 JSON.stringfy
-console.log(JSON.stringify(obj1))
+// console.log(JSON.stringify(obj1))
+
+// console.log(Object.getOwnPropertySymbols(obj1))
+
+// console.log(Reflect.ownKeys(obj1))
+
+// let arr:Array<number>  = [1,2,3]
+// // let it:Iterator<Number> = arr[Symbol.iterator]()
+// // it.next()
+// let set:Set<number> = new Set([1,2,3])
+// type mapKeys = string | number 
+// let map:Map<mapKeys,mapKeys> = new Map()
+// map.set('1','2')
+
+// function gen(erg:any) {
+//    let it:Iterator<any> = erg[Symbol.iterator]()
+//    let next:any = {done:false}
+//    while(!next.done) {
+//       next = it.next()
+//       if(!next.done){
+//          console.log(next)
+//       }
+//    }
+// }
+// // 对象是不支持的
+// gen(map)
+
+class Sub<T>{
+   attr: T[] = []
+   add(a:T):T[] {
+       this.attr.push(a)
+       return this.attr
+   }
+}
+
+let s = new Sub<number>()
+s.attr = [1,2,3]
+s.add(123)
+
+console.log(s)

@@ -13,7 +13,22 @@
 npm install axios
 ```
 
-2. 
+## 加载vuex插件
+1. npm 安装
+```sh
+npm i vuex@3
+``` 
+
+## 如何使eslint忽略debugger
+在debugger后加上注释：// eslint-disable-line
+
+## 如何在闭包内使用外部环境的this
+```js
+var that = this;
+function(){
+    that.xxx();
+}
+```
 
 
 ## Project setup

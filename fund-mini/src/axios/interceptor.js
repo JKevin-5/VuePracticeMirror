@@ -50,4 +50,5 @@ service.interceptors.response.use((response)=>{
 },()=>{
     Toast.fail('网络请求异常，请稍后重试!');
 });
+// process.env.NODE_ENV === "production"? "":"http://localhost"
 export default service;

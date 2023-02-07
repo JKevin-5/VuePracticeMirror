@@ -13,7 +13,7 @@
 </template>
 
 <script>
-// import { Toast } from 'vant';
+// import vuex from '../store';
 export default {
   data () {
     return {
@@ -22,8 +22,13 @@ export default {
   },
   created () {},
   methods: {
-    onSearch(val) {
-        this.$toast(val);
+    onSearch() {
+      var that = this;
+      this.$store.commit('showLoading');
+      setTimeout(function(){
+        that.$store.commit('hideLoading');
+        that.$toast.success("查询成功");
+      },2000);
     },
     onCancel() {
         this.$toast('取消');

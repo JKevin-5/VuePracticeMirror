@@ -13,7 +13,8 @@
     "unplugin-vue-components": "^0.22.12",
     "vant": "^2.12.53",
     "vue": "^2.6.14",
-    "vue-router": "^3.5.1"
+    "vue-router": "^3.5.1",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

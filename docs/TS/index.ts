@@ -165,16 +165,23 @@ const obj1= {
 // // 对象是不支持的
 // gen(map)
 
-class Sub<T>{
-   attr: T[] = []
-   add(a:T):T[] {
-       this.attr.push(a)
-       return this.attr
-   }
+// class Sub<T>{
+//    attr: T[] = []
+//    add(a:T):T[] {
+//        this.attr.push(a)
+//        return this.attr
+//    }
+// }
+
+// let s = new Sub<number>()
+// s.attr = [1,2,3]
+// s.add(123)
+
+// console.log(s)
+
+/**
+ * 第十六章 命名空间 
+ */
+namespace a {
+   export const Time: number = 9000
 }
-
-let s = new Sub<number>()
-s.attr = [1,2,3]
-s.add(123)
-
-console.log(s)

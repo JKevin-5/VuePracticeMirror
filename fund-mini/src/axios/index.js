@@ -4,5 +4,7 @@
  */
 export default {
     login:'/user/login',
-    getInfo:'/user/getInfo'
+    getInfo:'/user/getInfo',
+    sina:'http://hq.sinajs.cn',
+    sina_header:'http://finance.sina.com.cn'
 }

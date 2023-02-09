@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import { Tabbar, TabbarItem, Search, Toast, Loading, Col, Row } from "vant";
+import { Tabbar, TabbarItem, Search, Toast, Loading, Col, Row,Grid, GridItem } from "vant";
 import request from "./axios/request";
 import store from "./store";
 import "vant/lib/index.css";
@@ -10,6 +10,7 @@ import { Amount } from "mand-mobile";
 
 Vue.component(Amount.name, Amount);
 Vue.prototype.request = request;
+Vue.use(Grid, GridItem);
 Vue.use(Toast);
 Vue.use(Loading);
 Vue.use(Tabbar);

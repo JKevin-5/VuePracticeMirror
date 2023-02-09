@@ -13,7 +13,7 @@ import { Toast } from 'vant';
 // 创建一个独立的axios实例
 const service = axios.create({ 
     // 设置baseUr地址,如果通过proxy跨域可直接填写base地址
-    baseURL: '/api',
+    // baseURL: '/api',
     // 定义统一的请求头部
     headers: {
        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"

@@ -32,9 +32,19 @@ export default {
       self.infos = [];
       let successFun = function(result){
         self.infos = result
-        console.log(self.infos)
       }
-      getSinaInfo(['s_sh000001','s_sz399001','hk00700'],successFun);
+      getSinaInfo([
+        's_sh000001'  // 上证指数
+        ,'s_sz399001' // 深证成指
+        ,'bj899050'   // 北证50
+        ,'sz399006'   // 创业板指
+        ,'sh000300'   // 沪深300
+        ,'gb_dji'     // 道琼斯
+        ,'gb_ixic'    // 纳斯达克
+        ,'gb_inx'     // 标普500指数
+        ,'rt_hkHSI'   // 恒生指数
+        ,'b_NKY'      // 日经225指数
+      ],successFun);
     },
 
   },

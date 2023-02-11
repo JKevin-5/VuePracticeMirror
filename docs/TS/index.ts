@@ -182,6 +182,95 @@ const obj1= {
 /**
  * 第十六章 命名空间 
  */
-namespace a {
-   export const Time: number = 9000
-}
+// namespace a {
+//    export const Time: number = 9000
+// }
+
+/**
+ * 第十九章 mixins混入
+ */
+//  class A {
+//    type: boolean = false;
+//    changeType() {
+//        this.type = !this.type
+//    }
+// }
+
+// class B {
+//    name: string = '张三';
+//    getName(): string {
+//        return this.name;
+//    }
+// }
+ 
+// class C implements A,B{
+//    type:boolean
+//    changeType:()=>void;
+//    name: string;
+//    getName:()=> string
+// }
+
+// Mixins(C, [A, B])
+// function Mixins(curCls: any, itemCls: any[]) {
+//     itemCls.forEach(item => {
+//         Object.getOwnPropertyNames(item.prototype).forEach(name => {
+//             curCls.prototype[name] = item.prototype[name]
+//         })
+//     })
+//     itemCls.forEach(item => {
+//       Object.getOwnPropertyNames(item.prototype).forEach(name => {
+//          console.log(name)
+//       })
+//   })
+// }
+
+/**
+ * 第二十章 装饰器Decorator
+ */
+// 装饰器
+// const watcher:ClassDecorator = (target:Function) => {
+//    console.log(target.prototype)
+// }
+
+// @watcher
+// class A {
+//    type:any
+//    constructor() {
+
+//    }
+//    print(){
+
+//    }
+// }
+
+// const a = new A();
+// console.log((a as any).getParams('123'))
+
+// 装饰器工厂
+// const watcher = (name: string): ClassDecorator => {
+//    return (target: Function) => {
+//       // 相当于给原型链上又多一个函数，如果想要实现共通函数可以这样写，不会影响现有代码
+//       //  target.prototype.getParams = <T>(params: T): T => {
+//       //      return params
+//       //  }
+//       //  target.prototype.getOptions = (): string => {
+//       //      return name
+//       //  }
+//       target.prototype.getNames = <T>(params: T): string => {
+//          return name+params
+//      }
+//    }
+// }
+
+// @watcher('name')
+// class A {
+//    constructor() {
+
+//    }
+// }
+
+// const a = new A();
+// console.log((a as any).getNames('123'));
+
+// 组合式装饰器
+

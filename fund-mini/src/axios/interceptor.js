@@ -34,7 +34,7 @@ service.interceptors.response.use((response)=>{
     // 获取接口返回结果
     const res = response.data;
     // code为0，直接把结果返回回去，这样前端代码就不用在获取一次data.
-    if(res.code === 0){
+    if(res.code === 0|200){
         return res;
     }else if(res.code === 10000){
         // 10000假设是未登录状态码

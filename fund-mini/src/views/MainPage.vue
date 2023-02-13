@@ -2,13 +2,21 @@
   <div style="padding-top: 20px;">
     <button @click="getShInfo">search</button>
     <van-grid :column-num="3">
-      <van-grid-item v-for="value in 6" :key="value" icon="photo-o" text="文字" />
+      <van-grid-item v-for="value in 3" :key="value" icon="photo-o" text="文字" />
+      <van-grid-item icon="photo-o" text="个人持仓" />
       <van-grid-item v-for="info in infos" :key="info.value">
         <p><span>{{info.stock_name}}</span></p>
         <p>
           <md-amount 
+          :value="info.up"
+          :duration="500"
+          transition
+          :precision="3"></md-amount>
+        </p>
+        <p>
+          <md-amount 
           :value="info.value"
-          :duration="800"
+          :duration="500"
           transition
           :precision="3"></md-amount>
         </p>

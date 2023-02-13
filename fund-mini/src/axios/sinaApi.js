@@ -12,6 +12,7 @@ export function getSinaInfo(billNo,successFunction){
             let results = strings[1].split(',')
             arr1.push(new stock(results))
         }
+        console.log(arr1)
         successFunction(arr1)
     }));
 }

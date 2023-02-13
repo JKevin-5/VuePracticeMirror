@@ -12,6 +12,10 @@ const routes = [
     component: Home,
     children: [
       {
+        path:"/",
+        redirect:"/main"
+      },
+      {
         path: "main",
         name: "MainPage",
         component: MainPage,
@@ -44,6 +48,8 @@ const routes = [
 ];
 
 const router = new VueRouter({
+  base: 'fund-app', // 如果有域名
+  mode: 'history',
   routes,
 });
 

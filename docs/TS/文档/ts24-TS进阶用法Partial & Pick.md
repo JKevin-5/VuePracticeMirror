@@ -1,0 +1,1 @@
+# TS进阶用法Partial & Pick

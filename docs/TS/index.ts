@@ -274,3 +274,55 @@ const obj1= {
 
 // 组合式装饰器
 
+// 方法装饰器
+// const met:MethodDecorator = (...args) => {
+//    console.log(args);
+// }
+
+// class A {
+//    constructor() {
+
+//    }
+//    @met
+//    getName ():string {
+//        return '小满'
+//    }
+// }
+
+
+// const a = new A();
+
+// 属性装饰器
+// const met:PropertyDecorator = (...args) => {
+//    console.log(args);
+// }
+
+// class A {
+//    @met
+//    name:string
+//    constructor() {
+//       this.name = ''
+//    }
+  
+// }
+
+// const a = new A();
+
+// const met:ParameterDecorator = (...args) => {
+//    console.log(args);
+// }
+
+// class A {
+//    constructor() {
+
+//    }
+//    setParasm (@met name:string = '213') {
+
+//    }
+// }
+
+// const a = new A();
+
+let a1:{} = 123
+a1 = 111
+console.log(a1)

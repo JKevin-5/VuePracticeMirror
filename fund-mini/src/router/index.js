@@ -36,7 +36,11 @@ const routes = [
       //   component: () => import("../views/FriendPage.vue"),
       // },
     ],
-  },
+  },{
+    path: "/login",
+    name: "Login",
+    component: () => import("../views/Login.vue"),
+  }
   // {
   //   path: '/about',
   //   name: 'about',

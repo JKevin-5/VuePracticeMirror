@@ -30,6 +30,8 @@ function(){
 }
 ```
 
+## Vant2
+https://vant-contrib.gitee.io/vant/v2/#/zh-CN/
 
 ## Project setup
 ```

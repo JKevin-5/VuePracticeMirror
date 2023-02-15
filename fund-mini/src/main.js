@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import { Tabbar, TabbarItem, Search, Toast, Loading, Col, Row,Grid, GridItem } from "vant";
+import { Tabbar, TabbarItem, Search, Toast, Loading, Col, Row,Grid, GridItem ,Form,Field} from "vant";
 import request from "./axios/request";
 import store from "./store";
 import "vant/lib/index.css";
@@ -18,6 +18,8 @@ Vue.use(TabbarItem);
 Vue.use(Search);
 Vue.use(Col);
 Vue.use(Row);
+Vue.use(Form);
+Vue.use(Field);
 
 Vue.config.productionTip = false;
 

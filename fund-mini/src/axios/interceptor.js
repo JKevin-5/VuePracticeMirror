@@ -9,15 +9,16 @@
  */
 import axios from 'axios'
 import { Toast } from 'vant';
+import getToken  from '@/util/tool'
 
 // 创建一个独立的axios实例
 const service = axios.create({ 
     // 设置baseUr地址,如果通过proxy跨域可直接填写base地址
     // baseURL: '/api',
     // 定义统一的请求头部
-    headers: {
-       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-    },
+    // headers: {
+    //    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+    // },
     // 配置请求超时时间
     timeout: 10000, 
     // 如果用的JSONP，可以配置此参数带上cookie凭证，如果是代理和CORS不用设置
@@ -26,7 +27,8 @@ const service = axios.create({
 // 请求拦截
 service.interceptors.request.use(config => {
     // 自定义header，可添加项目token
-    config.headers.token = 'token';
+    debugger;// eslint-disable-line
+    config.headers['Authorization'] = 'Bearer '+getToken();
     return config;
 });
 // 返回拦截

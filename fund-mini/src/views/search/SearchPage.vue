@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <form action="/">
         <van-search
             v-model="value"
@@ -38,5 +38,9 @@ export default {
 </script>
 
 <style lang='less' scoped type='text/css'>
-
+.main{
+  background-color: #f7f8fa;
+  height: 100vh;
+  widows: 100vw;
+}
 </style>

@@ -1,16 +1,21 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import { Tabbar, TabbarItem, Search, Toast, Loading, Col, Row,Grid, GridItem ,Form,Field} from "vant";
+import { Sticky,NavBar,Tabbar, TabbarItem, Search, Toast, Loading, Col, Row,Grid, GridItem ,Form,Field} from "vant";
 import request from "./axios/request";
 import store from "./store";
 import "vant/lib/index.css";
 import "mand-mobile/lib/mand-mobile.css";
 import { Amount } from "mand-mobile";
+// 引入封装的工具类
+import tools from './util/tool';
+
+Vue.prototype.$Tools= tools
+Vue.prototype.request = request;
 
 Vue.component(Amount.name, Amount);
-Vue.prototype.request = request;
 Vue.use(Grid, GridItem);
+Vue.use(NavBar,Sticky);
 Vue.use(Toast);
 Vue.use(Loading);
 Vue.use(Tabbar);

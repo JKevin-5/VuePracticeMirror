@@ -1,35 +1,34 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import MainPage from "../views/MainPage.vue";
-import MyPage from "../views/MyPage.vue";
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
+    path: "/home",
     name: "Home",
     component: Home,
     children: [
       {
         path:"/",
-        redirect:"/main"
+        redirect:"/home/main"
       },
       {
         path: "main",
         name: "MainPage",
-        component: MainPage,
+        component: () => import("../views/main/MainPage.vue"),
       },
       {
         path: "my",
         name: "MyPage",
-        component: MyPage,
+        component: () => import("../views/my/MyPage.vue")
       },
       {
         path: "search",
         name: "SearchPage",
-        component: () => import("../views/SearchPage.vue"),
+        component: () => import("../views/search/SearchPage.vue"),
       },
+      
       // {
       //   path: "friend",
       //   name: "FriendPage",
@@ -40,7 +39,11 @@ const routes = [
     path: "/login",
     name: "Login",
     component: () => import("../views/Login.vue"),
-  }
+  },{
+    path: "/position",
+    name: "PositionPage",
+    component: () => import("../views/my/PositionPage.vue"),
+  },
   // {
   //   path: '/about',
   //   name: 'about',

@@ -4,7 +4,7 @@
  */
 import { Toast } from 'vant';
 import instance from './interceptor';
-
+import store from '@/store';
 /**
  * 核心函数，可通过它处理一切请求数据，并做横向扩展
  * @param {url} 请求地址
@@ -17,7 +17,7 @@ import instance from './interceptor';
 function request(url,params,options={loading:true,mock:false,error:true},method){
     // let loadingInstance;
     // 请求前loading
-    // if(options.loading)loadingInstance=Loading.service();
+    if(options.loading) store.commit('showLoading');
     return new Promise((resolve,reject)=>{
         let data = {}
         // get请求使用params字段
@@ -36,18 +36,20 @@ function request(url,params,options={loading:true,mock:false,error:true},method)
             // 此处作用很大，可以扩展很多功能。
             // 比如对接多个后台，数据结构不一致，可做接口适配器
             // 也可对返回日期/金额/数字等统一做集中处理
-            debugger;// eslint-disable-line
-            if(res.status === 0){
-                resolve(res.data);
+            // debugger;// eslint-disable-line
+            if(res.code === 200){
+                resolve(res);
             }else{
                 // 通过配置可关闭错误提示
-                if(options.error)Toast.fail(res.message);
+                if(options.error)Toast.fail(res.msg);
+                console.log('1')
                 reject(res);
             }
         }).catch((error)=>{
-            Toast.fail(error.message)
+            console.log(error)
+            Toast.fail(error.msg)
         }).finally(()=>{
-            // loadingInstance.close();
+            store.commit('hideLoading')
         })
     })
 }

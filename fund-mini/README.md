@@ -5,8 +5,8 @@
     vue代码高亮
 - Vue Vscode Snippets: </br>
     自动生成vue模板文件，
-    输入`vue`就可以快捷输入模板，可通过修改vue.json进行自定义
-
+    输入`vbase`就可以快捷输入模板，可通过修改vue.json进行自定义
+    C:\Users\DT开发者.vscode\extensions\sdras.vue-vscode-snippets-2.2.0\snippets
 ## 加入axios插件
 1. npm 安装
 ```sh

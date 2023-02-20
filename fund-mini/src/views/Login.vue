@@ -40,7 +40,8 @@ export default {
     onSubmit(values) {
       this.$refs.loginForm.validate().then(()=>{
         login(values).then((res)=>{
-            this.$Tools.setToken(res.data);
+            debugger; // eslint-disable-line
+            this.$Tools.setToken(res.data.data);
             this.$router.push('/home');
           })
       }).catch((err)=>{

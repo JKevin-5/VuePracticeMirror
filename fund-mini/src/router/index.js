@@ -5,6 +5,10 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path:"/",
+    redirect:"/login"
+  },
+  {
     path: "/home",
     name: "Home",
     component: Home,
@@ -28,7 +32,6 @@ const routes = [
         name: "SearchPage",
         component: () => import("../views/search/SearchPage.vue"),
       },
-      
       // {
       //   path: "friend",
       //   name: "FriendPage",
@@ -43,6 +46,13 @@ const routes = [
     path: "/position",
     name: "PositionPage",
     component: () => import("../views/my/PositionPage.vue"),
+    children:[
+      {
+        path: "edit",
+        name: "EditPage",
+        component: () => import("../views/my/PositionEditPage.vue"),
+      },
+    ]
   },
   // {
   //   path: '/about',

@@ -1,4 +1,4 @@
-import request from "@/axios/request";
+import {post} from "@/axios/axios";
 // 登录方法
-export const login = (data) => request.post("/api/login",data)
+export const login = (data) => post("/api/login",data)
 

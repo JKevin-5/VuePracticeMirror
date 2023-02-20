@@ -69,7 +69,7 @@
                     <van-button type="default">管理持仓</van-button>
                 </van-col>
                 <van-col span="12">
-                    <van-button type="info">添加资产</van-button>
+                    <van-button type="info" to="/edit">添加资产</van-button>
                 </van-col>
             </van-row>
         </div>
@@ -90,7 +90,7 @@
         },
         methods:{
             onClickLeft:function(){
-                this.$router.push('/home/my');
+                this.$router.back(0);
             },
             getMyPositions:function(){
                 getAllPosition({

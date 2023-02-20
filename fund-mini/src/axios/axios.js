@@ -11,9 +11,7 @@ export const get = (url, params, config = {}) => {
         method: 'get',
         url,
         params,
-        headers: {
-          'token': window.localStorage.token
-        },
+        headers: {},
         ...config
       },).then(response => {
         resolve(response)
@@ -30,9 +28,7 @@ export const post = (url, data, config = {}) => {
         method: 'post',
         url,
         data,
-        headers: {
-          'token': window.localStorage.token
-        },
+        headers: {},
         ...config
       }).then(response => {
         resolve(response)

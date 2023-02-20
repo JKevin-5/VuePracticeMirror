@@ -17,7 +17,7 @@ const service = axios.create({
     // 定义统一的请求头部
     headers: {
     //    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-        Authorization : "Bearer "+`${localStorage.getItem("appToken")}`
+        Authorization : "Bearer "+`${JSON.parse(localStorage.getItem("appToken"))}`
     },
     // 配置请求超时时间
     timeout: 10000, 

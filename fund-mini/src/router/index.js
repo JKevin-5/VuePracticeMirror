@@ -45,15 +45,12 @@ const routes = [
   },{
     path: "/position",
     name: "PositionPage",
-    component: () => import("../views/my/PositionPage.vue"),
-    children:[
-      {
-        path: "edit",
-        name: "EditPage",
-        component: () => import("../views/my/PositionEditPage.vue"),
-      },
-    ]
-  },
+    component: () => import("../views/my/PositionPage.vue")
+  },{
+    path: "/positionEdit",
+    name: "positionEdit",
+    component: () => import("../views/my/PositionEditPage.vue"),
+  }
   // {
   //   path: '/about',
   //   name: 'about',

@@ -35,27 +35,28 @@
                 </van-cell-group>
             </div>
             <div class="detail">
-                <van-cell-group inset>
-                    <van-cell center v-for="value in 8" :key="value">
+                <van-cell-group inset v-if="positionList.length >0">
+                    <van-cell center v-for="position in positionList" :key="position.positionDbid">
                         <!-- 使用插槽来自定义单元格内容 -->
                         <template #title>
-                            <span class="custom-title">基金名称</span>
+                            <span class="custom-title">{{position.fundName}}</span>
                         </template>
                         <template #label>
                             <span class="custom-title">
-                                <p>资产(元)</p>
-                                <p>****</p>
+                                <!-- <p>资产(元)</p>
+                                <p>****</p> -->
+                                <p>{{position.fundCode}}</p>
                             </span>
                         </template>
                         <template #right-icon>
                             <van-row gutter="20">
-                                <van-col>
+                                <!-- <van-col>
                                     <p>昨日收益</p>
                                     <p>****</p>
-                                </van-col>
+                                </van-col> -->
                                 <van-col>
-                                    <p>累计收益</p>
-                                    <p>****</p>
+                                    <p>持有份额</p>
+                                    <p>{{position.positionHold}}</p>
                                 </van-col>
                             </van-row>
                         </template>
@@ -69,7 +70,7 @@
                     <van-button type="default">管理持仓</van-button>
                 </van-col>
                 <van-col span="12">
-                    <van-button type="info" to="/edit">添加资产</van-button>
+                    <van-button type="info" to="/positionEdit">添加资产</van-button>
                 </van-col>
             </van-row>
         </div>
@@ -81,7 +82,9 @@
     export default {
         data(){
             return{
-
+                // 持仓列表
+                positionList:[],
+                // 
             }
         },
         created(){
@@ -96,7 +99,7 @@
                 getAllPosition({
                     size:100
                 }).then( res =>{
-                    console.log(res)
+                    this.positionList = res.data
                 })
             }
         }

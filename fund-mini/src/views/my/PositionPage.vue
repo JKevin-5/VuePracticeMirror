@@ -90,7 +90,7 @@
         },
         created(){
             // 请求个人持仓的基金列表
-            // this.getMyPositions()
+            this.getMyPositions()
         },
         methods:{
             onClickLeft:function(){
@@ -137,7 +137,7 @@
     padding-top: 10px;
 }
 .footer {
-    height: 10vh;
+    height: 7vh;
     width: 100vw;
     background-color: white;
     bottom: 0;

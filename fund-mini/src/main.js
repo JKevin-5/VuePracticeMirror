@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import { Sticky,NavBar,Tabbar, TabbarItem, Search, Toast, Loading, Col, Row,Grid, GridItem ,Form,Field} from "vant";
+import { Empty,Sticky,NavBar,Tabbar, TabbarItem, Search, Toast, Loading, Col, Row,Grid, GridItem ,Form,Field} from "vant";
 import request from "./axios/request";
 import store from "./store";
 import "vant/lib/index.css";
@@ -15,7 +15,7 @@ Vue.prototype.request = request;
 
 Vue.component(Amount.name, Amount);
 Vue.use(Grid, GridItem);
-Vue.use(NavBar,Sticky);
+Vue.use(NavBar,Sticky,Empty);
 Vue.use(Toast);
 Vue.use(Loading);
 Vue.use(Tabbar);
@@ -25,6 +25,7 @@ Vue.use(Col);
 Vue.use(Row);
 Vue.use(Form);
 Vue.use(Field);
+
 
 Vue.config.productionTip = false;
 

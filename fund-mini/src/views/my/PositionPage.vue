@@ -62,6 +62,7 @@
                         </template>
                     </van-cell>
                 </van-cell-group>
+                <van-empty v-else image="search" description="暂无持仓" />
             </div>
         </div>
         <div class="footer" >
@@ -89,7 +90,7 @@
         },
         created(){
             // 请求个人持仓的基金列表
-            this.getMyPositions()
+            // this.getMyPositions()
         },
         methods:{
             onClickLeft:function(){
@@ -136,7 +137,7 @@
     padding-top: 10px;
 }
 .footer {
-    height: 8vh;
+    height: 10vh;
     width: 100vw;
     background-color: white;
     bottom: 0;

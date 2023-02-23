@@ -36,7 +36,7 @@
             </div>
             <div class="detail">
                 <van-cell-group inset v-if="positionList.length >0">
-                    <van-cell center v-for="position in positionList" :key="position.positionDbid">
+                    <van-cell center v-for="position in positionList" :key="position.positionDbid" @click="onShow(position)">
                         <!-- 使用插槽来自定义单元格内容 -->
                         <template #title>
                             <span class="custom-title">{{position.fundName}}</span>
@@ -102,6 +102,9 @@
                 }).then( res =>{
                     this.positionList = res.data
                 })
+            },
+            onShow:function(res){
+                this.$router.push({ name: 'positionHis', params: res});
             }
         }
     }

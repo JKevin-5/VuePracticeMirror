@@ -50,6 +50,10 @@ const routes = [
     path: "/positionEdit",
     name: "positionEdit",
     component: () => import("../views/my/PositionEditPage.vue"),
+  },{
+    path: "/positionHis",
+    name: "positionHis",
+    component: () => import("../views/my/PositionHisPage.vue"),
   }
   // {
   //   path: '/about',

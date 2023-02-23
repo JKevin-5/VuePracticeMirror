@@ -10,23 +10,105 @@
                 />
             </van-sticky>
         </div>
+        <div class="main_part">
+            <div class="total">
+                <van-cell-group inset>
+                    <van-cell>
+                        <van-row>
+                            <van-col span="24">
+                                <p style="font-size: 15px;font-weight: bold;">{{position.fundName}}</p>
+                                <p>{{position.fundCode}}</p>
+                            </van-col>
+                        </van-row>
+                        <van-row style="text-align: center">
+                            <p>金额(元)</p>
+                            <p style="font-size: 30px">140.84</p>
+                        </van-row>
+                        <van-row style="text-align: center;padding-top: 20px;">
+                            <van-col span="7">
+                                <p>今日收益(元)</p>
+                                <p>-1.42</p>
+                            </van-col>
+                            <van-col span="1">|</van-col>
+                            <van-col span="8">
+                                <p>持有收益(元)</p>
+                                <p>+21.4</p>
+                            </van-col>
+                            <van-col span="1">|</van-col>
+                            <van-col span="7">
+                                <p>持有收益率</p>
+                                <p>+17.91%</p>
+                            </van-col>
+                        </van-row>
+                    </van-cell>
+                </van-cell-group>
+            </div>
+            <div class="detail">
+                <van-cell-group inset v-if="positionHisList.length >0">
+                    <van-cell center v-for="positionHis in positionHisList" :key="positionHis.positionHisDbid">
+                        <!-- 使用插槽来自定义单元格内容 -->
+                        <template #title>
+                            <span class="custom-title">{{positionHis.actionType}} - {{positionHis.number}}</span>
+                        </template>
+                        <template #label>
+                            <span class="custom-title">
+                                <p>{{positionHis.actionTime}}</p>
+                            </span>
+                        </template>
+                        <template #right-icon>
+                            <van-row gutter="20">
+                                <van-col style="text-align: center;">
+                                    <p>卖点</p>
+                                    <p>{{positionHis.hopeSellPoint}}%</p>
+                                </van-col>
+                                <van-col style="text-align: center;">
+                                    <p>现点</p>
+                                    <p>{{positionHis.actGap}}%</p>
+                                </van-col>
+                            </van-row>
+                        </template>
+                    </van-cell>
+                </van-cell-group>
+                <van-empty v-else image="search" description="暂无持仓" />
+            </div>
+        </div>
+        <div class="footer" >
+            <van-row>
+                <van-col span="12">
+                    <van-button type="default">管理记录</van-button>
+                </van-col>
+                <van-col span="12">
+                    <van-button type="info" to="/positionEdit">添加记录</van-button>
+                </van-col>
+            </van-row>
+        </div>
     </div>
 </template>
 
 <script>
+    import {getAllPositionHis} from '@/api/positionHis';
     export default {
         data(){
             return{
-                
+                position:{},
+                positionHisList:[]
             }
         },
         created(){
-
+            if(Object.keys(this.$route.params).length==0){
+                this.$router.back(0);
+            }else{
+                this.position = this.$route.params;
+                console.log(this.position)
+                getAllPositionHis({
+                    positionDbid:this.position.positionDbid
+                }).then(res=>{
+                    this.positionHisList = res.data
+                    console.log(res)
+                });
+            }
         },
         methods:{
-            init:function(){
-                
-            },
             onClickLeft:function(){
                 this.$router.back(0);
             }
@@ -53,9 +135,6 @@
 }
 .header {
     height: 5vh;
-}
-.main_part .van-col{
-    text-align: center;
 }
 .total {
     padding-top: 20px;

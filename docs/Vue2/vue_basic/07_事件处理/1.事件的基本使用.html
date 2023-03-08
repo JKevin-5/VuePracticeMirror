@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的基本使用</title>
+    <!-- 引入vue -->
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h2>学校名称：{{name}}</h2>
+        <button v-on:click="showInfo">点我提示信息（不传参）</button>
+        <button @click="showInfo2(66,$event)">点我提示信息（传参）</button>
+        <button v-on:click="showInfo1">点我提示信息1</button>
+    </div>
+</body>
+
+<script>
+    Vue.config.productionTip = false; // 阻止vue在启动时生成生产提示
+
+    var vm = new Vue({
+        el: '#root',
+        data:{
+            name:'school',
+            address:'hongkong'
+        },
+        methods:{
+            showInfo(event){
+                // 返回点击目标的文字
+                // console.log(event.target.innerText)
+                // 返回的this是指 vm实例
+                console.log(this)
+            },
+            showInfo1:(event)=>{
+                // 此处this是window，箭头函数找不到vue实例，就往外找找到了Window
+                console.log(this)
+            },
+            showInfo2(number,event){
+                // alert("hello");
+                console.log(number)
+                console.log(event.target.innerText)
+            },
+        }
+    })
+</script>
+</html>

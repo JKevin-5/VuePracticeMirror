@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.姓名案例_插值语法实现</title>
+    <!-- 引入vue -->
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        姓：<input type="text" v-model="firstName"><br>
+        名：<input type="text" v-model="lastName"><br>
+        全名：<span>{{fullName}}</span>
+    </div>
+</body>
+
+<script>
+    Vue.config.productionTip = false; // 阻止vue在启动时生成生产提示
+
+    const vm = new Vue({
+        el: '#root',
+        data:{
+            firstName:'张',
+            lastName:'三'
+        },
+        computed:{
+            fullName:{
+                // 此处this是vue帮你调成vm对象的
+                // get什么时候调用？1、初期读取fullname的时候2、所依赖的数据发生变化的时候
+                get(){
+                    console.log('get被调用了')
+                    return this.firstName + '-' + this.lastName
+                }
+            }
+        },
+        methods:{
+        }
+    })
+</script>

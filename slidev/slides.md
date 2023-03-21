@@ -68,22 +68,23 @@ layout: two-cols
 layout: two-cols
 ---
 
-<template v-slot:default>
-
 # 2.1、RPA
 RPA 是什么？
 
-<p class="p-r-5">机器人流程自动化（Robotic process automation）简称RPA，是以软件机器人及人工智能（AI）为基础的业务流程自动化技术。</P>
+- 机器人流程自动化（Robotic process automation）简称RPA，是以软件机器人及人工智能（AI）为基础的业务流程自动化技术。
 
+- 在传统的工作流自动化技术工具中，会由程序设计师产生自动化任务的动作列表，并且会用内部的应用程序接口（API）或是专用的脚本语言作为和后台系统之间的接口。有些软件可能没有这类用途的API，而RPA可以降低其自动化的门槛。相较之下，RPA系统会观察使用者在应用软件中图形用户界面（GUI）所进行的工作，并且直接在GUI上自动重复这些工作。
 
-<p class="p-r-5">在传统的工作流自动化技术工具中，会由程序设计师产生自动化任务的动作列表，并且会用内部的应用程序接口（API）或是专用的脚本语言作为和后台系统之间的接口。有些软件可能没有这类用途的API，而RPA可以降低其自动化的门槛。相较之下，RPA系统会观察使用者在应用软件中图形用户界面（GUI）所进行的工作，并且直接在GUI上自动重复这些工作。</p>
+<h2 v-click>
+用人话说：
+</h2>
+<h2 v-click>
+使用GUI图形界面进行拖拽编程
+</h2>
 
-</template>
-<template v-slot:right>
+::right::
 
 ![Local Image](/uipath-2.png)
-
-</template>
 
 <!--RPA工具在技术上类似图形用户界面测试工具，这些测试工具也会自动和图形用户界面互动，并且通常是先由使用者示范其流程，再由这些工具来重现。和这类测试工具不同的地方在于，RPA工具可以在多个应用程序之间处理、交换数据，例如接收内含发票的电子邮件、取得其中数据，然后输入到簿记系统中。-->
 
@@ -96,9 +97,9 @@ layout: two-cols
 # 2.1、RPA
 为什么选择RPA
 
-<p class="p-r-5">刚进公司的时候，跟进的第一块业务是松元工厂的RPA模块，用了一两周的时间，从零开始到接手松元RPA项目的维护和改进。起初，RPA的技术选择是因为松元公司对接的U8供应商无法提供相关接口。</p>
+- 刚进公司的时候，跟进的第一块业务是松元工厂的RPA模块，用了一两周的时间，从零开始到接手松元RPA项目的维护和改进。
+- 起因是，RPA的技术选择是因为松元公司对接的U8供应商无法提供相关接口。
 
-<p class="p-r-5">RPA主要是使用UIPATH这款软件进行实现类似脚本的可视化编程操作。和代码编程类似，得益于UIPATH给予的Windows统一的控制API，我们可以做到但不限于：数据库操作、本地配置文件读取、模拟点击、Windows进程管理、桌面快照等功能。通过可视化界面的任务动作编排，可以将原本需要员工手动录入系统的动作流程转换为RPA能理解的可执行程序。</p>
 
 </template>
 <template v-slot:right>
@@ -157,6 +158,8 @@ RPA不止于RPA
 
 <template v-slot:right>
 
+### batch
+
 ```batch
 # 查看当前系统的所有进程
 tasklist|find /i "%rpa%"
@@ -174,6 +177,17 @@ for /f "delims="  %%t in (
 )
 ```
 
+### shell
+
+```shell
+# get the access_token of the family
+access_token=$(curl -s -X GET "${family_url}/authentication/getAccessTokenWithoutLogin?username=${user_name}&siteId=${site_id}&password=${password}" | jq '.access_token')
+
+# remove first and last quote (") from a variable
+access_token="${access_token%\"}"
+access_token="${access_token#\"}"
+```
+
 </template>
 
 ---
@@ -182,33 +196,35 @@ layout: two-cols
 
 # 2.1、接口与Analysis表单
 
-## 接口
+## 1、接口
 
 <ul class="p-r-5">
   <li>参与了松原的后台物料、Bom接口的开发，以及部分业务逻辑的改定；</li>
   <li>从stage的escort结合springboot的开发模式开始，陆续地修改了stage的多个画面和模块bug；</li>
 </ul>
 
-## Analysis表单
+## 2、Analysis表单
 
 - 参与开发了松元最初的表单应用；
 - 初步接触了analysis中的分析报表。
 
 ::right::
 
-```shell
-# execute api
-execute_api=$(
-curl -s -X POST "${stage_url}/oauth2/api/${api_address}" \
-        -H "Authorization: bearer ${access_token}" \
-        -H "Content-Type: application/json" \
-        -d "${request_body}"
-)
-
-echo "Execute api: (inventoryListAdd)松元物料信息, request body: ${request_body}, current time: ${cur_time}" >> /home/a1stage/shell/mst/mstApiExecuteLog.txt
-echo $execute_api >> /home/a1stage/shell/mst/mstApiExecuteLog.txt
+#### 部分接口代码
+```java
+ // 取得U8的token
+  RestFormModel restFormModel = new RestFormModel();
+  restFormModel.setPAccId("996");
+  JSONObject dataJson = commonRestService.getU8Token(restFormModel);
+  // 查询条件
+  String condition  = "dnverifytime >= " + "'" + fromDateTime + "'" + "and dnverifytime <= " + "'" + toDateTime + "'" + "and cwhcode in ('602') and crdcode in ('0103')";
+  jsonInfo.put(CommonGeneralConstants.U8InterfaceField.CACCID, dataJson.get("cAcc_ID"));
+  jsonInfo.put(CommonGeneralConstants.U8InterfaceField.CONN, dataJson.get("Conn"));
+  jsonInfo.put(CommonGeneralConstants.U8InterfaceField.TOKEN, dataJson.get("Token"));
+  jsonInfo.put("ccode", condition);
 ```
 
+#### 分析报表
 ![Local Image](/analysis.jpg)
 
 
@@ -218,6 +234,122 @@ echo $execute_api >> /home/a1stage/shell/mst/mstApiExecuteLog.txt
 
 - 服务器构筑
 - 项目初期代码构筑
+
+---
+
+# 2.2、服务器构筑
+
+在巩城项目，开始负责整体的服务器环境的搭建与维护，包括厦门测试环境搭建维护、本番UT环境搭建维护。出现了几个比较突出的问题：
+
+### 一、巩城不提供外网访问
+仅在服务器搭建初期开放外网进行操作。因此必须确认好本地服务器环境需要哪些依赖，并且都安装完毕。这块我们项目并未整理完备，因此后续因为依赖的问题使用了rpm等不同的方式进行补救安装，但遇到问题后处理过程相对繁杂；
+
+---
+
+# 2.2、服务器构筑
+
+### 二、 需要构建内网的爱发布环境
+爱发布项目的启动命令与开源项目的项目初始化命令不同，导致每次错执行了初始化命令导致docker无法启动;
+
+---
+
+# 2.2、服务器构筑
+
+### 三、服务器架构的冗余
+本次客户提供的服务器架构可以做到双机备份容灾，但是因为我们项目并不支持，因此实际是UT和本番各自用一套服务器配置，数据库也没有实现双数据库热备份，抵抗风险的能力也比较差，这个问题在所有据点都有出现；
+
+```mermaid
+flowchart TD;
+    subgraph web1服务器
+    nginx1
+    end
+
+    subgraph web2服务器
+    end
+    
+    subgraph ap1服务器
+    wms
+    qms
+    smt
+    stage周边系统
+    end
+
+    subgraph ap2服务器
+    ut
+    爱发布平台
+    mongdb
+    nginx3
+    end
+
+    爱发布平台-->mongdb
+    爱发布平台-->nginx3
+
+    wms-->db1
+    qms-->db1
+    smt-->db1
+    stage周边系统-->db1
+    ut-->db1
+    srm-->db1
+    nginx2-->srm
+    subgraph db1服务器
+    db1[(db1)]
+    end
+    
+    subgraph db2服务器
+    db2[(db2)]
+    end
+
+    subgraph 办公网环境服务器
+    srm
+    nginx2
+    end
+```
+
+<!--
+图中可以看到,巩城的服务器架构是这样的:
+- 有两台的web服务器，用于搭建nginx，实际上只有一台在使用；
+- wms等一系列的ap服务都是挂到同一个nginx上，设置相同的根路径
+- ut环境的话，是用于用户环境中的测试使用，其实实际上用不太到
+- db服务器按道理来讲实际的只有一台，每天晚上进行备份
+-->
+
+---
+
+# 2.2、服务器构筑
+
+### 四、巩城SRM需要外网访问
+
+因此SRM在巩城的架构下，需要摘到一个外网办公网环境中，并且对外开通80、8080端口，在nginx中挂上https证书、强制http转https的操作等。仅只能与内网几个系统Ip地址互联，不能开通全Ip段的访问。巩城内网的网段是192.168开头，docker的启动默认起一个默认的虚拟网段192.168，因此导致无法访问到内部的系统以及数据库，进而导致无法启动SRM。
+
+```mermaid
+flowchart LR;
+    subgraph 外网
+    供应商
+    end
+
+    subgraph 办公网服务器 10.122.xx.xx
+    nginx
+    srm
+    end
+    
+    subgraph 内网 192.168.xx.xx
+    ap1服务器
+    db1服务器
+    用户
+    end
+    
+    nginx-->srm
+    供应商--https/8080-->nginx
+    srm--8001-->ap1服务器
+    srm--5432-->db1服务器
+    db1服务器--5432-->srm
+    ap1服务器--9001-->srm
+    用户--http/80-->nginx
+```
+
+<!--
+srm 
+-->
 
 ---
 
@@ -249,7 +381,9 @@ Stage的周边系统包括有:
 
 <br/>
 
-### 那么，现阶段我们缺的是什么？
+<h3 v-click>
+那么，现阶段我们缺的是什么？
+</h3>
 
 ::right::
 
@@ -279,7 +413,7 @@ graph TD;
 
 ---
 
-# 3.1 项目上——app的需求
+# 3.1 项目上——技术平台
 
 ## 1、App监控 
 
@@ -295,7 +429,7 @@ graph TD;
 
 ---
 
-# 3.1 项目上——全平台的监控
+# 3.1 项目上——技术平台
 
 ## 2、全平台的监控
 

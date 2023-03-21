@@ -1,7 +1,6 @@
 ---
 layout: cover
 background: /background.jpg
-transition: slide-left
 css: unocss
 ---
 
@@ -88,18 +87,6 @@ RPA 是什么？
 
 <!--RPA工具在技术上类似图形用户界面测试工具，这些测试工具也会自动和图形用户界面互动，并且通常是先由使用者示范其流程，再由这些工具来重现。和这类测试工具不同的地方在于，RPA工具可以在多个应用程序之间处理、交换数据，例如接收内含发票的电子邮件、取得其中数据，然后输入到簿记系统中。-->
 
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
 ---
 layout: two-cols
 ---
@@ -120,21 +107,10 @@ layout: two-cols
 
 </template>
 
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
 ---
 
 # 2.1、RPA
-使用RPA的好处
+
 | | |
 |---|---|
 |✅好处1|代替人工频繁输入|
@@ -144,25 +120,13 @@ h1 {
 <br/>
 <br/>
 
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
 <!--
 可视化的
 -->
 ---
 
 # 2.1、RPA
-使用RPA的缺点
+
 | | |
 |---|---|
 |❌用友系统升级|U8系统半夜升级或者是U8系统画面布局发生变化，UIPATH无法识别变动后的画面布局，导致RPA执行失败|
@@ -172,18 +136,6 @@ h1 {
 |❌遇到问题难以调试与复现|只能通过日志、录屏、邮件通知、脚本重跑的方式去调查问题|
 
 问题还有很多...😵
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
 
 ---
 layout: two-cols
@@ -224,14 +176,183 @@ for /f "delims="  %%t in (
 
 </template>
 
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
+---
+layout: two-cols
+---
+
+# 2.1、接口与Analysis表单
+
+## 接口
+
+<ul class="p-r-5">
+  <li>参与了松原的后台物料、Bom接口的开发，以及部分业务逻辑的改定；</li>
+  <li>从stage的escort结合springboot的开发模式开始，陆续地修改了stage的多个画面和模块bug；</li>
+</ul>
+
+## Analysis表单
+
+- 参与开发了松元最初的表单应用；
+- 初步接触了analysis中的分析报表。
+
+::right::
+
+```shell
+# execute api
+execute_api=$(
+curl -s -X POST "${stage_url}/oauth2/api/${api_address}" \
+        -H "Authorization: bearer ${access_token}" \
+        -H "Content-Type: application/json" \
+        -d "${request_body}"
+)
+
+echo "Execute api: (inventoryListAdd)松元物料信息, request body: ${request_body}, current time: ${cur_time}" >> /home/a1stage/shell/mst/mstApiExecuteLog.txt
+echo $execute_api >> /home/a1stage/shell/mst/mstApiExecuteLog.txt
+```
+
+![Local Image](/analysis.jpg)
+
+
+---
+
+# 2.2、巩城项目总结
+
+- 服务器构筑
+- 项目初期代码构筑
+
+---
+
+# 三、对未来的展望
+
+## 项目上
+- 技术平台
+- 代码质量
+
+## 组织上
+- Stage Docs 文档管理
+- Gitlab Issues
+
+---
+layout: two-cols
+---
+
+# 3.1 项目上——现状分析
+stage的周边系统以及app的开发。
+
+Stage的周边系统包括有:
+- Bpms（审批流）
+- Compass（报表制作平台）
+- Analysis（数据分析看板、调度平台）
+- Inf接口模块
+- 爱发布平台
+- 基于Cordova的移动端App（看板、pad、pda）
+- Family（门户）
+
+<br/>
+
+### 那么，现阶段我们缺的是什么？
+
+::right::
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+```mermaid
+graph TD;
+    Bpms-->Family;
+    Compass-->Family;
+    Analysis-->Family;
+    Inf-->Family;
+    爱发布平台-->Family;
+    Family-->App;
+    Family-->Wms;
+    Family-->Qms;
+    Family-->Smt;
+    Family-->Stage
+```
+
+<!--
+- Bpms、Analysis都是IC进行提供的平台，目前继续进行使用是没有问题的。
+- 那么，现有的弊端是什么，我们要怎么进行解决？
+-->
+
+---
+
+# 3.1 项目上——app的需求
+
+## 1、App监控 
+
+爱发布平台解决了app的在线升级与管理的需求，但是无法监控app在各个设备上的运行情况。
+
+个人认为可以从人为手动发送日志到app自动发送日志的方向进行切入，但是目前基于Cordova框架的开发，还需要公司移动端开发人员的技术支持
+
+<!--
+- 目前我们的app开发，很大程度上依赖于黑盒测试；
+- 用户提出的卡顿、闪退等问题我们都无法解决与复现，很大程度上限制了我们的开发，系统的使用上也一直被诟病；
+- 
+-->
+
+---
+
+# 3.1 项目上——全平台的监控
+
+## 2、全平台的监控
+
+可以用来监控各个ap以及服务器的工作状况，减少运维人员的工作量。可集成定时任务、邮件提醒、日志查看等功能，尽量的做到减少登录服务器后台的操作。
+
+- 服务器运行状况
+- 各个ap的服务器日志在线查看
+- db的运行状况在线查看
+<!--
+也可以说是面向运维开发，同时也是有利于开发人员调查问题。
+-->
+
+---
+
+# 3.1 项目上——全平台的监控
+
+## 3、全平台的附件中心
+
+可以通过minio开源平台进行部署一个静态资源的附件中心。将附件中心放在一台独立的服务器上，可实现多机器共享统一的附件中心，进而更方便的管理资源文件以及备份容灾操作。
+
+```mermaid
+graph TD;
+    Qms-->附件中心;
+    Smt-->附件中心;
+    Wms-->附件中心;
+    Stage-->附件中心;
+    Compass-->附件中心;
+    附件中心-->备份1;
+    附件中心-->备份2;
+    附件中心-->备份3;
+    附件中心-->备份4;
+```
+
+所有系统都有权限直接读取附件中心的数据，有相关数据的dbid即可。
+
+<!--
+也可以说是面向运维开发，同时也是有利于开发人员调查问题。
+-->
+
+---
+layout: iframe-right
+
+# the web page source
+url: http://10.191.5.124:9182/stage/
+---
+
+# 3.1 stage-doc
+
+<!--
+  关于stage的技术文档管理方面
+-->
+
+---
+layout: iframe-right
+
+# the web page source
+url: http://10.191.5.124:9000
+---
+
+# 3.2 gitlab-issue

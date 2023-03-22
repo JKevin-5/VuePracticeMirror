@@ -14,6 +14,14 @@ css: unocss
 </div>
 
 ---
+layout: image-right
+
+# the image source
+image: https://source.unsplash.com/collection/94734566
+
+# a custom class name to the content
+class: my-cool-content-on-the-left
+---
 
 # 目录
 
@@ -229,6 +237,14 @@ layout: two-cols
 
 
 ---
+layout: image-right
+
+# the image source
+image: https://source.unsplash.com/collection/94734566
+
+# a custom class name to the content
+class: my-cool-content-on-the-left
+---
 
 # 2.2、巩城项目总结
 
@@ -236,20 +252,70 @@ layout: two-cols
 - 项目初期代码构筑
 
 ---
+layout: two-cols
+---
 
 # 2.2、服务器构筑
 
-在巩城项目，开始负责整体的服务器环境的搭建与维护，包括厦门测试环境搭建维护、本番UT环境搭建维护。出现了几个比较突出的问题：
+在巩城项目，出现了几个比较突出的问题：
+
 
 ### 一、巩城不提供外网访问
-仅在服务器搭建初期开放外网进行操作。因此必须确认好本地服务器环境需要哪些依赖，并且都安装完毕。这块我们项目并未整理完备，因此后续因为依赖的问题使用了rpm等不同的方式进行补救安装，但遇到问题后处理过程相对繁杂；
+仅在服务器搭建初期开放外网进行操作。因此必须确认好本地服务器环境需要哪些依赖，并且都安装完毕。这块我们项目并未整理完备，因此后续因为依赖的问题使用了rpm等不同的方式进行补救安装，但遇到问题后处理过程相对繁杂。
 
+::right::
+
+公网环境
+```shell
+# 全局安装
+yum install nginx
+# 安装jq
+yum install -y jq
+# 安装zip压缩工具
+yum install -y unzip zip
+```
+内网环境
+
+> rpm的安装方式相对简单,但是需要对应版本
+```shell
+# 下载相关rpm包
+# 可以看到安装的过程
+rpm -ivh xxx.rpm
+# 安装
+rpm -i xxx.rpm
+```
+
+<!--
+开始负责整体的服务器环境的搭建与维护，包括厦门测试环境搭建维护、本番UT环境搭建维护。
+-->
+
+---
+layout: iframe-right
+url: http://10.191.5.124:9182/docs/gcdn_docs/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E5%90%AF%E6%89%8B%E5%86%8C.html#_5%E3%80%81%E7%88%B1%E5%8F%91%E5%B8%83%E5%B9%B3%E5%8F%B0%E9%87%8D%E5%90%AF
 ---
 
 # 2.2、服务器构筑
 
 ### 二、 需要构建内网的爱发布环境
 爱发布项目的启动命令与开源项目的项目初始化命令不同，导致每次错执行了初始化命令导致docker无法启动;
+
+**正确启动方式**
+```bash
+#!/bin/bash
+
+docker-compose up -d
+```
+
+**错误启动方式**
+```bash
+#!/bin/bash
+
+docker-compose up --build -d
+```
+
+<!--
+输入docker-compose 搜索文档
+-->
 
 ---
 
@@ -352,6 +418,14 @@ srm
 -->
 
 ---
+layout: image-right
+
+# the image source
+image: https://source.unsplash.com/collection/94734566
+
+# a custom class name to the content
+class: my-cool-content-on-the-left
+---
 
 # 三、对未来的展望
 
@@ -394,6 +468,13 @@ Stage的周边系统包括有:
 
 ```mermaid
 graph TD;
+    subgraph 周边系统
+    Bpms
+    Compass
+    Analysis
+    Inf
+    爱发布平台
+    end
     Bpms-->Family;
     Compass-->Family;
     Analysis-->Family;
@@ -412,6 +493,8 @@ graph TD;
 -->
 
 ---
+layout: two-cols
+---
 
 # 3.1 项目上——技术平台
 
@@ -419,14 +502,23 @@ graph TD;
 
 爱发布平台解决了app的在线升级与管理的需求，但是无法监控app在各个设备上的运行情况。
 
-个人认为可以从人为手动发送日志到app自动发送日志的方向进行切入，但是目前基于Cordova框架的开发，还需要公司移动端开发人员的技术支持
+可以从人为手动发送日志到app自动发送日志的方向进行切入，但是目前基于Cordova框架的开发，还需要公司移动端开发人员的技术支持
+
+```mermaid
+flowchart LR;
+    手动上传日志-->app自动上传日志
+```
+
+::right::
+![Local Image](/logan.jpg)
 
 <!--
 - 目前我们的app开发，很大程度上依赖于黑盒测试；
 - 用户提出的卡顿、闪退等问题我们都无法解决与复现，很大程度上限制了我们的开发，系统的使用上也一直被诟病；
-- 
 -->
 
+---
+layout: two-cols
 ---
 
 # 3.1 项目上——技术平台
@@ -438,6 +530,12 @@ graph TD;
 - 服务器运行状况
 - 各个ap的服务器日志在线查看
 - db的运行状况在线查看
+
+::right::
+服务器信息监控
+![Local Image1](/ruoyi1.png)
+定时任务实现
+![Local Image2](/ruoyi2.png)
 <!--
 也可以说是面向运维开发，同时也是有利于开发人员调查问题。
 -->
@@ -448,10 +546,18 @@ graph TD;
 
 ## 3、全平台的附件中心
 
-可以通过minio开源平台进行部署一个静态资源的附件中心。将附件中心放在一台独立的服务器上，可实现多机器共享统一的附件中心，进而更方便的管理资源文件以及备份容灾操作。
+可以通过minio开源平台进行部署一个静态资源的附件中心。将附件中心放在一台独立的服务器上，可实现多机器共享统一的附件中心，进而更方便的管理资源文件以及备份容灾操作。[官网文档]()
 
 ```mermaid
 graph TD;
+    subgraph 存储服务器
+    附件中心
+    备份1
+    备份2
+    备份3
+    备份4
+    end
+
     Qms-->附件中心;
     Smt-->附件中心;
     Wms-->附件中心;
@@ -463,7 +569,7 @@ graph TD;
     附件中心-->备份4;
 ```
 
-所有系统都有权限直接读取附件中心的数据，有相关数据的dbid即可。
+所有系统都有权限直接读取附件中心的数据，有相关数据的dbid即可。[内网参考地址](http://10.191.5.124:9001/login)
 
 <!--
 也可以说是面向运维开发，同时也是有利于开发人员调查问题。
@@ -473,20 +579,70 @@ graph TD;
 layout: iframe-right
 
 # the web page source
-url: http://10.191.5.124:9182/stage/
+url: http://10.191.5.124:9182/stage/stage_docs/
 ---
 
 # 3.1 stage-doc
 
+在qms项目搭建的初期，看过收集了很多以往项目的各式文档，看到了很多很有用的但是并没有被利用起来的内容
+
+- app开发中的native-api的使用文档（例如如何打开收起安卓的keyboard等等）
+- 前后端的开发规范
+- 审批流的开发文档
+
+<br/>
+
+> “有谁做过关于xxx的项目开发？你可以去找xxx问一下等等”
+
 <!--
   关于stage的技术文档管理方面
+
+  我也经常会说出这种话来
 -->
 
 ---
-layout: iframe-right
-
-# the web page source
-url: http://10.191.5.124:9000
+layout: two-cols
 ---
 
 # 3.2 gitlab-issue
+
+```mermaid
+graph TB;
+  发现bug --> issue进行搜索 --yes--> 借鉴解决方法 --> 结束
+  issue进行搜索 --no--> 开一个issue --> 解决问题 --> 结束 
+```
+::right::
+
+github上面的一个很好的习惯是如果遇到问题，就在项目的issue上进行搜索，没有类似的解决方案的时候再进行issue的新增提问开发者进行解决，这个是一个类似论坛的功能，也是一个非常好的管理方案。
+- 1、发现并提出问题。
+- 2、快速搜索解决方案。
+
+![Local Image2](/issue1.png)
+
+---
+
+# 3.3 文档管理的好处
+
+1. 🔨**文档有履历**<br/>
+可以很容易地对过去的问题进行调查、追溯、修改。老项目有旧的文档可以参考，新的项目则可以根据新的问题进行解决，不用担心和进行任何的对比操作；
+2. 🦾**开发有依据**<br/>
+统一的共通代码示例、用法介绍等等手册都可以放到该平台上，不用去项目内全局搜索，在缺少注释的情况下，也能很好的理解并复用代码；
+3. ⛷**使用有痕迹**<br/>
+不需要再提问谁做过什么项目，用过什么工具，写过什么代码，只需要根据当前文档的git提交记录即可找到对应修改过的开发者。并且可以让开发者不断的对该文档进行完善，常用常新；
+4. 👍**协同开发没冲突**<br/>
+现有的文档管理基于excel进行的半离线管理，每个编写人员手中都有一份离线的文档，不停的需要解决冲突的问题，并且还有丢失的风险。因此用git管理文档就不会互相污染造成文档问题，但是存在一定的使用门槛。
+
+---
+layout: image-right
+
+# the image source
+image: https://source.unsplash.com/collection/94734566
+
+# a custom class name to the content
+class: my-cool-content-on-the-left
+---
+
+# 四、总结
+> 个人总结
+
+个人的进步和成就往往离不开组织的培养和支持，正是有了组内各个成员的互助与信任，我才能获得如此大的进步与如此自由的发展空间。希望未来的工作里能不辜负组织期待的同时继续发光发热，给项目带来更多更有质量的代码与文档。

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表渲染</title>
+    <!-- 引入vue -->
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <button @click.once="add">添加一个老刘</button>
+        <ul>
+            <li v-for="(p,index) in persons" :key="index">
+                {{p.name}} - {{p.age}}
+            </li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    Vue.config.productionTip = false; // 阻止vue在启动时生成生产提示
+
+    const vm = new Vue({
+        el: '#root',
+        data:{
+            persons:[
+                {id:'001',name:'张三',age:18},
+                {id:'002',name:'张四',age:19},
+                {id:'003',name:'张五',age:20}
+            ]
+        },
+        methods:{
+            add(){
+                const p = {id:'004',name:'老刘',age:40}
+                this.persons.unshift(p)
+            }
+        }
+    })
+</script>
+</html>

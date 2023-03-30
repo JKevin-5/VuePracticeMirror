@@ -2,6 +2,7 @@
 layout: cover
 background: /background.jpg
 css: unocss
+download: true
 ---
 
 # 升职论文
@@ -41,6 +42,9 @@ layout: two-cols
 《软件项目管理学》的里程碑(Milestone)，是项目中完成阶段性工作的标志，是一个任务结束的明确的起止点。
 
 标志着上一个阶段的结束、下一个阶段开始。
+
+- 2021.7-2022.4 进入公司，当月加入松元项目的开发
+- 2022.2-至今   加入巩城项目，主要负责QMS项目
 </template>
 
 <template v-slot:right>
@@ -55,6 +59,14 @@ layout: two-cols
 2、通过基于项目现状的现实需求对未来的工作进行合理的展望，设定合理的个人工作预期，依照早期规划明确正确的努力及进步方向，从而更高效驱动自身发展与提高。
 -->
 
+---
+layout: image-right
+
+# the image source
+image: https://source.unsplash.com/collection/94734566
+
+# a custom class name to the content
+class: my-cool-content-on-the-left
 ---
 
 # 二、对过往的总结

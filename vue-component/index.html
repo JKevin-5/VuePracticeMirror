@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初识vue</title>
+    <!-- import css -->
+    <!-- <link rel="stylesheet" href="./component.min.css"> -->
+    <link rel="stylesheet" href="http://10.191.6.26:8080/viy/css/component.min.css">
+    <!-- import Vue -->
+    <script src="./vue-all.min.js"></script>
+    <!-- import component -->
+    <script src="./vue-component-all.min.js"></script>
+    <script src="./FMS.js"></script>
+    <link rel="stylesheet" href="./FMS.css">
+</head>
+<body>
+    <div id="root">
+        <fms-button :relationId="relationId" :attachmentTypeId="attachmentTypeId" style="padding:50px;"></fms-button>
+    </div>
+    <script type="text/javascript">
+        // 阻止vue启动时候的生产提示生成
+        Vue.config.productionTip = false
+        var test = "111";
+        var vm = new Vue({
+            provide: function() {
+                return {
+                    page_: this,
+                    contextPath: 'http://localhost:8080/qms'
+                };
+            },
+            el: '#root',
+            data:{
+                relationId:'test',
+                attachmentTypeId:'MQ.ATTACHMENT_FILE_TYPE_09',
+                test1:''
+            },
+            created(){
+                this.test1 = test;
+                console.log(this.test1)
+            },
+            methods:{
+            }
+        })
+    </script>
+</body>
+</html>

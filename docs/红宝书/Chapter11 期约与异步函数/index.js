@@ -38,17 +38,32 @@ const test3 = function(res){
 
 // console.log(typeof test1)
 
+var pageLoading = false;
+
 const test4 = function(res){
+    pageLoading = true;
     return new Promise((resolve,reject)=>{
         setTimeout(()=>{
+            pageLoading = false;
             // console.log(res+"+业务3成功回调");
-            reject("业务3返回的内容");
+            // reject("业务3返回的内容");
+            resolve()
         },1000);
     }).then((res)=>{
         console.log("success")
     },(err)=>{
         console.log("error")
+    }).finally(()=>{
+        pageLoading = false
     })
 }
 
-test4()
+const func = function(){
+    console.log("初期加载状态："+pageLoading)
+    test4().then(res=>{
+        console.log('结束时加载状态：'+pageLoading)
+    });
+    console.log('func函数结束时加载状态：'+pageLoading)
+}
+
+func();

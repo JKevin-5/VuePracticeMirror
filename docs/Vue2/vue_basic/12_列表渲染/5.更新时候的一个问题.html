@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新问题</title>
+    <!-- 引入vue -->
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h2>人员列表</h2>
+        <button @click="updateMei">更新马冬梅的信息</button>
+        <ul>
+            <li v-for="(p,index) in persons" :key="index">
+                {{p.name}} - {{p.age}}
+            </li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    Vue.config.productionTip = false; // 阻止vue在启动时生成生产提示
+
+    const vm = new Vue({
+        el: '#root',
+        data:{
+            persons:[
+                {id:'001',name:'马冬梅',age:18,sex:'女'},
+                {id:'002',name:'周冬雨',age:19,sex:'女'},
+                {id:'003',name:'周杰伦',age:20,sex:'男'},
+                {id:'003',name:'温兆伦',age:20,sex:'男'}
+            ],
+        },
+        methods:{
+            updateMei(){
+                this.persons[0] = {
+                    id:'001',name:'马老师',age:18,sex:'女'
+                };
+            }
+        }
+    })
+</script>
+</html>

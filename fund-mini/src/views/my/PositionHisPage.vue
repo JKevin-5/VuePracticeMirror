@@ -22,12 +22,12 @@
                         </van-row>
                         <van-row style="text-align: center">
                             <p>金额(元)</p>
-                            <p style="font-size: 30px">140.84</p>
+                            <p style="font-size: 30px">{{position.amount}}</p>
                         </van-row>
                         <van-row style="text-align: center;padding-top: 20px;">
                             <van-col span="7">
-                                <p>今日收益(元)</p>
-                                <p>-1.42</p>
+                                <p>持有份额(份)</p>
+                                <p>{{position.number}}</p>
                             </van-col>
                             <van-col span="1">|</van-col>
                             <van-col span="8">
@@ -103,7 +103,9 @@
                 getAllPositionHis({
                     positionDbid:this.position.positionDbid
                 }).then(res=>{
-                    this.positionHisList = res.data
+                    this.positionHisList = res.data.positionHisList
+                    this.position.amount = res.data.amount
+                    this.position.number = res.data.number
                     console.log(res)
                 });
             }

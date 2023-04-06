@@ -66,4 +66,16 @@ const func = function(){
     console.log('func函数结束时加载状态：'+pageLoading)
 }
 
-func();
+const dosave = function(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            reject();
+        },1000);
+    })
+}
+
+dosave().then(res=>{
+    console.log("保存成功2")
+}).catch(err=>{
+    console.log(err)
+})

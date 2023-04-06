@@ -1,3 +1,4 @@
-(function(){
-    console.log('bar');
-})();
+const index = 'test';
+(function(index){
+    console.log(index);
+})(index);

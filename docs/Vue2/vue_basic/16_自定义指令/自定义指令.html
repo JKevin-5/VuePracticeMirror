@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自定义指令</title>
+    <!-- 引入vue -->
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+      <h2>当前n值是：<span v-text="n"></span></h2>
+      <h2>放大十倍的n是：<span v-big="n"></span></h2>
+      <button @click="n++">点我加一</button>
+      <hr />
+      <input type="text" v-fbind:value="n" />
+    </div>
+  </body>
+
+  <script>
+    Vue.config.productionTip = false; // 阻止vue在启动时生成生产提示
+
+    const vm = new Vue({
+      el: "#root",
+      data: {
+        name: "kevin",
+        n: 1,
+      },
+      computed: {},
+      methods: {},
+      directives: {
+        // 多个单词使用-进行分割
+        "big-number"(element, binding) {
+          console.log(this); // 此处是window
+          // 此处获取到的element是原生的html element
+          element.innerText = binding.value * 10;
+        },
+        // 函数 对象模式的bind和update的时候
+        // 1、指令和元素成功绑定时（一上来），2、指令所在的模板重新解析时，就会调用big
+        big(element, binding) {
+          // 此处获取到的element是原生的html element
+          element.innerText = binding.value * 10;
+        },
+        // 对象
+        fbind: {
+          // 指令与元素成功绑定时（一上来）
+          bind(element, binding) {
+            element.value = binding.value;
+          },
+          // 指令所在元素被插入页面时
+          inserted(element, binding) {
+            element.focus();
+          },
+          // 指令所在模版重新解析调用
+          update(element, binding) {
+            element.value = binding.value;
+          },
+        },
+      },
+    });
+  </script>
+</html>

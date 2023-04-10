@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初识vue</title>
+    <!-- import css -->
+    <!-- <link rel="stylesheet" href="./component.min.css"> -->
+    <link rel="stylesheet" href="http://10.191.6.26:8080/viy/css/component.min.css">
+    <!-- import Vue -->
+    <script src="./vue-all.min.js"></script>
+    <!-- import component -->
+    <script src="./vue-component-all.min.js"></script>
+    <script src="./Std-button.js"></script>
+</head>
+<body>
+    <div id="root">
+        <std-button-group :dropdownlist="dropdownList" name="跳转1" style="padding:50px;"></std-button-group>
+        <vue-xtable id="grid" ref="grid" :data="tableData" border stripe style="width: 100%" highlight-current-row>
+            <vue-xtable-column prop="date" label="Date" width="180"></vue-xtable-column>
+            <vue-xtable-column prop="name" label="Name" width="180"></vue-xtable-column>
+            <vue-xtable-column prop="address" label="Address"></vue-xtable-column>
+        </vue-xtable>
+    </div>
+    <script type="text/javascript">
+        // 阻止vue启动时候的生产提示生成
+        Vue.config.productionTip = false
+
+        var vm = new Vue({
+            name:'home',
+            provide: function() {
+                return {
+                    page_: this,
+                    contextPath: 'http://localhost:8080/qms'
+                };
+            },
+            el: '#root',
+            data:{
+                relationId:'test',
+                attachmentTypeId:'MQ.ATTACHMENT_FILE_TYPE_09',
+                test1:'',
+                tableData: [{
+                    date: "2017-07-03",
+                    name: "Tom",
+                    address: "No. 189, Grove St, Los Angeles"
+                }, {
+                    date: "2018-08-02",
+                    name: "Tom",
+                    address: "No. 189, Grove St, Los Angeles"
+                }, {
+                    date: "2019-09-04",
+                    name: "Tom",
+                    address: "No. 189, Grove St, Los Angeles"
+                }, {
+                    date: "2020-10-01",
+                    name: "Tom",
+                    address: "No. 189, Grove St, Los Angeles"
+                }],
+                dropdownList:[{
+                    id:'1',
+                    name:'跳转1',
+                    toPageCode:'0001'
+                },{
+                    id:'1',
+                    name:'跳转2',
+                    toPageCode:'0001'
+                },{
+                    id:'1',
+                    name:'跳转3',
+                    toPageCode:'0001'
+                }]
+            },
+            created(){
+            },
+            methods:{
+            }
+        })
+    </script>
+</body>
+</html>

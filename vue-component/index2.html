@@ -16,7 +16,7 @@
 </head>
 <body>
     <div id="root">
-        <std-button-group :dropdownlist="dropdownList" name="跳转1" style="padding:50px;"></std-button-group>
+        <std-button-group :dropdownlist="dropdownList" :name="buttonName" style="padding:50px;"></std-button-group>
         <vue-xtable id="grid" ref="grid" :data="tableData" border stripe style="width: 100%" highlight-current-row>
             <vue-xtable-column prop="date" label="Date" width="180"></vue-xtable-column>
             <vue-xtable-column prop="name" label="Name" width="180"></vue-xtable-column>
@@ -37,6 +37,7 @@
             },
             el: '#root',
             data:{
+                buttonName:'111',
                 relationId:'test',
                 attachmentTypeId:'MQ.ATTACHMENT_FILE_TYPE_09',
                 test1:'',
@@ -60,7 +61,8 @@
                 dropdownList:[{
                     id:'1',
                     name:'跳转1',
-                    toPageCode:'0001'
+                    toPageCode:'0001',
+                    
                 },{
                     id:'1',
                     name:'跳转2',

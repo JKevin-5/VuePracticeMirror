@@ -41,7 +41,11 @@ Vue.component('std-button-group', {
     },
     created: function(){
     },
-    watch:{},
+    watch:{
+        name: function (value) {
+            console.log("名称发生改变。。。"+value);
+        },
+    },
     computed: {},
     created(){
         var object = {}

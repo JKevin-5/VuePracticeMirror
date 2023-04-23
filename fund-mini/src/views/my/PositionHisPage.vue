@@ -99,14 +99,12 @@
                 this.$router.back(0);
             }else{
                 this.position = this.$route.params;
-                console.log(this.position)
                 getAllPositionHis({
                     positionDbid:this.position.positionDbid
                 }).then(res=>{
                     this.positionHisList = res.data.positionHisList
                     this.position.amount = res.data.amount
                     this.position.number = res.data.number
-                    console.log(res)
                 });
             }
         },

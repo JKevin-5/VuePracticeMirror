@@ -5,8 +5,8 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path:"/",
-    redirect:"/login"
+    path: "/",
+    redirect: "/login",
   },
   {
     path: "/home",
@@ -14,8 +14,8 @@ const routes = [
     component: Home,
     children: [
       {
-        path:"/",
-        redirect:"/home/main"
+        path: "/",
+        redirect: "/home/main",
       },
       {
         path: "main",
@@ -25,7 +25,7 @@ const routes = [
       {
         path: "my",
         name: "MyPage",
-        component: () => import("../views/my/MyPage.vue")
+        component: () => import("../views/my/MyPage.vue"),
       },
       {
         path: "search",
@@ -38,23 +38,27 @@ const routes = [
       //   component: () => import("../views/FriendPage.vue"),
       // },
     ],
-  },{
+  },
+  {
     path: "/login",
     name: "Login",
     component: () => import("../views/Login.vue"),
-  },{
+  },
+  {
     path: "/position",
     name: "PositionPage",
-    component: () => import("../views/my/PositionPage.vue")
-  },{
+    component: () => import("../views/my/PositionPage.vue"),
+  },
+  {
     path: "/positionEdit",
     name: "positionEdit",
     component: () => import("../views/my/PositionEditPage.vue"),
-  },{
+  },
+  {
     path: "/positionHis",
     name: "positionHis",
     component: () => import("../views/my/PositionHisPage.vue"),
-  }
+  },
   // {
   //   path: '/about',
   //   name: 'about',
@@ -66,8 +70,8 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  base: 'fund-app', // 如果有域名
-  mode: 'history',
+  base: "fund-app", // 如果有域名
+  mode: "history",
   routes,
 });
 

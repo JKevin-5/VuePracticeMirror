@@ -3,7 +3,7 @@
         <div class="header">
             <van-sticky>
                 <van-nav-bar
-                    title="编辑持仓"
+                    title="新增持仓信息"
                     left-text="返回"
                     left-arrow
                     @click-left="onClickLeft"

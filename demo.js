@@ -1,12 +1,6 @@
-var array = [1,2,3,4];
-
-var inter=function(array){
-    array.forEach(item=>{
-       if(item===3){
-        return true;
-       } 
-    });
+let test_object = {
+    name: 'xx',
+    age: 'x'
 }
 
-console.log(inter(array));
-console.log("end");
+console.log(eval("'<h1>hello world</h1>'"))

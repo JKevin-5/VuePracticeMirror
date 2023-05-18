@@ -1,6 +1,5 @@
 import { defineUserConfig, defaultTheme } from "vuepress";
 import { searchPlugin } from '@vuepress/plugin-search'
-import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 
 export default defineUserConfig({
   plugins: [
@@ -10,8 +9,6 @@ export default defineUserConfig({
       isSearchable: (page) => page.path !== '/',
       test:['/guide/','pages']
     }),
-    mediumZoomPlugin({
-    })
   ],
   lang: "zh-CN",
   title: "Kevin's Notes",
@@ -68,7 +65,7 @@ export default defineUserConfig({
       ]
     },
     // github地址
-    repo: "https://github.com/JKevin-5/Font-endPractice",
+    repo: "https://github.com/JKevin-5",
     // 搜索框
     search: true,
     searchMaxSuggestions: 10

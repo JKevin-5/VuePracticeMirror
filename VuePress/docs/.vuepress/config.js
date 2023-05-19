@@ -1,5 +1,6 @@
 import { defineUserConfig, defaultTheme } from "vuepress";
 import { searchPlugin } from '@vuepress/plugin-search'
+import vuepressPluginAnchorRight from 'vuepress-plugin-anchor-right';
 
 export default defineUserConfig({
   plugins: [
@@ -9,6 +10,7 @@ export default defineUserConfig({
       isSearchable: (page) => page.path !== '/',
       test:['/guide/','pages']
     }),
+    vuepressPluginAnchorRight(),
   ],
   lang: "zh-CN",
   title: "Kevin's Notes",
@@ -21,9 +23,13 @@ export default defineUserConfig({
 
     navbar: [
       {
-        text: "介绍",
+        text: "Vuepress笔记",
         link: "/guide/",
-      }, // NavbarGroup
+      },
+      {
+        text: "Node笔记",
+        link: "/pages/node/",
+      },
       {
         text: "红宝书学习笔记",
         children: [
@@ -33,6 +39,9 @@ export default defineUserConfig({
             activeMatch: "/redBook/"
           }
         ],
+      },{
+        text: "Spring笔记",
+        link: "/pages/spring/",
       },
     ],
     sidebar: {

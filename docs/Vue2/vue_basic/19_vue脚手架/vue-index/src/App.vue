@@ -8,12 +8,15 @@
 </template>
 
 <script>
-import Student from './components/Student.vue'
+import Item from './components/Item.vue'
+import List from './components/List.vue'
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
-    Student
+    Item,List,Header,Footer
   },
   data() {
     return {
@@ -21,22 +24,6 @@ export default {
     };
   },
   methods: {
-    showDom() {
-      console.log(this.$refs.title) //z'
-      console.log(this.$refs.hello)
-      console.log(document.getElementById('hello'))
-    },
   },
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>刮卡特效</title>
+    <style>
+      body {
+        background-color: #222;
+      }
+
+      .刮卡 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 40px;
+        text-align: center;
+        font-weight: bold;
+        background-color: #000;
+        border-radius: 20px;
+        padding: 20px;
+        animation: 刮卡 1s ease-in-out infinite;
+      }
+
+      @keyframes 刮卡 {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.1);
+        }
+      }
+
+      .刮卡::before,
+      .刮卡::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        border-radius: 50%;
+        transform: scale(0.7);
+      }
+
+      .刮卡::before {
+        transform: rotate(-45deg);
+      }
+
+      .刮卡::after {
+        transform: rotate(45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="刮卡">
+      <h1>刮卡</h1>
+      <p>刮开即可获得神秘礼物!</p>
+    </div>
+    <script>
+      const 刮卡 = document.querySelector(".刮卡");
+      刮卡.addEventListener("click", () => {
+        刮卡.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

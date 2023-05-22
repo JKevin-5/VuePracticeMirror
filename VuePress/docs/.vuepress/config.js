@@ -23,26 +23,33 @@ export default defineUserConfig({
 
     navbar: [
       {
-        text: "Vuepress笔记",
-        link: "/guide/",
+        text: "网站黄页",
+        link: "/guide/yellowPage/",
       },
       {
-        text: "Node笔记",
-        link: "/pages/node/",
-      },
-      {
-        text: "红宝书学习笔记",
+        text: "前端笔记",
         children: [
           {
-            text: "介绍",
+            text: "红宝书",
             link: "/redBook/", // 该元素将一直处于激活状态
             activeMatch: "/redBook/"
+          },{
+            text: "Vuepress",
+            link: "/guide/",
           }
         ],
       },{
-        text: "Spring笔记",
-        link: "/pages/spring/",
-      },
+        text: "后端笔记",
+        children: [
+          {
+            text: "NodeJs",
+            link: "/pages/node/",
+          },{
+            text: "Spring",
+            link: "/pages/spring/",
+          }
+        ],
+      }
     ],
     sidebar: {
       "/guide/": [

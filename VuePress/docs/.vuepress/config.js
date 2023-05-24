@@ -16,11 +16,11 @@ export default defineUserConfig({
   title: "Kevin's Notes",
   port:8090,
   description: "这是我的第一个 VuePress 站点",
+  head: [['link', { rel: 'icon', href: 'https://vuejs.org/images/logo.png' }]],
   //新增导航条的配置
   theme: defaultTheme({
     // tab栏的图标; 图片 / 会自动去public文件夹里找图片
     logo: "https://vuejs.org/images/logo.png", // 顶部导航条
-
     navbar: [
       {
         text: "网站黄页",

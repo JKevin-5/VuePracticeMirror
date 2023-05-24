@@ -20,14 +20,15 @@ editLink: false
 
 ## 二、Vuepress config结构
 
-整体配置内容：
+### 1、整体配置内容
 ```json
 export default defineUserConfig({
 
 })
 ```
 
-配置某个页面的侧边栏：
+### 2、配置某个页面的侧边栏
+使用默认主题。
 ```json
 theme: defaultTheme({
     sidebar: {
@@ -39,7 +40,8 @@ theme: defaultTheme({
 })
 ```
 
-配置顶部导航栏：
+### 3、配置顶部导航栏
+使用默认主题。
 ```json
 theme: defaultTheme({
     navbar: [
@@ -49,5 +51,14 @@ theme: defaultTheme({
             children: ['子页面路径']
         }
     ]
+})
+```
+
+### 4、配置浏览器标签页icon
+```json
+export default defineUserConfig({
+    ...
+    head: [['link', { rel: 'icon', href: 'https://vuejs.org/images/logo.png' }]],
+    ...
 })
 ```

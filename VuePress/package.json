@@ -1,12 +1,11 @@
 {
   "devDependencies": {
-    "@vuepress/plugin-search": "2.0.0-beta.61",
-    "vuepress": "2.0.0-beta.61",
+    "@vuepress/plugin-search": "^2.0.0-beta.62",
+    "vuepress": "^2.0.0-beta.62",
     "vuepress-plugin-anchor-right": "^0.0.1-beta.18"
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "docs:info": "vuepress info docs"
+    "docs:build": "vuepress build docs"
   }
 }

@@ -1,16 +1,13 @@
 import { defineUserConfig, defaultTheme } from "vuepress";
-import { searchPlugin } from '@vuepress/plugin-search'
 import vuepressPluginAnchorRight from 'vuepress-plugin-anchor-right';
+import { searchPlugin } from '@vuepress/plugin-search'
 
 export default defineUserConfig({
   plugins: [
     searchPlugin({
       // 配置项
-      // 排除首页
-      isSearchable: (page) => page.path !== '/',
-      test:['/guide/','pages']
     }),
-    vuepressPluginAnchorRight(),
+    vuepressPluginAnchorRight()
   ],
   lang: "zh-CN",
   title: "Kevin's Notes",

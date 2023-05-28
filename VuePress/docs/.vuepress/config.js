@@ -1,7 +1,7 @@
 import { defineUserConfig, defaultTheme } from "vuepress";
 import vuepressPluginAnchorRight from 'vuepress-plugin-anchor-right';
 import { searchPlugin } from '@vuepress/plugin-search'
-import { copyCodePlugin } from "vuepress-plugin-copy-code2";
+import copy from './vuepress-plugin-code-copy'
 
 export default defineUserConfig({
   plugins: [
@@ -9,18 +9,7 @@ export default defineUserConfig({
       // 配置项
     }),
     vuepressPluginAnchorRight(),
-    copyCodePlugin({
-      showInMobile: false,
-      pure: true,
-      locales: {
-        "/": {
-          hint: "复制代码",
-        },
-        "/en/": {
-          hint: "Copy code",
-        },
-      },
-    }),
+    copy()
   ],
   lang: "zh-CN",
   title: "Kevin's Notes",

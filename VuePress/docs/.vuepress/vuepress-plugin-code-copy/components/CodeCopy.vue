@@ -2,17 +2,16 @@
 import { ref, onMounted, inject } from "vue";
 import { usePageData } from "@vuepress/client";
 
-const code = inject('code');
-const buttonText = ref('Copy')
+const buttonText = ref(copybuttonText)
+const code = inject('code')
 const setText = () => {
-    buttonText.value = 'Copied!'
+    buttonText.value = copiedButtonText
     setTimeout(() => {
-        buttonText.value = 'Copy'
+        buttonText.value = copybuttonText
     }, 1000)
 }
 
 const setClipboard = async (code, cb) => {
-    debugger
     if (navigator.clipboard) {
         await navigator.clipboard.writeText(code).then(
             cb,

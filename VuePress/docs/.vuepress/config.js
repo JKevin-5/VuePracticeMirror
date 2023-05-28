@@ -1,7 +1,9 @@
 import { defineUserConfig, defaultTheme } from "vuepress";
 import vuepressPluginAnchorRight from 'vuepress-plugin-anchor-right';
 import { searchPlugin } from '@vuepress/plugin-search'
-import copy from './vuepress-plugin-code-copy'
+import codeCopy from './vuepress-plugin-code-copy'
+// git pages
+import { usePagesPlugin } from "vuepress-plugin-use-pages"
 
 export default defineUserConfig({
   plugins: [
@@ -9,12 +11,23 @@ export default defineUserConfig({
       // 配置项
     }),
     vuepressPluginAnchorRight(),
-    copy()
+    codeCopy({
+      // copybuttonText: '复制',
+      // copiedButtonText: '已复制！'
+    }),
+    usePagesPlugin({
+			// 配置项
+			startsWith: "/", // fetch only matched paths
+			filter: page => page.data.lang === "zh-CN" && page.path !== "/404.html", // fetch only filtered pages
+			sort: (a, b) => b.data.git.updatedTime - a.data.git.updatedTime,
+			limit: 20, // maximum cached size
+			file: "pages.js",
+		})
   ],
   lang: "zh-CN",
   title: "Kevin's Notes",
   port:8090,
-  description: "这是我的第一个 VuePress 站点",
+  description: "Welcome to my blog! ",
   head: [['link', { rel: 'icon', href: 'https://vuejs.org/images/logo.png' }]],
   //新增导航条的配置
   theme: defaultTheme({
@@ -24,6 +37,10 @@ export default defineUserConfig({
       {
         text: "网站黄页",
         link: "/guide/yellowPage/",
+      },
+      {
+        text: "网站黄页",
+        link: "/pages/",
       },
       {
         text: "前端笔记",

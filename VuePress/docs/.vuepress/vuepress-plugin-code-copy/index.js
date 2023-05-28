@@ -4,7 +4,11 @@ module.exports = (options) => {
     return (app) => {
         return {
             name: 'vuepress-plugin-code-copy',
-            clientConfigFile: path.resolve(__dirname, "./clientRootMixin.js")
+            clientConfigFile: path.resolve(__dirname, "./clientRootMixin.js"),
+            define: {
+                copybuttonText: options.copybuttonText || 'copy',
+                copiedButtonText: options.copiedButtonText || "copied!"
+            }
         }
     }
 }

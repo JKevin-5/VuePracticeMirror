@@ -1,7 +1,7 @@
 ---
 title: Vuepress 操作手册
 description: vuepress
-sidebar: auto
+sidebar: false
 editLink: false
 ---
  ## 一、初始化
@@ -114,3 +114,5 @@ export default defineUserConfig({
 
 
 ## 四、Vuepress插件开发-进阶
+
+### 1

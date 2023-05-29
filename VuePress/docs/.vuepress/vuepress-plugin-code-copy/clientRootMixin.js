@@ -1,14 +1,15 @@
 import CodeCopy from "./components/CodeCopy.vue";
-import { defineClientConfig } from "@vuepress/client";
-import { createApp, onMounted } from "vue";
+import { defineClientConfig,usePageData } from "@vuepress/client";
+import { createApp, onMounted ,watch } from "vue";
 import { usePages } from "@temp/pages"
+import { useRoute } from "vue-router";
 export default defineClientConfig({
     setup() {
-        // const page = usePageData()
+        const page = usePageData()
         // console.log(page.value.git)
         const pages = usePages()
         console.log(pages)
-        const mountAnchorRight = () => {
+        const mountCodeCopy = () => {
             try {
                 const ctx = document.querySelector(".theme-default-content");
                 ctx.querySelectorAll('div[class*="language-"] pre').forEach(el => {
@@ -29,11 +30,26 @@ export default defineClientConfig({
                 console.log(error)
             }
         };
-        
+        const route = useRoute();
         onMounted(() => {
             setTimeout(() => {
-                mountAnchorRight();
+                mountCodeCopy();
             }, 300);
         });
+
+        watch(
+            () => route.path,
+            (oldVal, newVal) => {
+              if (oldVal !== newVal) {
+                setTimeout(() => {
+                  // 路由切换加动画了 导致不能及时获取最新page的code-copy-added元素 故而加一个定时器
+                  mountCodeCopy();
+                }, 300);
+              }
+            },
+            {
+              immediate: true,
+            }
+        );
     }
 })

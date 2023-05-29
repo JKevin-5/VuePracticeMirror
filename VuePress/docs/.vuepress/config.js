@@ -39,10 +39,6 @@ export default defineUserConfig({
         link: "/guide/yellowPage/",
       },
       {
-        text: "网站黄页",
-        link: "/pages/",
-      },
-      {
         text: "前端笔记",
         children: [
           {

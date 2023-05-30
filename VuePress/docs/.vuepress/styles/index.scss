@@ -1,0 +1,9 @@
+.anchor-right ::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+}
+.anchor-right {
+    .anchor-right-content {
+        right: -20rem !important;
+        width: 15rem !important;
+    }
+}

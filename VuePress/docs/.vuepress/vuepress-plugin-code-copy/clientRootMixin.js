@@ -1,14 +1,13 @@
 import CodeCopy from "./components/CodeCopy.vue";
-import { defineClientConfig,usePageData } from "@vuepress/client";
+import { defineClientConfig } from "@vuepress/client";
 import { createApp, onMounted ,watch } from "vue";
-import { usePages } from "@temp/pages"
+// import { usePages } from "@temp/pages"
 import { useRoute } from "vue-router";
 export default defineClientConfig({
     setup() {
-        const page = usePageData()
         // console.log(page.value.git)
-        const pages = usePages()
-        console.log(pages)
+        // const pages = usePages()
+        // console.log(pages)
         const mountCodeCopy = () => {
             try {
                 const ctx = document.querySelector(".theme-default-content");
@@ -27,7 +26,6 @@ export default defineClientConfig({
                     app.mount(codeCopyEl);
                 })
             }catch(error){
-                console.log(error)
             }
         };
         const route = useRoute();

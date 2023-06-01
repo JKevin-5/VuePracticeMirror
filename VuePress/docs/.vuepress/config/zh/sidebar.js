@@ -29,5 +29,12 @@ export const sidebar = {
         collapsible: true,
         children: ["/redBook/Chapter26.md"],
       }
+    ],
+    "/vue2/": [
+      {
+        text: "01组件事件绑定与解绑",
+        collapsible: false,
+        children: ["01组件事件绑定与解绑.md"],
+      }
     ]
   }

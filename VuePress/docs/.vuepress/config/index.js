@@ -5,6 +5,7 @@ export const themeConfig = {
     logo: "https://vuejs.org/images/logo.png", // 顶部导航条
     navbar: zhConfig.navbar,
     sidebar: zhConfig.sidebar,
+    sidebarDepth: 4,
     // github地址
     repo: "https://github.com/JKevin-5",
     // 搜索框

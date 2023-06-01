@@ -13,6 +13,9 @@ export const navbar = [
         },{
           text: "Vuepress",
           link: "/guide/",
+        },{
+          text: "Vue2",
+          link: "/vue2/"
         }
       ],
     },{

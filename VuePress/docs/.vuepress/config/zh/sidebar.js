@@ -31,10 +31,7 @@ export const sidebar = {
       }
     ],
     "/vue2/": [
-      {
-        text: "01组件事件绑定与解绑",
-        collapsible: false,
-        children: ["01组件事件绑定与解绑.md"],
-      }
+      "01组件事件绑定与解绑.md",
+      "02全局事件总线.md"
     ]
   }

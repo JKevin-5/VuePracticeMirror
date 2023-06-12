@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初识vue</title>
+    <!-- import css -->
+    <!-- <link rel="stylesheet" href="./component.min.css"> -->
+    <link rel="stylesheet" href="http://10.191.6.26:8080/viy/css/component.min.css">
+    <!-- import Vue -->
+    <script src="./js/vue-all.min.js"></script>
+    <!-- import component -->
+    <script src="./js/vue-component-all.min.js"></script>
+    <script src="./js/AMS.js"></script>
+    <script src="./js/pdfobject.min.js"></script>
+    <script src="./js/pdf.js"></script>
+    <link rel="stylesheet" href="./css/AMS.css">
+</head>
+<body>
+    <div id="root">
+        <!-- <div id="pdf"></div> -->
+        <div id="pdfContainer"></div>
+    </div>
+    <script type="text/javascript">
+        // 阻止vue启动时候的生产提示生成
+        Vue.config.productionTip = false
+        var vm = new Vue({
+            provide: function() {
+                return {
+                    page_: this,
+                    contextPath: 'http://localhost:9000/ams'
+                };
+            },
+            el: '#root',
+            data:{
+                relationId:'test',
+                attachmentTypeId:'MQ.ATTACHMENT_FILE_TYPE_09',
+                test1:''
+            },
+            created(){
+                // PDFObject.embed("./assets/pdf/test.pdf", "#pdf");
+                // 通过 ID 获取容器元素
+                const container = document.getElementById('pdfContainer');
+                // 创建 PDF.js 实例
+                const pdfjsLib = window['pdfjs-dist/build/pdf'];
+                pdfjsLib.GlobalWorkerOptions.workerSrc = './js/pdf.worker.js';
+                pdfjsLib.getDocument('./assets/pdf/test.pdf').promise.then(pdf => {
+                // 加载第一页
+                pdf.getPage(1).then(page => {
+                    const scale = 1.5;
+                    const viewport = page.getViewport({ scale });
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    container.appendChild(canvas);
+                    // 渲染第一页
+                    page.render({ canvasContext: context, viewport });
+                });
+                });
+            },
+            methods:{
+                show(){
+                    this.$refs.ams.show('/ams/type1/index1');
+                }
+            }
+        })
+    </script>
+</body>
+</html>
+<style>
+  .pdfobject-container {
+    height: 500px;
+    width: 500px;
+  }
+  .pdfobject {
+    border: 1px solid #ccc;
+  }
+</style>

@@ -1,0 +1,145 @@
+#ams-viewer {
+    /* 禁止鼠标选中 */
+    user-select:none;
+}
+
+#ams-viewer .wrapper{
+    /* 声明一个容器 */
+    display: grid;
+    /* 声明列的宽度  */
+    grid-template-columns: repeat(4, 160px);
+    /* 声明行间距和列间距  */
+    grid-gap: 20px;
+    /* 声明行的高度  */
+    grid-auto-rows: 150px;
+    /* 内容固定高度 */
+    height: 350px;
+    /* 内容显示滚动条 */
+    overflow: auto;
+
+    padding: 5px;
+}
+#ams-viewer .wrapper .vue-image__lazy {
+    min-height: auto;
+}
+
+#ams-viewer .wrapper .item:hover{
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+#ams-viewer .wrapper .item{
+    transition: box-shadow 0.3s;
+}
+
+/*文本显示*/
+#ams-viewer .wrapper .item .text{
+    display: block;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+
+#ams-viewer .wrapper .item:hover .info{
+    display: block;
+}
+
+#ams-viewer .wrapper .item:hover .actions{
+    display: block;
+}
+
+#ams-viewer .wrapper .item .info{
+    position: absolute;
+    display: none;
+    bottom: 0;
+    left: 10px;
+}
+
+#ams-viewer .wrapper .item .actions{
+    position: absolute;
+    display: none;
+    top: 0;
+    right: 10px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+/*下载图标未点击状态*/
+#ams-viewer .wrapper .item .actions a{
+    text-decoration: none;
+    color: #000;
+}
+
+/*下载图标选中*/
+#ams-viewer .wrapper .item .actions a:hover {
+    text-decoration: none;
+    color: #1e80ff;
+}
+
+#ams-viewer .wrapper .item .vue-image{
+    display: block;
+    height: 100%;
+}
+
+#ams-viewer .wrapper .item table td{
+    text-align-last: justify;
+    text-align: justify;
+    width: 20px;
+}
+
+#ams-viewer .image-slot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 150px;
+    background: #f5f7fa;
+    color: #909399;
+    font-size: 25px;
+}
+
+/*滚动条里面轨道*/
+#ams-viewer .wrapper::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0);
+    background-color: rgb(125, 126, 128);
+}
+/*定义滚动条整体的样式*/
+#ams-viewer .wrapper::-webkit-scrollbar{
+    width: 10px;
+    background-color: rgb(125, 126, 128);
+}
+/*滚动条的样式*/
+#ams-viewer .wrapper::-webkit-scrollbar-thumb{
+    height:20px;
+    background-image: -webkit-gradient(linear,
+    left bottom,
+    left top,
+    color-stop(0.2, rgb(56, 53, 53)),
+    color-stop(0.4, rgb(56, 53, 53)),
+    color-stop(0.8, rgb(56, 53, 53)));
+}
+
+#ams-viewer .excel{
+    display:block;
+    width:30px;
+    height:30px;
+    margin-right:5px;
+    background: url(../assets/svg/EXCEL.svg) no-repeat;
+    background-size: 100%;
+}
+
+#ams-viewer .word{
+    display:block;
+    width:30px;
+    height:30px;
+    margin-right:5px;
+    background: url(../assets/svg/WORD.svg) no-repeat;
+    background-size: 100%;
+}
+
+#ams-viewer .pdf{
+    display:block;
+    width:30px;
+    height:30px;
+    margin-right:10px;
+    background: url(../assets/svg/PDF.svg) no-repeat;
+    background-size: 100%;
+}

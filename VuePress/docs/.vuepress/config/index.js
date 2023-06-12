@@ -10,5 +10,6 @@ export const themeConfig = {
     repo: "https://github.com/JKevin-5",
     // 搜索框
     search: true,
-    searchMaxSuggestions: 10
+    searchMaxSuggestions: 10,
+    pagePatterns: ['!**/_*.md','!node_modules']
 }

@@ -28,6 +28,7 @@ Vue.component('ams-viewer', {
                                     </div>
                                     <div class="actions">
                                         <a type="text" :href="item.previewUrl"><i class="vue-icon-download"></i></a>
+                                        <i class="vue-icon-delete" @click="deleteFiles(item)"></i>
                                     </div>
                                 </div>
                             </vue-tooltip>
@@ -96,15 +97,14 @@ Vue.component('ams-viewer', {
             self.loading = true;
             self.page_.$http.get(url).then(function(res){
                 self.$nextTick(() => {
-                    let c = [];
-                    c = c.concat(res.body.data)
-                    c = c.concat(res.body.data)
-                    c = c.concat(res.body.data)
-                    c = c.concat(res.body.data)
-
-                    self.gridData = c;
+                    // let c = [];
+                    // c = c.concat(res.body.data)
+                    // c = c.concat(res.body.data)
+                    // c = c.concat(res.body.data)
+                    // c = c.concat(res.body.data)
+                    self.gridData = res.body.data;
                     self.gridData.forEach(item=>{
-                        if(item.fileType==='jpeg'){
+                        if(self.imagesTypes.includes(item.fileType)){
                             self.iamgeList.push(item.previewUrl);
                         }
                     })
@@ -120,8 +120,25 @@ Vue.component('ams-viewer', {
             this.viewpath = path;
             this.getList();
         },
-        deleteFiles:function(){
-
+        deleteFiles:function(row){
+            var self = this;
+            // prod环境
+            // var url = contextPath+"/ams/plus/info?path="+self.viewpath;
+            var url = self.contextPath+"/ams/plus/delete";
+            var params = {
+                files:row.amsAttachmentInfoId
+            };
+            self.loading = true;
+            self.page_.$http.post(url,params,{
+                emulateJSON:true
+            }).then(function(res){
+                if(res.body.code === 200){
+                    self.getList();
+                }else{
+                    console.log(res);
+                }
+                self.loading = false;
+            });
         },
         choosePreType:function(type){
             if(this.excelTypes.includes(type)){
@@ -135,7 +152,15 @@ Vue.component('ams-viewer', {
         preview:function(item){
             switch (item.fileType) {
                 case 'pdf':
-                    this.previewPath = 'http://localhost:9000/ams/resources/plugins/pdf/web/viewer.html?file='+item.previewUrl;
+                    this.previewPath = self.contextPath +'/ams/viewer#/pdf?file='+item.previewUrl;
+                    this.officeFlg = true;
+                    break;
+                case 'excel':
+                    this.previewPath = self.contextPath + '/ams/viewer#/excel?file='+item.previewUrl;
+                    this.officeFlg = true;
+                    break;
+                case 'word':
+                    this.previewPath = self.contextPath + '/ams/viewer#/word?file='+item.previewUrl;
                     this.officeFlg = true;
                     break;
                 default:

@@ -3,6 +3,11 @@
     user-select:none;
 }
 
+#ams-viewer .vue-dialog{
+    top: 10% !important;
+}
+
+
 #ams-viewer .wrapper{
     /* 声明一个容器 */
     display: grid;
@@ -59,17 +64,17 @@
     top: 0;
     right: 10px;
     font-size: 20px;
-    padding: 10px;
+    padding: 5px;
 }
 
 /*下载图标未点击状态*/
-#ams-viewer .wrapper .item .actions a{
+#ams-viewer .wrapper .item .actions i{
     text-decoration: none;
     color: #000;
 }
 
 /*下载图标选中*/
-#ams-viewer .wrapper .item .actions a:hover {
+#ams-viewer .wrapper .item .actions i:hover {
     text-decoration: none;
     color: #1e80ff;
 }
@@ -93,7 +98,7 @@
     height: 150px;
     background: #f5f7fa;
     color: #909399;
-    font-size: 25px;
+    font-size: 18px;
 }
 
 /*滚动条里面轨道*/
@@ -139,7 +144,7 @@
     display:block;
     width:30px;
     height:30px;
-    margin-right:10px;
+    margin-right:5px;
     background: url(../assets/svg/PDF.svg) no-repeat;
     background-size: 100%;
 }

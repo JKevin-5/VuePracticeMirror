@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电子车间看板</title>
+    <!-- import css -->
+    <!-- <link rel="stylesheet" href="./component.min.css"> -->
+    <link rel="stylesheet" href="http://10.191.6.26:8080/viy/css/component.min.css">
+    <!-- import Vue -->
+    <script src="./js/vue-all.min.js"></script>
+    <!-- import component -->
+    <script src="./js/vue-component-all.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/dashboardApi.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <div id="root">
+        <div id="screen">
+            <!-- 头部 -->
+            <div class="header"></div>
+            <div class="content">
+                <vue-row>
+                    <vue-col class="row" :md="24" :lg="12">
+                        <div class="section" id="echarts1" style="width: 100%;height:100%;" ref="echarts1"></div>
+                    </vue-col>
+                    <vue-col class="row" :md="24" :lg="12">
+                        <div style="height: 10%;color: white;">截至当日未完成订单明细</div>
+                        <vue-xtable ref="grid1" :data="xtableData1" style="width: 100%;" height="90%" class="table">
+                            <vue-xtable-column prop="机型" label="机型" align="center"></vue-xtable-column>
+                            <vue-xtable-column prop="生产令" label="生产令" width="180" align="center"></vue-xtable-column>
+                            <vue-xtable-column prop="生产日期" label="完工日" width="90" align="center"></vue-xtable-column>
+                            <vue-xtable-column prop="实绩" label="实绩" width="90" align="center"></vue-xtable-column>
+                            <vue-xtable-column prop="计划" label="计划" width="90" align="center"></vue-xtable-column>
+                            <vue-xtable-column prop="差缺" label="差缺" width="90" align="center"></vue-xtable-column>
+                        </vue-xtable>
+                    </vue-col>
+                    <vue-col class="row" :md="24" :lg="12">
+                        <div style="height: 10%;color: white;">当日计划完成</div>
+                        <vue-xtable ref="grid2" :data="xtableData2" style="width: 100%;" height="90%" class="table">
+                            <vue-xtable-column prop="机型" label="机型" align="center"></vue-xtable-column>
+                            <vue-xtable-column prop="计划" label="计划" align="center" width="180"></vue-xtable-column>
+                            <vue-xtable-column prop="实绩" label="实绩" align="center" width="180"></vue-xtable-column>
+                            <vue-xtable-column prop="完成率" label="完成率" align="center" width="180"></vue-xtable-column>
+                          </vue-xtable>
+                    </vue-col>
+                    <vue-col class="row" :md="24" :lg="12">
+                        <div class="section" id="echarts2" style="width: 100%;height:100%;" ref="echarts2"></div>
+                    </vue-col>
+                </vue-row>
+            </div>
+            <div class="footer"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        var vm = new Vue({
+            provide: function() {
+                return {
+                    page_: this,
+                    contextPath: 'http://localhost:8080/qms',
+                };
+            },
+            el: '#root',
+            data:{
+                xtableData1:[],
+                xtableData2:[],
+                option:{
+                    title: {
+                        text: '生产计划累计完结率',
+                        textStyle: {
+                            color: '#ffffff'
+                        },
+                        x:'center',
+                        y:'top'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data:['月计划','月实绩','月完成率'],
+                        textStyle:{
+                            color: '#ffffff'//字体颜色
+                        },
+                        bottom: '5%'
+                    },
+                    xAxis: {
+                        data: [],
+                        axisLabel: {
+                            show: true,
+                            textStyle: {
+                                color: '#ffffff'
+                            }
+                        }
+                    },
+                    yAxis: [
+                        {
+                            type: 'value',
+                            name: '',
+                            min: 0,
+                            max: 250,
+                            interval: 50,
+                            axisLabel: {
+                                formatter: '{value} K',
+                                textStyle: {
+                                    color: '#ffffff'
+                                }
+                            }
+                        },
+                        {
+                            type: 'value',
+                            name: '',
+                            min: 0,
+                            max: 100,
+                            interval: 20,
+                            axisLabel: {
+                                formatter: '{value} %',
+                                textStyle: {
+                                    color: '#ffffff'
+                                }
+                            }
+                        }
+                    ],
+                    series: [{
+                        name: '月计划',
+                        type: 'bar',
+                        data: [],
+                        label: {
+                            show: true,
+                            positioin: 'top',
+                            color:'#ffffff'
+                        }
+                    },{
+                        name: '月实际',
+                        type: 'bar',
+                        data: [],
+                        distance: 500,
+                        label: {
+                            show: true,
+                            positioin: 'top',
+                            color:'#ffffff'
+                        }
+                    },{
+                        name: '月完成率',
+                        type: 'line',
+                        yAxisIndex: 1,
+                        data: [],
+                        label: {
+                            show: true,
+                            positioin: 'top',
+                            color:'#ffffff',
+                            formatter: function(params) {
+                                let data = Math.floor(params.data* 100) / 100.
+                                data = data.toFixed(2);
+                                return data+'%';
+                            }
+                        }
+                    }]
+                },
+                myChart:{},
+                myChart1:{},
+                option1:{
+                    title: {
+                        text: '生产计划成品良率（电子）',
+                        textStyle: {
+                            color: '#ffffff'
+                        },
+                        x:'center',
+                        y:'top'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data:['合格数','不合格数','成品良率'],
+                        textStyle:{
+                            color: '#ffffff'//字体颜色
+                        },
+                        bottom: '5%'
+                    },
+                    xAxis: {
+                        data: [],
+                        axisLabel: {
+                            show: true,
+                            textStyle: {
+                                color: '#ffffff'
+                            }
+                        }
+                    },
+                    yAxis: [
+                        {
+                            type: 'value',
+                            name: '',
+                            min: 0,
+                            max: 180,
+                            interval: 30,
+                            axisLabel: {
+                                formatter: '{value} K',
+                                textStyle: {
+                                    color: '#ffffff'
+                                }
+                            }
+                        },
+                        {
+                            type: 'value',
+                            name: '',
+                            min: 0,
+                            max: 100,
+                            interval: 20,
+                            axisLabel: {
+                                formatter: '{value} %',
+                                textStyle: {
+                                    color: '#ffffff'
+                                }
+                            }
+                        }
+                    ],
+                    series: [{
+                        name: '合格数',
+                        type: 'bar',
+                        data: [],
+                        label: {
+                            show: true,
+                            positioin: 'top',
+                            color:'#ffffff'
+                        }
+                    },{
+                        name: '不合格数',
+                        type: 'bar',
+                        data: [],
+                        distance: 500,
+                        label: {
+                            show: true,
+                            positioin: 'top',
+                            color:'#ffffff'
+                        }
+                    },{
+                        name: '成品良率',
+                        type: 'line',
+                        yAxisIndex: 1,
+                        data: [],
+                        label: {
+                            show: true,
+                            positioin: 'top',
+                            color:'#ffffff',
+                            formatter: function(params) {
+                                let data = Math.floor(params.data* 100) / 100.
+                                data = data.toFixed(2);
+                                return data+'%';
+                            }
+                        }
+                    }]
+                }
+            },
+            created(){
+                let self= this;
+                getAccessToken(this);
+                window.onresize = function () {
+                    self.setScale()
+                };
+            },
+            mounted(){
+                let self = this;
+                self.autoFit().then(res=>{
+                    // 布局变化后进行布局的改变
+                    self.setEcharts1();
+                    self.setEcharts2();
+                    self.initTable();
+                })
+            },
+            beforeDestory(){
+                clearInterval(this.scrollTopAddInterval)
+            },
+            methods:{
+                async setEcharts1(){
+                    // 基于准备好的dom，初始化echarts实例
+                    this.myChart = echarts.init(document.getElementById('echarts1'));
+                    this.myChart.setOption(this.option);
+                    let data = await getSfcOrderFinishPercent(this);
+                    let categories = []
+                    let values1 = []
+                    let values2 = []
+                    let values3 = []
+                    data.forEach(item=>{
+                        categories.push(item['月份'])
+                        values1.push(item['计划数量']/1000)
+                        values2.push(item['完成数量']/1000)
+                        values3.push(item['完成率']*100)
+                    })
+                    this.myChart.setOption({
+                        xAxis: {
+                            data: categories
+                        },
+                        series: [{
+                            name: '月计划',
+                            data: values1,
+                        },{
+                            name: '月实绩',
+                            data: values2
+                        },{
+                            name: '月完成率',
+                            data: values3
+                        }]
+                    });
+
+                },
+                async setEcharts2(){
+                    
+                    let data = await getSfcOrderScrapPercent(this);
+                    // 基于准备好的dom，初始化echarts实例
+                    this.myChart1 = echarts.init(document.getElementById('echarts2'));
+                    this.myChart1.setOption(this.option1);
+                    let categories = []
+                    let values1 = []
+                    let values2 = []
+                    let values3 = []
+                    data.forEach(item=>{
+                        categories.push(item['月份'])
+                        values1.push(item['计划数量']/1000)
+                        values2.push(item['完成数量']/1000)
+                        values3.push(item['完成率']*100)
+                    })
+                    this.myChart1.setOption({
+                        xAxis: {
+                            data: categories
+                        },
+                        series: [{
+                            // 根据名字对应到相应的系列
+                            name: '月计划',
+                            data: values1,
+                        },{
+                            // 根据名字对应到相应的系列
+                            name: '月实际',
+                            data: values2
+                        },{
+                            // 根据名字对应到相应的系列
+                            name: '月完成率',
+                            data: values3
+                        }]
+                    });
+
+                    // 表格往下滚动的高度
+                    var scrollY = 0;
+                    var scrollY2 = 0;
+                    var speed = 1;
+                    // grid进行滚动
+                    this.scrollTopAddInterval = setInterval(() => {
+                        if (scrollY - this.$refs.grid1.$refs.tableBody.$el.scrollTop < 100) {
+                            this.$refs.grid1.scrollTo(0,scrollY);
+                            scrollY = scrollY + speed;
+                        } else {
+                            scrollY = 0;
+                        }
+                        if (scrollY2 - this.$refs.grid2.$refs.tableBody.$el.scrollTop < 100) {
+                            this.$refs.grid2.scrollTo(0,scrollY2);
+                            scrollY2 = scrollY2 + speed;
+                        } else {
+                            scrollY2 = 0;
+                        }
+                    },40)
+                },
+                async initTable(){
+                    this.xtableData1 = await getSfcOrderUnfinishToday(this);
+                    this.xtableData2 = await getSfcFinishToday(this);
+                },
+                setScale(){
+                    let designWidth = 1366;//设计稿的宽度，根据实际项目调整
+                    let designHeight = 768;//设计稿的高度，根据实际项目调整
+                    let scale = document.documentElement.clientWidth/document.documentElement.clientHeight < designWidth/designHeight ? 
+                        (document.documentElement.clientWidth / designWidth):
+                        (document.documentElement.clientHeight / designHeight);
+                    document.querySelector('#screen').style.transform = `scale(${scale}) translate(-50%)`;
+                },
+                /**
+                 * 大屏大小自适应
+                 */
+                autoFit(){
+                    return new Promise((resolve,reject) => {
+                        const clientWidth = document.documentElement.clientWidth
+                        const clientHeight = document.documentElement.clientHeight
+                        window.pageWidth = clientWidth / clientHeight > 16 / 9 ? clientHeight * (16 / 9) : clientWidth
+                        const pageHeight = pageWidth / (16 / 9)
+                        const string = `<style>html{
+                            font-size: ${pageWidth / 100}px
+                            }</style>`
+                        document.write(string)
+                        const root = document.getElementById('screen');
+                        root.style.width = pageWidth + 'px'
+                        root.style.height = pageHeight + 'px'
+                        root.style.marginTop = (clientHeight - pageHeight) / 2 + 'px'
+                        resolve();
+                    })
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>

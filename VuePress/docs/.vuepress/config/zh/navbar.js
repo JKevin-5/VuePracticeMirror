@@ -1,5 +1,9 @@
 export const navbar = [
     {
+      text: "博客列表",
+      link: "/guide/list/",
+    },
+    {
       text: "网站黄页",
       link: "/guide/yellowPage/",
     },

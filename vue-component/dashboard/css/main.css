@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+}
+:root ::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+    scrollbar-width: none; /* firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+}
+#root {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(10, 29, 59, 1);
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+#screen {
+    display: inline-block;
+}
+.header {
+    height: 10vh;
+    background-image: url("../assets/imgpreview.jpg");
+    background-size: cover;
+    background-position: top center;
+}
+
+.content {
+    height: 80vh;
+}
+.row {
+    height: 40vh;
+    padding: 0.2 rem;
+
+    text-align: center;
+    border: 1px solid #0764bc;
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 0 0 2px 0 #0e325f, inset 0 0 2px 0 #0e325f;
+    background: #0c1139;
+}
+.row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    border-radius: 4px;
+    box-shadow: 17px 0 0 -16px #0e325f,
+    -17px 0 0 -16px #0e325f,
+    0 17px 0 -16px #0e325f,
+    0 -17px 0 -16px #0e325f,
+    9px 0 0 -8px #0d4483,
+    -9px 0 0 -8px #0d4483,
+    0 9px 0 -8px #0d4483,
+    0 -9px 0 -8px #0d4483,;
+}
+
+/*table样式*/
+.row .table .vue-xtable-table--header-wrapper{
+    font-size: 1rem;
+    color: white;
+    /* background-color: #0e325f; */
+    background-color: orange;
+}
+.row .table .vue-xtable-body--row {
+    color: white;
+    font-size: 1rem;
+}
+
+.footer {
+    height: 10vh;
+}
+
+/* 表格透明 */
+.vue-xtable-table {
+    background-color: transparent;
+    border: none;
+}
+
+.vue-xtable-table th,
+.vue-xtable-table tr,
+.vue-xtable-table td {
+    background-color: transparent;
+}
+
+.vue-xtable-table .vue-xtable-table--footer-wrapper,
+.vue-xtable-table .vue-xtable-table--header-wrapper {
+    background-color: transparent;
+    border: none;
+}
+
+.vue-xtable-table:after, .vue-xtable-table:before {
+    content: none;
+}
+
+/* .vue-xtable-table .vue-xtable-body--row .vue-xtable-body--column{
+    border: none;
+} */
+
+.vue-xtable-table--header-wrapper .vue-xtable-table--repair{
+    height: 0;
+}

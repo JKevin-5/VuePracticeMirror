@@ -2,7 +2,7 @@
   "name": "slidev",
   "private": true,
   "scripts": {
-    "build": "slidev build --base /ppt",
+    "build": "slidev build --base /ppt_fenqu",
     "dev": "slidev --open",
     "export": "slidev export"
   },
@@ -10,5 +10,8 @@
     "@slidev/cli": "^0.40.3",
     "@slidev/theme-default": "*",
     "@slidev/theme-seriph": "*"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.35.0"
   }
 }

@@ -12,7 +12,7 @@ body {
     background-color: rgba(10, 29, 59, 1);
     display: table-cell;
     text-align: center;
-    vertical-align: middle;
+    /* vertical-align: middle; */
 }
 #screen {
     display: inline-block;
@@ -25,11 +25,10 @@ body {
 }
 
 .content {
-    height: 80vh;
+    height: 86vh;
 }
 .row {
-    height: 40vh;
-    padding: 0.2 rem;
+    height: 43vh;
 
     text-align: center;
     border: 1px solid #0764bc;
@@ -55,6 +54,11 @@ body {
     0 9px 0 -8px #0d4483,
     0 -9px 0 -8px #0d4483,;
 }
+.row .header{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
 
 /*table样式*/
 .row .table .vue-xtable-table--header-wrapper{
@@ -69,7 +73,8 @@ body {
 }
 
 .footer {
-    height: 10vh;
+    color: white;
+    font-size: 1rem;
 }
 
 /* 表格透明 */
@@ -100,4 +105,11 @@ body {
 
 .vue-xtable-table--header-wrapper .vue-xtable-table--repair{
     height: 0;
+}
+/* 修改主体列宽 */
+.vue-xtable-body--column {
+    padding: 0 !important;
+}
+.vue-xtable-header--column {
+    padding: 0.5rem 0 !important;
 }

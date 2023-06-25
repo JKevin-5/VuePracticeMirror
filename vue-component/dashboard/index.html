@@ -22,7 +22,11 @@
     <div id="root">
         <div id="screen">
             <!-- 头部 -->
-            <div class="header"></div>
+            <div class="header">
+                <vue-tooltip :content="content" placement="bottom" effect="light">
+                    <div class="i-refresh" @click="reload"></div>
+                </vue-tooltip>
+            </div>
             <div class="content">
                 <vue-row :gutter="10">
                     <vue-col class="row" :span="12">
@@ -34,7 +38,9 @@
                             title="截至当日未完成订单明细"
                             :cols ="cols1"
                             :url = "getSfcOrderUnfinishToday"
-                            :options = "options1">
+                            :options = "options1"
+                            ref="table1"
+                            >
                         </dashboard-table>
                     </vue-col>
                     <vue-col class="row" :span="12">
@@ -43,7 +49,8 @@
                             title="当日计划完成"
                             :cols ="cols2"
                             :url = "getSfcFinishToday"
-                            :options = "options2">
+                            :options = "options2"
+                            ref="table">
                         </dashboard-table>
                     </vue-col>
                     <vue-col class="row" :span="12">
@@ -51,9 +58,7 @@
                     </vue-col>
                 </vue-row>
             </div>
-            <div class="footer">
-				{{time}} {{token}}
-			</div>
+            <div class="footer"></div>
         </div>
     </div>
     <script type="text/javascript">
@@ -61,6 +66,8 @@
             el: '#root',
             data:{
             	dataLoad: false,
+                token:'',
+                time:'',
             	cols1:[
                     {
                         prop:"机型",
@@ -75,7 +82,7 @@
                         prop:"生产日期",
                         label:"生产日期",
                         align:"center",
-                        width:"80"
+                        width:"70"
                     },{
                         prop:"实绩",
                         label:"实绩",
@@ -94,9 +101,9 @@
                     }
                 ],
                 options1:{
-                    interval: 60000
+                    interval: 60000,
+                    scrollSpeed: 5000
                 },
-                getSfcOrderUnfinishToday:'https://r.ymsl.com.cn/gcdn/test/analysis/oauth2/getSfcOrderUnfinishToday',
                 cols2:[
                     {
                         prop:"机型",
@@ -118,26 +125,32 @@
                     },
                 ],
                 options2:{
-                    interval: 60000
+                    interval: 60000,
+                    scrollSpeed: 5000
                 },
-                getSfcFinishToday:'https://r.ymsl.com.cn/gcdn/test/analysis/oauth2/getSfcFinishToday',
                 option:{
                     title: {
                         text: '生产计划累计完结率',
                         textStyle: {
                             color: '#ffffff',
                             fontFamily: 'sans-serif',
-                            fontSize: '1.5rem'
+                            fontSize: '0.4rem'
                         },
                         x:'center',
                         y:'top',
                         top: 15
                     },
-                    tooltip: {},
+                    tooltip: {
+                        textStyle:{
+                            // pc
+                            // fontSize: '0.1rem'
+                        }
+                    },
                     legend: {
                         data:['月计划','月实绩','月完成率'],
                         textStyle:{
-                            color: '#ffffff'//字体颜色
+                            color: '#ffffff',//字体颜色
+                            fontSize: '0.3rem'
                         },
                         bottom: '5%'
                     },
@@ -146,7 +159,8 @@
                         axisLabel: {
                             show: true,
                             textStyle: {
-                                color: '#ffffff'
+                                color: '#ffffff',
+                                fontSize: '0.25rem'
                             }
                         }
                     },
@@ -154,13 +168,14 @@
                         {
                             type: 'value',
                             name: '',
-                            min: 0,
-                            max: 250,
-                            interval: 50,
+                            // min: 0,
+                            // max: 250,
+                            // interval: 50,
                             axisLabel: {
                                 formatter: '{value} K',
                                 textStyle: {
-                                    color: '#ffffff'
+                                    color: '#ffffff',
+                                    fontSize: '0.25rem'
                                 }
                             }
                         },
@@ -173,8 +188,12 @@
                             axisLabel: {
                                 formatter: '{value} %',
                                 textStyle: {
-                                    color: '#ffffff'
+                                    color: '#ffffff',
+                                    fontSize: '0.25rem'
                                 }
+                            },
+                            splitLine:{
+                                show:false
                             }
                         }
                     ],
@@ -184,8 +203,9 @@
                         data: [],
                         label: {
                             show: true,
-                            position: 'top',
-                            color:'#ffffff'
+                            // position: 'top',
+                            color:'#ffffff',
+                            fontSize: '0.3rem'
                         }
                     },{
                         name: '月实际',
@@ -194,8 +214,9 @@
                         distance: 500,
                         label: {
                             show: true,
-                            position: 'top',
-                            color:'#ffffff'
+                            // position: 'top',
+                            color:'#ffffff',
+                            fontSize: '0.3rem'
                         }
                     },{
                         name: '月完成率',
@@ -204,13 +225,13 @@
                         data: [],
                         label: {
                             show: true,
-                            position: 'top',
                             color:'#ffffff',
                             formatter: function(params) {
                                 let data = Math.floor(params.data* 100) / 100.
                                 data = data.toFixed(2);
                                 return data+'%';
-                            }
+                            },
+                            fontSize: '0.25rem'
                         }
                     }]
                 },
@@ -222,7 +243,7 @@
                         textStyle: {
                             color: '#ffffff',
                             fontFamily: 'sans-serif',
-                            fontSize: '1.5rem'
+                            fontSize: '0.4rem'
                         },
                         x:'center',
                         y:'top',
@@ -232,7 +253,8 @@
                     legend: {
                         data:['合格数','不合格数','成品良率'],
                         textStyle:{
-                            color: '#ffffff'//字体颜色
+                            color: '#ffffff',//字体颜色
+                            fontSize: '0.3rem'
                         },
                         bottom: '5%'
                     },
@@ -241,7 +263,8 @@
                         axisLabel: {
                             show: true,
                             textStyle: {
-                                color: '#ffffff'
+                                color: '#ffffff',
+                                fontSize: '0.25rem'
                             }
                         }
                     },
@@ -249,13 +272,14 @@
                         {
                             type: 'value',
                             name: '',
-                            min: 0,
-                            max: 180,
-                            interval: 30,
+                            // min: 0,
+                            // max: 180,
+                            // interval: 30,
                             axisLabel: {
                                 formatter: '{value} K',
                                 textStyle: {
-                                    color: '#ffffff'
+                                    color: '#ffffff',
+                                    fontSize: '0.25rem'
                                 }
                             }
                         },
@@ -268,7 +292,8 @@
                             axisLabel: {
                                 formatter: '{value} %',
                                 textStyle: {
-                                    color: '#ffffff'
+                                    color: '#ffffff',
+                                    fontSize: '0.25rem'
                                 }
                             },
                             splitLine:{
@@ -282,8 +307,9 @@
                         data: [],
                         label: {
                             show: true,
-                            positioin: 'top',
-                            color:'#ffffff'
+                            // position: 'top',
+                            color:'#ffffff',
+                            fontSize: '0.3rem'
                         }
                     },{
                         name: '不合格数',
@@ -292,8 +318,9 @@
                         distance: 500,
                         label: {
                             show: true,
-                            positioin: 'top',
-                            color:'#ffffff'
+                            // position: 'top',
+                            color:'#ffffff',
+                            fontSize: '0.3rem'
                         }
                     },{
                         name: '成品良率',
@@ -308,15 +335,15 @@
                                 let data = Math.floor(params.data* 100) / 100.
                                 data = data.toFixed(2);
                                 return data+'%';
-                            }
+                            },
+                            fontSize: '0.25rem'
                         }
-                    }]
-                },
-                token:'',
-                time:''
+                    }],
+                }
             },
             created(){
                 let self= this;
+                setRem();
                 getAccessToken().then(res=>{
                     self.setEcharts1();
                     self.setEcharts2();
@@ -340,6 +367,7 @@
                 });
                 window.onresize = function () {
                     // self.setScale()
+                    setRem();
                     // 刷新页面
                     window.location.reload();
                     self.myChart.resize();
@@ -350,6 +378,15 @@
                 window.clearInterval(this.interval);
             },
             computed: {
+                getSfcFinishToday(){
+                    return BASE_URL + '/analysis/oauth2/getSfcFinishToday';
+                },
+                getSfcOrderUnfinishToday(){
+                    return BASE_URL + '/analysis/oauth2/getSfcOrderUnfinishToday';
+                },
+                content(){
+                    return this.time + ' - ' + this.token;
+                }
             },
             methods:{
             	async setEcharts1(){
@@ -363,9 +400,9 @@
                     let values3 = []
                     data.forEach(item=>{
                         categories.push(item['月份'])
-                        values1.push(item['计划数量']/1000)
-                        values2.push(item['完成数量']/1000)
-                        values3.push(item['完成率']*100)
+                        values1.push(item['计划数量'])
+                        values2.push(item['完成数量'])
+                        values3.push(item['完成率'])
                     })
                     this.myChart.setOption({
                         xAxis: {
@@ -398,7 +435,7 @@
                         categories.push(item['月份'])
                         values1.push(item['完成数量'])
                         values2.push(item['不良数量'])
-                        values3.push(item['成品良率']*100)
+                        values3.push(item['成品良率'])
                     })
                     this.myChart1.setOption({
                         xAxis: {
@@ -448,6 +485,9 @@
                         resolve();
                     })
 
+                },
+                reload(){
+                    window.location.reload();
                 }
             }
         })

@@ -2,7 +2,7 @@
 Vue.component('dashboard-table', {
     template: `
             <div style="width: 100%;height: 100%;">
-                <div style="height: 10%;color: white;display:flex;font-family:'sans-serif';font-weight:bold;font-size:1rem;">
+                <div style="height: 10%;color: white;display:flex;font-family:'sans-serif';font-weight:bold;font-size:0.4rem;">
                     <div style="width: 100%;align-self:center;text-align:center;">{{title}}</div>
                 </div>
                 <vue-xtable ref="grid" :data="xtableData" style="width: 100%;" height="90%" class="table">
@@ -64,13 +64,27 @@ Vue.component('dashboard-table', {
             var speed = 1;
             // grid进行滚动
             this.scrollTopAddInterval = setInterval(() => {
-                if (scrollY - this.$refs.grid.$refs.tableBody.$el.scrollTop < 100) {
+                // 滚动
+                // if (scrollY - this.$refs.grid.$refs.tableBody.$el.scrollTop < 100) {
+                //     scrollY = scrollY + speed;
+                //     this.$refs.grid.scrollTo(0,scrollY);
+                //     console.log(scrollY)
+                // } else {
+                //     scrollY = 0;
+                // }
+                // 翻页
+                if (scrollY - this.$refs.grid.$refs.tableBody.$el.scrollHeight < 0) {
+                    // 增加随机因子
+                    if(scrollY!==0)scrollY+this.randomNumber(1,20);
                     this.$refs.grid.scrollTo(0,scrollY);
-                    scrollY = scrollY + speed;
+                    scrollY = scrollY + this.$refs.grid.$refs.tableBody.$el.clientHeight;
                 } else {
                     scrollY = 0;
                 }
-            },60);
+            },this.options.scrollSpeed);
+        },
+        randomNumber(minimum,maximum){
+            return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
         }
     }
 })

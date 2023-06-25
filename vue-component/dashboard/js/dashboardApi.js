@@ -1,5 +1,8 @@
-const getTokenUrl = 'https://r.ymsl.com.cn/gcdn/test/authentication/getAccessTokenWithoutLogin'
+// 测试环境用
 const BASE_URL = 'https://r.ymsl.com.cn/gcdn/test'
+// 本番环境用
+// const BASE_URL = 'http://192.168.10.200/gcdnks'
+const getTokenUrl = BASE_URL+'/authentication/getAccessTokenWithoutLogin'
 const username = 'ADMIN'
 const siteId = '6666'
 const password = 'a123456'
@@ -68,7 +71,6 @@ const getToken = function () {
 };
 
 const saveRefreshToken = function (token) {
-    debugger
     localStorage.setItem("refreshToken", token);
 };
 
@@ -99,3 +101,20 @@ const handle401Error = function(request, next) {
     }
 
 }
+
+// 自适应rem
+const setRem = function() {
+    //  PC端
+    // 基准大小
+    let baseSize = 100;
+    let basePc = baseSize / 1920; // 表示1920的设计图,使用100PX的默认值
+    let vW = window.innerWidth; // 当前窗口的宽度
+    let vH = window.innerHeight; // 当前窗口的高度
+    // 非正常屏幕下的尺寸换算
+    let dueH = vW * 1080 / 1920
+    if (vH < dueH) {
+      vW = vH * 1920 / 1080
+    }
+    let rem = vW * basePc; 
+    document.documentElement.style.fontSize = (rem/1.72<40?45:rem/1.72) + "px";
+  }

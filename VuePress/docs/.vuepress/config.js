@@ -2,10 +2,11 @@ import { defineUserConfig, defaultTheme } from "vuepress";
 import vuepressPluginAnchorRight from 'vuepress-plugin-anchor-right';
 import { searchPlugin } from '@vuepress/plugin-search'
 import codeCopy from './vuepress-plugin-code-copy'
-import vuepressPluginPage from './plugins/page.js'
+// import vuepressPluginPage from './plugins/page.js'
 // git pages
 // import { usePagesPlugin } from "vuepress-plugin-use-pages"
 import { themeConfig } from './config/index'
+import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 
 export default defineUserConfig({
   plugins: [
@@ -17,7 +18,10 @@ export default defineUserConfig({
       // copybuttonText: '复制',
       // copiedButtonText: '已复制！'
     }),
-    vuepressPluginPage(),
+    registerComponentsPlugin({
+      // 配置项
+    })
+    // vuepressPluginPage(),
     // usePagesPlugin({
 		// 	// 配置项
 		// 	startsWith: "/", // fetch only matched paths

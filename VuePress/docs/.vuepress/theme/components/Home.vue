@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Navbar/>
         <!-- <div style="top: var(--navbar-height);position: relative;">
             <Footer/>
 
@@ -8,7 +7,6 @@
         <main class="home">
             <HomeHero />
             <chart :profile="profile"/>
-            <!-- <Card/> -->
             <!-- <HomeFeatures />
             <HomeContent /> -->
             <HomeFooter />
@@ -21,7 +19,6 @@ import HomeHero from '@theme/HomeHero.vue'
 import HomeFooter from '@theme/HomeFooter.vue'
 import Navbar from '@theme/Navbar.vue'
 import Chart from '../components/chart.vue'
-import Card from '../components/card.vue'
 export default {
     components: {
         // 官方原生的header,可以直接拿来用
@@ -29,11 +26,10 @@ export default {
         Chart,
         HomeFooter,
         HomeHero,
-        Card
     },
     data(){
         return{
-            profile:{'2023-01-01':1, '2023-01-02': 11}
+            profile:{'2023-06-01':1, '2023-05-02': 11}
         }
     }
 }

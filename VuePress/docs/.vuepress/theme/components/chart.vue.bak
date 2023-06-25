@@ -62,19 +62,29 @@
     },
     mounted () {
       const arr = usePages()
-      console.log(arr)
       arr.forEach(element => {
         this.pages.push(element)
       });
-      debugger;
       this.formatProblemData()
       this.init()
+      window.addEventListener('resize', ()=>{
+        this.init();
+      });
     },
     methods: {
       init () {
+        console.log("work")
         // 上一年信息
         let prevYear = moment().format('YYYY') - 1
         let prevTodayFormatStr = prevYear + '-' + moment().format('MM-DD')
+        console.log(window.innerWidth)
+        if(window.innerWidth<900){
+          prevYear = moment().subtract(4,'months').format('YYYY')
+          console.log(prevYear)
+          prevTodayFormatStr = prevYear + '-' + moment().subtract(4,'months').format('MM-DD')
+          console.log(prevTodayFormatStr)
+
+        }
         let prevToday = moment(prevTodayFormatStr).format('YYYY-MM-DD')
         // 上年今日的是星期几
         let prevTodayWeekNum = moment(prevToday).weekday() || 7
@@ -180,9 +190,9 @@
 </script>
 <style lang="less" scoped>
   .submission-chart {
-    width: 820px;
-    height: 180px;
-    background-color: #fff;
+    // width: 820px;
+    // height: 180px;
+    // background-color: #fff;
     margin: auto;
     margin-top: 20px;
     padding: 0px 0;

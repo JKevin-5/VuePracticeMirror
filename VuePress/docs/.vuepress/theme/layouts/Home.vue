@@ -7,7 +7,7 @@
         </div> -->
         <main class="home">
             <HomeHero />
-            <chart/>
+            <chart :profile="profile"/>
             <!-- <Card/> -->
             <!-- <HomeFeatures />
             <HomeContent /> -->
@@ -33,9 +33,7 @@ export default {
     },
     data(){
         return{
-            profile:{
-
-            }
+            profile:{'2023-01-01':1, '2023-01-02': 11}
         }
     }
 }

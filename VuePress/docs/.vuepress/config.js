@@ -4,7 +4,7 @@ import { searchPlugin } from '@vuepress/plugin-search'
 import codeCopy from './vuepress-plugin-code-copy'
 // import vuepressPluginPage from './plugins/page.js'
 // git pages
-// import { usePagesPlugin } from "vuepress-plugin-use-pages"
+import { usePagesPlugin } from "vuepress-plugin-use-pages"
 import { themeConfig } from './config/index'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 
@@ -20,16 +20,16 @@ export default defineUserConfig({
     }),
     registerComponentsPlugin({
       // 配置项
-    })
+    }),
     // vuepressPluginPage(),
-    // usePagesPlugin({
-		// 	// 配置项
-		// 	startsWith: "/", // fetch only matched paths
-		// 	filter: page => page.data.lang === "zh-CN" && page.path !== "/404.html", // fetch only filtered pages
-		// 	sort: (a, b) => b.data.git.updatedTime - a.data.git.updatedTime,
-		// 	limit: 20, // maximum cached size
-		// 	file: "pages.js",
-		// })
+    usePagesPlugin({
+			// 配置项
+			startsWith: "/", // fetch only matched paths
+			filter: page => page.data.lang === "zh-CN" && page.path !== "/404.html", // fetch only filtered pages
+			sort: (a, b) => b.data.git.updatedTime - a.data.git.updatedTime,
+			limit: 20, // maximum cached size
+			file: "pages.js",
+		})
   ],
   lang: "zh-CN",
   title: "Kevin's Notes",

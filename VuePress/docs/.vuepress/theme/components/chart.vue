@@ -14,19 +14,19 @@
           :key="dateIndex" 
           :style="`background:${getColor(dateData.number)};`" 
         >
-        <Tooltip placement="top" :delay="300" :content="`${dateData.date}：${dateData.number}次通过`">
+        <!-- <Tooltip placement="top" :delay="300" :content="`${dateData.date}：${dateData.number}次通过`"> -->
           <div class="date"></div>
-        </Tooltip>
+        <!-- </Tooltip> -->
         </div>
       </div>
     </div>
     <div class="operation">
       <div class="slider">
-        <div class="slider-desc">0</div>
+        <!-- <div class="slider-desc">0</div>
         <div style="width:120px;">
          <Slider :value="sliderValue" :max="12" range :tip-format="sliderFormat" @on-change="sliderChange"></Slider>
         </div>
-        <div class="slider-desc">12+</div>
+        <div class="slider-desc">12+</div> -->
       </div>
       <div class="legend">
         <div class="level-desc">少</div>
@@ -42,6 +42,7 @@
 </template>
  
 <script>
+  import { usePages } from '@temp/pages'
   import moment from 'moment'
   export default {
     name: 'chart',
@@ -49,7 +50,8 @@
       return {
         dateData: [],
         submissionRecord: {},
-        sliderValue: [0, 12]
+        sliderValue: [0, 12],
+        pages:[]
       }
     },
     props: {
@@ -59,6 +61,12 @@
       }
     },
     mounted () {
+      const arr = usePages()
+      console.log(arr)
+      arr.forEach(element => {
+        this.pages.push(element)
+      });
+      debugger;
       this.formatProblemData()
       this.init()
     },
@@ -138,7 +146,8 @@
  
         // 处理你的业务逻辑
         // submissionRecord 最后的格式应为 {'2020-01-01':10, '2020-01-02': 11}
-        this.submissionRecord = submissionRecord
+        // this.submissionRecord = submissionRecord
+        this.submissionRecord = this.profile
       },
       getColor (number) {
         // level color

@@ -2,9 +2,9 @@
   <div class="submission-chart">
     <div class="calendar">
       <div class="weeks">
-        <div class="week">周二</div>
-        <div class="week">周四</div>
-        <div class="week">周六</div>
+        <div class="week">Tues</div>
+        <div class="week">Thur</div>
+        <div class="week">Sat</div>
       </div>
       <div class="column" v-for="(columnData, columnIndex) in dateData" :key="columnIndex">
         <div class="title">{{columnData.title}}</div>
@@ -80,7 +80,7 @@
         let lineNums = Math.ceil(days / columns)
         // 绘制图表的源数据
         let dateData = []
-        let monthCN = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+        let monthCN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
         let startSliderNum = this.sliderValue[0]
         let endSliderNum = this.sliderValue[1]
         for (let i = 0; i < lineNums; i++) {
@@ -91,11 +91,12 @@
           //      之后的嘛列数根据上一周的最后一天减去第一天的月份，如果大于1代表月份发生了改变，下一列的title显示最新的月份
           let theWeekStartMonth = moment(firstMondayDate).add(i * 7, 'days').format('M')
           let theWeekEndMonth = moment(firstMondayDate).add(i * 7 + weekColumn, 'days').format('M')
-          let title = (i === 0) ? monthCN[theWeekStartMonth - 1] : ''
           let ifSwitchMonth = false
           if (theWeekEndMonth - theWeekStartMonth) {
             ifSwitchMonth = true
           }
+          let title = (i === 0 && !ifSwitchMonth) ? monthCN[theWeekStartMonth - 1] : ''
+          // i 大于0 ，说明不在第一周， 月份是否发生改变
           if (i && dateData[i - 1].ifSwitchMonth) {
             title = monthCN[theWeekEndMonth - 1]
           }

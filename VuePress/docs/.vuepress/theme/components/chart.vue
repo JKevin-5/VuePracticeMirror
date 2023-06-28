@@ -42,7 +42,6 @@
 </template>
  
 <script>
-  import { usePages } from '@temp/pages'
   import moment from 'moment'
   export default {
     name: 'chart',
@@ -50,8 +49,7 @@
       return {
         dateData: [],
         submissionRecord: {},
-        sliderValue: [0, 12],
-        pages:[]
+        sliderValue: [0, 12]
       }
     },
     props: {
@@ -61,20 +59,22 @@
       }
     },
     mounted () {
-      const arr = usePages()
-      console.log(arr)
-      arr.forEach(element => {
-        this.pages.push(element)
-      });
-      debugger;
       this.formatProblemData()
       this.init()
+      window.addEventListener('resize', ()=>{
+        this.init();
+      });
     },
     methods: {
       init () {
         // 上一年信息
         let prevYear = moment().format('YYYY') - 1
         let prevTodayFormatStr = prevYear + '-' + moment().format('MM-DD')
+        // 移动端界面 或较小宽度界面显示4个月内的活动记录
+        if(window.innerWidth<900){
+          prevYear = moment().subtract(3.5,'months').format('YYYY')
+          prevTodayFormatStr = prevYear + '-' + moment().subtract(3.5,'months').format('MM-DD')
+        }
         let prevToday = moment(prevTodayFormatStr).format('YYYY-MM-DD')
         // 上年今日的是星期几
         let prevTodayWeekNum = moment(prevToday).weekday() || 7
@@ -180,9 +180,9 @@
 </script>
 <style lang="less" scoped>
   .submission-chart {
-    width: 820px;
-    height: 180px;
-    background-color: #fff;
+    // width: 820px;
+    // height: 180px;
+    // background-color: #fff;
     margin: auto;
     margin-top: 20px;
     padding: 0px 0;

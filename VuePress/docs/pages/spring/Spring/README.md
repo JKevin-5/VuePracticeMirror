@@ -1,7 +1,6 @@
 ---
 title: Spring
 description:
-sidebar: auto
 editLink: false
 ---
 

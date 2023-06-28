@@ -33,5 +33,8 @@ export const sidebar = {
     "/vue2/": [
       "01组件事件绑定与解绑.md",
       "02全局事件总线.md"
+    ],
+    "/pages/spring/Spring/": [
+      "Spring-aop.md",
     ]
   }

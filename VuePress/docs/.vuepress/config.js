@@ -37,7 +37,8 @@ export default defineUserConfig({
   title: "Kevin's Notes",
   port:8090,
   description: "Welcome to my blog! ",
-  head: [['link', { rel: 'icon', href: 'https://vuejs.org/images/logo.png' }]],
+  // vue log https://vuejs.org/images/logo.png
+  head: [['link', { rel: 'icon', href: './images/logo.svg' }]],
   // 新增导航条的配置
   theme: defaultTheme(themeConfig),
   // 替换默认主题中的Home.vue文件

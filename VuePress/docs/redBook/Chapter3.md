@@ -1,7 +1,6 @@
 ---
-title: 红宝书第三章
+title: Charpter3 语言基础
 description: Charpter3
-sidebar: auto
 next: /redBook/Chapter4.md
 ---
 

@@ -1,7 +1,6 @@
 ---
-title: 红宝书第四章
+title: Charpter4 变量、作用域与内存
 description: Charpter4
-sidebar: auto
 prev: /redBook/Chapter3.md
 next: /redBook/Chapter5.md
 ---

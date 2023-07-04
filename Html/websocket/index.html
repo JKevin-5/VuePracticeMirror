@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初识vue</title>
+    <script type="text/javascript" src="./vue.js"></script>
+    <script type="text/javascript" src="./axios.js"></script>
+
+</head>
+    <body>
+        <div id="main">
+            <div id="message"></div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        // 阻止vue启动时候的生产提示生成
+        Vue.config.productionTip = false
+
+        const vm = new Vue({
+            el: '#main',
+            data(){
+                return{
+                    message:''
+                }
+            },
+            created(){
+                let socket = new WebSocket("ws://127.0.0.1:8080/websocket/user2");
+                let self = this;
+                socket.onopen = function(e) {
+                    self.addMessage("[open] Connection established");
+                    self.addMessage("Sending to server");
+                    socket.send("My name is John");
+                };
+
+                socket.onmessage = function(event) {
+                    self.addMessage(`[message] Data received from server: ${event.data}`);
+                    if(event.data==='reload'){
+                        socket.send("user2刷新页面");
+                        window.location.reload();
+                    }
+                };
+
+                socket.onclose = function(event) {
+                    if (event.wasClean) {
+                        self.addMessage(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+                    } else {
+                        // 例如服务器进程被杀死或网络中断
+                        // 在这种情况下，event.code 通常为 1006
+                        self.addMessage('[close] Connection died');
+                    }
+                };
+
+                socket.onerror = function(error) {
+                    self.addMessage(`[error] ${error.message}`);
+                };
+            },
+            methods:{
+                addMessage(content){
+                    var pElement = document.createElement("p");
+                    pElement.textContent = content;
+                    var parentElement = document.getElementById("message");
+                    parentElement.appendChild(pElement);
+                }
+            }
+        });
+
+    </script>
+</html>

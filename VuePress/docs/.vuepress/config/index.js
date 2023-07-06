@@ -6,6 +6,7 @@ export const themeConfig = {
     navbar: zhConfig.navbar,
     sidebar: zhConfig.sidebar,
     sidebarDepth: 4,
+    editLink: false,
     // github地址
     repo: "https://github.com/JKevin-5",
     // 搜索框

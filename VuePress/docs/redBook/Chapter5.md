@@ -2,6 +2,7 @@
 title: Charpter5 基本引用类型
 description: Charpter5
 prev: /redBook/Chapter4.md
+next: /redBook/Chapter6.md
 ---
 # Chapter5 基本引用类型
 

@@ -45,7 +45,7 @@ export default defineUserConfig({
   description: "Welcome to my blog! ",
   // vue log https://vuejs.org/images/logo.png
   head: [
-    // ['link', { rel: 'icon', href: './images/logo.svg' }],
+    ['link', { rel: 'icon', href: './images/logo.svg' }],
     ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
     ['meta', { name: 'theme-color', content: '#ffffff' }]
   ],

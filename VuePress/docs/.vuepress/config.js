@@ -8,6 +8,8 @@ import { usePagesPlugin } from "vuepress-plugin-use-pages"
 import { themeConfig } from './config/index'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { getDirname, path } from '@vuepress/utils'
+import { pwaPlugin } from '@vuepress/plugin-pwa'
+import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup'
 
 const __dirname = getDirname(import.meta.url)
 export default defineUserConfig({
@@ -31,14 +33,22 @@ export default defineUserConfig({
 			sort: (a, b) => b.data.git.updatedTime - a.data.git.updatedTime,
 			limit: 20, // maximum cached size
 			file: "pages.js",
-		})
+		}),
+    pwaPlugin(),
+    pwaPopupPlugin({
+      // 配置项
+    }),
   ],
   lang: "zh-CN",
   title: "Kevin's Notes",
   port:8090,
   description: "Welcome to my blog! ",
   // vue log https://vuejs.org/images/logo.png
-  head: [['link', { rel: 'icon', href: './images/logo.svg' }]],
+  head: [
+    // ['link', { rel: 'icon', href: './images/logo.svg' }],
+    ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
+    ['meta', { name: 'theme-color', content: '#ffffff' }]
+  ],
   // 新增导航条的配置
   theme: defaultTheme(themeConfig),
   // 替换默认主题中的Home.vue文件

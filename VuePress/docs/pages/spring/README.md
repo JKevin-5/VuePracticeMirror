@@ -14,7 +14,7 @@ editLink: false
 | SpringCloud | 分为Netflix和Alibaba两个标准||
 
 ### Spring
-- [Spring学习笔记](./Spring/)
+- [Spring学习笔记](./Spring/README.md)
 ### SpringBoot
 
 ### SpringCloud

@@ -365,8 +365,24 @@ ES6模块规范⇒CommonJS和AMD
 顺序只会影响文件加载顺序，不会影响模块加载顺序。
 
 ### 26.4.2 模块加载
+- 支持浏览器原生加载，也可以通过第三方加载器和构建工具一起加载。
+- 模块文件是按需加载的，因此后续的模块的请求会因为每个依赖模块的网络延迟而同步延迟。
 
 ### 26.4.3 模块行为
+ES6 模块借用了commonJS和AMD的很多优秀特性。
+- 模块代码只在加载后执行
+- 模块只能加载一次
+- 模块是单例的
+- 模块可以定义公共接口，其他模块可以基于这个公共接口观察和交互
+- 模块可以请求加载其他模块
+- 支持循环依赖
+
+ES6模块系统增加的新行为
+- ES6模块默认在严格模式下执行
+- ES6模块不共享全局命名空间
+- 模块顶级this的值是undefined（常规脚本中是window）
+- 模块中的var声明不会添加到window对象
+- ES6模块是异步加载和执行的
 
 ### 26.4.4 模块导出
 
@@ -472,3 +488,65 @@ import会被提升到模块顶部。
 [^注释1]: 延迟加载，不阻塞，在html中的顺序执行。
 
 [^注释2]: async属性的script标签不会阻塞浏览器解析html。async属性是不可控的，执行的时间顺序都不确定。按网络请求返回顺序，可能阻塞也可能不阻塞
+
+- 导出模块的常量相当于const，无法进行修改
+- 导出模块的对象的属性可以进行修改
+- 导出模块的集合不能进行修改
+
+一些默认写法：
+```js
+// 批量导入
+import * as Foo from './foo.js'
+// 指名导入
+import { foo, bar, baz as MyBaz } from './foo.js'
+// 以下等效导入
+import { default as foo } from ''
+import foo from ''
+
+```
+
+### 26.4.6 模块转移导出
+
+类似electron-egg或者是一些插件所写的方式，将所有的js默认导出到一个js文件中，再统一import到vue画面上进行使用。
+```js
+// foo.js
+export const baz = 'foo'
+// bar.js
+export * from './foo.js'
+export const baz = 'bar'
+// main.js
+import {baz} from './bar.js'
+console.log(baz) // bar
+```
+:::warning
+请注意，默认import，导出名称出现冲突的情况时，重写的情况是静默发生的。
+:::
+
+### 26.4.7 工作者模块
+```js
+// 第二个参数默认为{ type: 'classic' }
+const scriptWorker = new Worker('scriptWorker.js');
+
+const moduleWorker = new Worker('moduleWorker.js', { type: 'module' });
+```
+
+### 26.4.8 向后兼容
+
+早期版本不支持module模块化的方式可以这样使用
+```js
+// 不支持模块的浏览器不会执行这里的代码
+<script type="module" src="module.js"></script>
+// 不支持模块的浏览器会执行这里的代码
+<script src="script.js"></script> 
+```
+修改为全版本可用的方式
+```js
+// 支持模块的浏览器会执行这段脚本
+// 不支持模块的浏览器不会执行这段脚本
+<script type="module" src="module.js"></script>
+// 支持模块的浏览器不会执行这段脚本
+// 不支持模块的浏览器会执行这段脚本
+<script nomodule src="script.js"></script>
+```
+
+## 26.5 小结

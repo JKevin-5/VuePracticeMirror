@@ -40,5 +40,15 @@ export const sidebar = {
     ],
     "/pages/spring/Spring/": [
       "Spring-aop.md",
+    ],
+    "/pages/spring/SpringBoot/": [
+      
+      {
+        text:'',
+        children: [
+          "/pages/spring/SpringBoot/",
+          "/pages/spring/SpringBoot/multProfile.md",
+        ]
+      }
     ]
   }

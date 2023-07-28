@@ -54,3 +54,8 @@ const copyToClipboard = (el) => {
     opacity: 1;
 }
 </style>
+<style>
+.anchor-right{
+    z-index: 0;
+}
+</style>

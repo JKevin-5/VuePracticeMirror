@@ -74,8 +74,32 @@ const dosave = function(){
     })
 }
 
-dosave().then(res=>{
-    console.log("保存成功2")
-}).catch(err=>{
-    console.log(err)
-})
+// dosave().then(res=>{
+//     console.log("保存成功2")
+// }).catch(err=>{
+//     console.log(err)
+// })
+
+
+
+//////////2023.8.3///////////////
+
+const before = function(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            reject("请求失败");
+        },2000);
+    })
+}
+
+const after = function(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            reject("请求失败");
+        },2000);
+    })
+}
+
+before().then(res=>{
+    console.log(res)
+}).catch();

@@ -24,6 +24,7 @@ export default defineUserConfig({
     }),
     registerComponentsPlugin({
       // 配置项
+      componentsDir: path.resolve(__dirname,'./components')
     }),
     // vuepressPluginPage(),
     usePagesPlugin({

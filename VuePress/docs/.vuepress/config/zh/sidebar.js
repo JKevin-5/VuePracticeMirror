@@ -46,8 +46,9 @@ export const sidebar = {
       {
         text:'',
         children: [
-          "/pages/spring/SpringBoot",
+          "/pages/spring/SpringBoot/plan.md",
           "/pages/spring/SpringBoot/multProfile.md",
+          "/pages/spring/SpringBoot/ModularDevelopment.md"
         ]
       }
     ]

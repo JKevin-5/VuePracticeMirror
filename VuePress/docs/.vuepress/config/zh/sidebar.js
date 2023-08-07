@@ -42,13 +42,28 @@ export const sidebar = {
       "Spring-aop.md",
     ],
     "/pages/spring/SpringBoot/": [
-      
       {
         text:'',
         children: [
           "/pages/spring/SpringBoot/plan.md",
           "/pages/spring/SpringBoot/multProfile.md",
           "/pages/spring/SpringBoot/ModularDevelopment.md"
+        ]
+      }
+    ],
+    "/pages/linux/": [
+      {
+        text:'',
+        children: [
+          "/pages/linux/shell.md",
+          "/pages/linux/docker.md"
+        ]
+      }
+    ],
+    "/pages/java/": [
+      {
+        text:'',
+        children: [
         ]
       }
     ]

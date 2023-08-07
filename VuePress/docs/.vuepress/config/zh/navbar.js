@@ -32,6 +32,12 @@ export const navbar = [
           text: "Spring",
           link: "/pages/spring/",
         },{
+          text: "Linux",
+          link: "/pages/linux/"
+        },{
+          text: "Java",
+          link: "/pages/java/"
+        },{
           text: "设计模式",
           link: "/pages/method_pattern/",
         }

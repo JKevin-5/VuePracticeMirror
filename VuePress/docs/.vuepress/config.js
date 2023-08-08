@@ -55,5 +55,10 @@ export default defineUserConfig({
   // 替换默认主题中的Home.vue文件
   alias: {
     '@theme/Home.vue':path.resolve(__dirname, './theme/components/Home.vue')
+  },
+  markdown: {
+    headers:{
+      level: [2,3,4]
+    }
   }
 });

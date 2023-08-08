@@ -47,7 +47,8 @@ export const sidebar = {
         children: [
           "/pages/spring/SpringBoot/plan.md",
           "/pages/spring/SpringBoot/multProfile.md",
-          "/pages/spring/SpringBoot/ModularDevelopment.md"
+          "/pages/spring/SpringBoot/ModularDevelopment.md",
+          "/pages/spring/SpringBoot/controller.md"
         ]
       }
     ],

@@ -5,7 +5,7 @@ export const themeConfig = {
     logo: "./images/logo.svg", // 顶部导航条
     navbar: zhConfig.navbar,
     sidebar: zhConfig.sidebar,
-    sidebarDepth: 5,
+    sidebarDepth: 4,
     editLink: false,
     // github地址
     repo: "https://github.com/JKevin-5",

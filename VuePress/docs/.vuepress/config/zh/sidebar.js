@@ -67,5 +67,20 @@ export const sidebar = {
         children: [
         ]
       }
+    ],
+    "/pages/project/": [
+      {
+        text:'项目',
+        children: [
+          "/pages/project/AmsManagementSystem.md",
+          "/pages/project/InboxManagementSystem.md"
+
+        ]
+      },{
+        text:'小玩具',
+        children: [
+          "/pages/project/ElectronEggMonitor.md"
+        ]
+      }
     ]
   }

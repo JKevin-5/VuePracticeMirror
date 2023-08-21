@@ -2,10 +2,12 @@ export const navbar = [
     {
       text: "Intro",
       link: "/guide/whoAmI/"
-    },
-    {
+    },{
       text: "网站黄页",
       link: "/guide/yellowPage/",
+    },{
+      text: "项目开发",
+      link: "/pages/project/"
     },
     {
       text: "前端笔记",

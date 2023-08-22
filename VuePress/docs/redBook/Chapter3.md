@@ -2,6 +2,7 @@
 title: Charpter3 语言基础
 description: Charpter3
 next: /redBook/Chapter4.md
+tag: 前端
 ---
 
 # Chapter3 语言基础

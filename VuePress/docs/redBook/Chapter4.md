@@ -1,6 +1,7 @@
 ---
 title: Charpter4 变量、作用域与内存
 description: Charpter4
+tag: 前端
 prev: /redBook/Chapter3.md
 next: /redBook/Chapter5.md
 ---

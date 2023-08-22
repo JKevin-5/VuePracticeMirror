@@ -8,6 +8,9 @@ export const navbar = [
     },{
       text: "项目开发",
       link: "/pages/project/"
+    },{
+      text: "Tags",
+      link: "/tags/"
     },
     {
       text: "前端笔记",

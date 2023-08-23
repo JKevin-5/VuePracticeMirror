@@ -10,20 +10,37 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { getDirname, path } from '@vuepress/utils'
 import { pwaPlugin } from '@vuepress/plugin-pwa'
 import { pwaPopupPlugin } from '@vuepress/plugin-pwa-popup'
-// algolia插件
-// import { docsearchPlugin } from '@vuepress/plugin-docsearch'
+import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 
 const __dirname = getDirname(import.meta.url)
 export default defineUserConfig({
   plugins: [
-    searchPlugin({
-      // 配置项
-    }),
-    // docsearchPlugin({
-    //   appId: '3G9YA5HJFG',
-    //   apiKey: 'c318b7b1ab532fc647394c930a37e496',
-    //   indexName: 'jkevin-5io'
+    // searchPlugin({
+    //   // 配置项
     // }),
+    docsearchPlugin({
+      appId: '3G9YA5HJFG',
+      apiKey: '774133dcae945ede2a86767aeb85af57',
+      indexName: 'jkevin-5io',
+      locales: {
+        '/': {
+          placeholder: '搜索文档',
+          translations: {
+            button: {
+              buttonText: '搜索文档',
+            },
+          },
+        },
+        '/zh/': {
+          placeholder: '搜索文档',
+          translations: {
+            button: {
+              buttonText: '搜索文档',
+            },
+          },
+        }
+      }
+    }),
     vuepressPluginAnchorRight(),
     codeCopy({
       // copybuttonText: '复制',
@@ -39,7 +56,7 @@ export default defineUserConfig({
 			startsWith: "/", // fetch only matched paths
 			filter: page => page.data.lang === "zh-CN" && page.path !== "/404.html", // fetch only filtered pages
 			sort: (a, b) => b.data.git.updatedTime - a.data.git.updatedTime,
-			limit: 100, // maximum cached size
+			limit: 20, // maximum cached size
 			file: "pages.js",
 		}),
     pwaPlugin(),

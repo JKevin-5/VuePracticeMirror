@@ -8,7 +8,7 @@ editLink: false
 ## Vue 相关网站
 - [Vue2官网](https://v2.cn.vuejs.org/)【Vue2】
 - [Vue3官网](https://cn.vuejs.org/)【Vue3】
-- [Vuepress](https://v2.vuepress.vuejs.org/zh/)【Vue2/3】
+- [Vuepress](https://vuepress.github.io/zh/)【Vue2/3】
 - [VitePress](https://vitepress.dev/)【Vue3】
 - [Element-plus官网](https://element-plus.gitee.io/zh-CN/)【Vue3】
 

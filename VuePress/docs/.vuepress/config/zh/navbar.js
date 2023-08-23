@@ -21,7 +21,7 @@ export const navbar = [
           activeMatch: "/redBook/"
         },{
           text: "Vuepress",
-          link: "/guide/",
+          link: "/guide/vuepress/",
         },{
           text: "Vue2",
           link: "/vue2/"

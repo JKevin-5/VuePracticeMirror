@@ -1,6 +1,6 @@
 ---
-title: Charpter26 模块
-description: Charpter26
+title: Chapter26 模块
+description: Chapter26
 prev: /redBook/Chapter21.md
 ---
 # Chapter26 模块

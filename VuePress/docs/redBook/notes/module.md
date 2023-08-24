@@ -2,6 +2,8 @@
 title: Module 模块化
 description: Module
 ---
+# Module 模块化
+
 > 本章为[红宝书 Chapter26](../Chapter26.md) 结合外部资料整理，主要聚焦在ES6与CommonJS的使用差异上。
 
 ## 一、before 模块化

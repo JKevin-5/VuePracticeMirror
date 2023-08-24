@@ -73,8 +73,8 @@ export const sidebar = {
         text:'项目',
         children: [
           "/pages/project/AmsManagementSystem.md",
-          "/pages/project/InboxManagementSystem.md"
-
+          "/pages/project/InboxManagementSystem.md",
+          "/pages/project/QualityManagementSystem.md"
         ]
       },{
         text:'小玩具',

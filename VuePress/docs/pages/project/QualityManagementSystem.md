@@ -28,4 +28,13 @@ editLink: false
 
 6. aop实现统一访问日志注解
 
+7. 前后端字符集的制作与使用
+    - 前端使用svg在线生成tff等格式的字体文件
+    - 后端使用svg在FontForge工具，利用python脚本生成ttf文件
+    ::: details 点击查看参考网站
+    1. [前端如何制作字体](https://blog.csdn.net/Renners/article/details/125540555)
+    2. [png自动转ttf字体](https://blog.csdn.net/qianbin3200896/article/details/125177765)
+    3. [itextPdf使用中文字体](https://www.cnblogs.com/whalesea/p/11752086.html)
+    4. [itextPdf如何在一行中使用两种不同的字体](https://blog.csdn.net/weixin_44976057/article/details/124099648)
+    :::
 ## 三、实现过程

@@ -1,15 +1,28 @@
 /**
  * js 执行js代码，并返回执行结果
  */
-// let code = "(function(){return '这是js代码'})()"
-// function looseJsonParse(obj){
-//     return Function('"use strict";return (' + obj + ')')();
+// let code = "(function(value){return '这是js代码'+value})"
+// function looseJsonParse(obj,value){
+//     return Function('"use strict";return (' + obj + '('+value+'))')();
 // }
-// let result = looseJsonParse(code)
+// let result = looseJsonParse(code,111)
 // console.log(result)
 
-const object = {}
+let code = 
+`
+    function(value){
+        return '这是我的value值：'+value;
+    }
+`
+function looseJsonParse(obj,value){
+    return Function('"use strict";return (('+obj+')('+value+'))')();
+}
+let result = looseJsonParse(code,111)
+console.log(result)
 
-object.name = 'tom'
 
-console.log(object);
+// const object = {}
+
+// object.name = 'tom'
+
+// console.log(object);

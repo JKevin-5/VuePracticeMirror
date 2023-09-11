@@ -20,7 +20,7 @@ Juejin：<a href="https://juejin.cn/user/2154698523021608" target="_blank">Mr_Fa
 1. 2020年 毕设、征信解析系统
 2. 2021年 投票系统、rpa、生产制造系统
 3. 2022年 质量管理系统Qms
-4. 2023年 共通系统模块 [Ams 附件管理系统](../pages/project/AmsManagementSystem.md)、[Inbox 站内信系统](../pages/project/InboxManagementSystem.md) 开发
+4. 2023年 共通系统模块 [Ams 附件管理系统](../../pages/project/AmsManagementSystem.md)、[Inbox 站内信系统](../../pages/project/InboxManagementSystem.md) 开发
 
 ## Toys
 1. 桌面端即开即用的live-server工具（基于electron开发）

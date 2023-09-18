@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div :class="classes">
     {{todo.text}}
     <button @click="removeTodo">X</button>
+    <button @click="completeTodo">Complete</button>
   </div>
 </template>
 
@@ -12,15 +13,27 @@ export default {
         return {
         }
     },
+    computed: {
+      classes(){
+        return {
+          completed: this.todo.state === 'completed'
+        }
+      }
+    },
     created () {},
     methods: {
         removeTodo(){
-            this.$emit("remove",this.todo.id)
+          this.$emit("remove",this.todo.id)
+        },
+        completeTodo(){
+          this.$emit("complete",this.todo.id)
         }
     }
 }
 </script>
 
-<style lang='less' scoped type='text/css'>
-
+<style scoped type='text/css'>
+.completed {
+  text-decoration: line-through;
+}
 </style>

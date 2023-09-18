@@ -4,7 +4,7 @@
         <div>
             <ul>
                 <li v-for="todo in todolist" :key="todo.id">
-                    <TodoItem :todo="todo" @remove="removeTodo"></TodoItem>
+                    <TodoItem :todo="todo" @remove="removeTodo" @complete="completeTodo"></TodoItem>
                 </li>
             </ul>
         </div>
@@ -32,7 +32,8 @@ export default {
         addTodo(){
             this.todolist.push({
                 id: getId(),
-                text: this.newTodo
+                text: this.newTodo,
+                state: 'action'
             })
             this.newTodo = "";
         },
@@ -40,6 +41,13 @@ export default {
             this.todolist = this.todolist.filter((todo)=>{
                 return todo.id!==id
             })
+        },
+        completeTodo(id){
+            //todo
+            const todo = this.todolist.find((todo)=>todo.id === id);
+            if(todo){
+                todo.state = todo.state === "completed"?"action":"completed";
+            }
         }
     },
 }

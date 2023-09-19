@@ -3,7 +3,7 @@
         <main class="home">
             <HomeHero />
             <chart :profile="profile"/>
-            <div class="dashboard">
+            <!-- <div class="dashboard">
                 <div class="left">
                     <h3>Last</h3>
                     <ul>
@@ -25,8 +25,8 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-            <HomeFooter />
+            </div> -->
+            <HomeFooter style="margin-top:200px;"/>
         </main>
     </div>
 </template>

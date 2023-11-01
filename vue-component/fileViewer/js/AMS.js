@@ -123,8 +123,8 @@ Vue.component('ams-viewer', {
         deleteFiles:function(row){
             var self = this;
             // prod环境
-            // var url = contextPath+"/ams/plus/info?path="+self.viewpath;
-            var url = self.contextPath+"/ams/plus/delete";
+            var url = contextPath+"/ams/plus/info?path="+self.viewpath;
+            //var url = self.contextPath+"/ams/plus/delete";
             var params = {
                 files:row.amsAttachmentInfoId
             };
@@ -152,15 +152,15 @@ Vue.component('ams-viewer', {
         preview:function(item){
             switch (item.fileType) {
                 case 'pdf':
-                    this.previewPath = self.contextPath +'/ams/viewer#/pdf?file='+item.previewUrl;
+                    this.previewPath = this.contextPath +'/ams/viewer#/pdf?file='+item.previewUrl;
                     this.officeFlg = true;
                     break;
-                case 'excel':
-                    this.previewPath = self.contextPath + '/ams/viewer#/excel?file='+item.previewUrl;
+                case 'xlsx':
+                    this.previewPath = this.contextPath + '/ams/viewer#/excel?file='+item.previewUrl;
                     this.officeFlg = true;
                     break;
-                case 'word':
-                    this.previewPath = self.contextPath + '/ams/viewer#/word?file='+item.previewUrl;
+                case 'docx':
+                    this.previewPath = this.contextPath + '/ams/viewer#/word?file='+item.previewUrl;
                     this.officeFlg = true;
                     break;
                 default:

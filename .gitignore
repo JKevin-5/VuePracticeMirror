@@ -6,3 +6,5 @@ VuePress/node_modules/
 VuePress/docs/.vuepress/dist/
 docs/TS/node_modules/
 vue-project/learn-jest/node_modules/
+vue-mobile/.gitignore
+vue-mobile/package-lock.json

@@ -20,8 +20,23 @@ const router = new VueRouter({
       component: () => import('../views/Home.vue'),
       children:[
         {
+          path: '',
+          redirect: 'dashboard'
+        },
+        {
+          path: 'dashboard',
+          name:'dashboard',
+          component: () => import('../views/DashBoard.vue')
+        },
+        {
           path: 'calendar',
+          name:'calendar',
           component: () => import('../views/Calendar.vue')
+        },
+        {
+          path: 'user',
+          name:'user',
+          component: () => import('../views/User.vue')
         }
       ]
     },

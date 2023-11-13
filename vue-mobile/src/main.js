@@ -3,7 +3,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 
-// import './assets/main.css'
+//项目内样式（放置于uno样式后）
+import './assets/main.css'
 
 new Vue({
   router,

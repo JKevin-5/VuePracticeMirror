@@ -33,4 +33,7 @@ export default {
 
 <style scoped type='text/css'>
 
+#content{
+  height: calc(100vh - 50px);
+}
 </style>

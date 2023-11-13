@@ -1,0 +1,148 @@
+{
+  "main": {
+    "id": "8e02e335db9d091f",
+    "type": "split",
+    "children": [
+      {
+        "id": "af3ddd69c45ccc9c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "625163e1ed37661d",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3ffe88fd7773f958",
+    "type": "split",
+    "children": [
+      {
+        "id": "12d15f378b571d30",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b1a1a9d13327c48c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "410fb845339fb3b1",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "956ecdf2a45a6202",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "587bc302877c9e29",
+    "type": "split",
+    "children": [
+      {
+        "id": "80d5260b03c1aa3d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a3535e12146b9d45",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "977af0c833df0427",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "b6f26a6e2a5a17cb",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "d3bd1d8c5d6d919d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "原子化css.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "b1a1a9d13327c48c",
+  "lastOpenFiles": [
+    "原子化css.md",
+    "vue-mobile"
+  ]
+}

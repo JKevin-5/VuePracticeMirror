@@ -13,6 +13,8 @@ export default {
 <style scoped>
 #outline {
     color: rgba(69, 90, 100, 0.6);
-    height: calc(100vh - 50px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 </style>>

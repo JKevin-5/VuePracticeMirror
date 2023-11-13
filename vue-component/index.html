@@ -17,7 +17,7 @@
 </head>
 <body>
     <div id="root">
-        <fms-button :relationId="relationId" :attachmentTypeId="attachmentTypeId" style="padding:50px;"></fms-button>
+        <fms-button :relationId="relationId" :attachmentTypeId="attachmentTypeId" :disable="disableButton" style="padding:50px;"></fms-button>
     </div>
     <script type="text/javascript">
         // 阻止vue启动时候的生产提示生成
@@ -34,7 +34,8 @@
             data:{
                 relationId:'test',
                 attachmentTypeId:'MQ.ATTACHMENT_FILE_TYPE_09',
-                test1:''
+                test1:'',
+                disableButton:false
             },
             created(){
                 this.test1 = test;

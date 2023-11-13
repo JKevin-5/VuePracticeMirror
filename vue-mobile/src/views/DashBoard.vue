@@ -1,9 +1,9 @@
 <template>
     <OutlineVue>
-        <van-row gutter="10" style="padding:5rem 1rem 0 1rem;">
-            <van-col v-for="index in 12" :key="index"  span="8" style="margin-top:1rem;">
+        <van-row gutter="10" class="content" type="flex" justify="space-around">
+            <van-col v-for="index in 15" :key="index"  span="8" style="margin-top:1rem;">
                 <div class="chunk">
-
+                    
                 </div>
             </van-col>
         </van-row>
@@ -26,5 +26,9 @@ export default {
     height: 8rem;
     border: 1px solid;
     border-radius: 20px;
+}
+.content {
+    flex:1;
+    overflow-y: scroll;
 }
 </style>

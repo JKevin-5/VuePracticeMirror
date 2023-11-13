@@ -265,7 +265,7 @@ Vue.component('fms-aside', {
 Vue.component('fms-button', {
     template: '<div>\
                     <vue-badge :value="filesCounter">\
-                        <vue-button type="primary" @click="openasideHandle" :loading="loading">附件</vue-button>\
+                        <vue-button type="primary" @click="openasideHandle" :loading="loading" :disabled="disable">附件</vue-button>\
                     </vue-badge>\
                     <fms-aside ref="FMSAside" @afterClose="getFilesCounter" @updateStatus="getFilesCounter" :relationid="relationid" :attachmenttypeid="attachmenttypeid" :baseadress="baseadress"></fms-aside>\
                 </div>\
@@ -279,7 +279,8 @@ Vue.component('fms-button', {
         },
         relationid:String,
         attachmenttypeid:String,
-        baseadress:String
+        baseadress:String,
+        disable:Boolean
     },
     data:function(){
         return {
@@ -290,7 +291,14 @@ Vue.component('fms-button', {
         // 获取附件个数
         this.getFilesCounter();
     },
-    watch:{},
+    watch:{
+        relationid(val){
+            debugger;
+        },
+        disable(val){
+            debugger;
+        }
+    },
     computed: {},
     methods: {
         openasideHandle:function(){

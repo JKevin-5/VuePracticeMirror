@@ -118,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "原子化css.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -140,7 +138,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "b1a1a9d13327c48c",
+  "active": "625163e1ed37661d",
   "lastOpenFiles": [
     "原子化css.md",
     "vue-mobile"

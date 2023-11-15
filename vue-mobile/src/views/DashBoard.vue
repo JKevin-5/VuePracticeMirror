@@ -27,8 +27,14 @@ export default {
     border: 1px solid;
     border-radius: 20px;
 }
+
 .content {
     flex:1;
     overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.content::-webkit-scrollbar {
+    display: none;
 }
 </style>

@@ -19,6 +19,11 @@ export default {
   data () {
     return {
       router:[{
+        name:'self',
+        icon:'add-o',
+        desc:'自选',
+        path:'/home/self'
+      },{
         name:'calendar',
         icon:'calendar-o',
         desc:'日历',

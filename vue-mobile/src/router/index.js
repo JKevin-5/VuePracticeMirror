@@ -37,6 +37,11 @@ const router = new VueRouter({
           path: 'user',
           name:'user',
           component: () => import('../views/User.vue')
+        },
+        {
+          path: 'self',
+          name:'self',
+          component: () => import('../views/Self.vue')
         }
       ]
     },

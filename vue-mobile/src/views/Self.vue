@@ -27,8 +27,6 @@
 
 <script>
 import OutlineVue from './layout/Outline.vue'
-import { Toast } from 'vant'
-import axios from 'axios'
 export default {
     components:{
         OutlineVue
@@ -43,7 +41,6 @@ export default {
         }
     },
     created(){
-        this.fetchData()
     },
     methods: {
         onRefresh() {
@@ -51,24 +48,15 @@ export default {
             setTimeout(() => {
                 this.count++
                 this.refreshing = false
-                Toast.success('刷新成功')
+                this.$toast.success('刷新成功')
             }, 2000)
         },
         search(){
-            this.$toast('搜索成功')
+            this.$toast.success('搜索成功')
         },
         onLoad(){
             this.$toast('加载成功')
         },
-        fetchData() {
-            axios.get('/api/data')
-                .then(response => {
-                console.log(response.data); // 打印Mock数据
-                })
-                .catch(error => {
-                console.error(error);
-                });
-        }
     }
 }
 </script>

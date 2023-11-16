@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="main">
     <!-- 主内容 -->
     <div id="content">
       <router-view></router-view>
@@ -10,11 +10,11 @@
 
 <script>
 import Tabbars from '../components/Tabbers.vue'
-import HeaderD from '../components/Header.vue'
+import TabHeader from '../components/TabHeader.vue'
 export default {
   components:{
     Tabbars,
-    HeaderD
+    TabHeader
   },
   data () {
     return {
@@ -37,8 +37,12 @@ export default {
 </script>
 
 <style scoped type='text/css'>
-
+#main{
+  overflow: hidden;
+  background-color: rgb(236, 234, 234);
+}
 #content{
+  overflow: hidden;
   height: calc(100vh - 50px);
 }
 </style>

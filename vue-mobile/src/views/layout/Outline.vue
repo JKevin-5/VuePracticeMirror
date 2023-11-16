@@ -10,11 +10,15 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 #outline {
-    color: rgba(69, 90, 100, 0.6);
     height: 100%;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    background-color: rgb(236, 234, 234);
+}
+.content::-webkit-scrollbar {
+    display: none;
 }
 </style>>

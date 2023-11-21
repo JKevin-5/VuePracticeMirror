@@ -11,7 +11,7 @@
         </van-row>
         <van-row class="content" type="flex">
             <!-- TODO 下拉css有bug，稍后修复 -->
-            <van-pull-refresh v-model="refreshing" @refresh="onRefresh" style="width: 100%;padding: 1rem;">
+            <!-- <van-pull-refresh v-model="refreshing" @refresh="onRefresh" style="width: 100%;padding: 1rem;">
                 <van-empty v-if="list.length === 0" image="search" description="描述文字" />
                 <van-list
                     v-model="listLoading"
@@ -20,6 +20,9 @@
                 >
                     <van-cell v-for="item in list" :key="item" :title="item" />
                 </van-list>
+            </van-pull-refresh> -->
+            <van-pull-refresh v-model="refreshing" @refresh="onRefresh" style="width: 100%;">
+                <vue-table style="padding: 1rem;" :rowClick="rowClick"></vue-table>
             </van-pull-refresh>
         </van-row>
     </OutlineVue>
@@ -27,9 +30,11 @@
 
 <script>
 import OutlineVue from './layout/Outline.vue'
+import vueTable from '../components/table/VueTable.vue'
 export default {
     components:{
-        OutlineVue
+        OutlineVue,
+        vueTable
     },
     data() {
         return {
@@ -57,6 +62,10 @@ export default {
         onLoad(){
             this.$toast('加载成功')
         },
+        rowClick(data){
+            this.$toast.success('点击成功')
+            console.log(data)
+        }
     }
 }
 </script>

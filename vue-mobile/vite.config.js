@@ -5,17 +5,21 @@ import legacy from '@vitejs/plugin-legacy'
 import vue2 from '@vitejs/plugin-vue2'
 import Components from 'unplugin-vue-components/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers';
+import { viteMockServe } from "vite-plugin-mock";
 
-// https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig( ({ command, mode }) => ({
   plugins: [
     vue2(),
     legacy({
       targets: ['ie >= 11'],
       additionalLegacyPolyfills: ['regenerator-runtime/runtime']
     }),
-    Components({ 
+    Components({
       resolvers:[VantResolver()]
+     }),
+     viteMockServe({
+      mockPath:'./mock', // mock文件存放路径
+      localEnabled: command ==='serve' && mode === 'mock', // 在开发环境中使用mock
      })
   ],
   resolve: {
@@ -23,4 +27,4 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   }
-})
+}))

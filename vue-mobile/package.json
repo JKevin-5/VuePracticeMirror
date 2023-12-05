@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "mock": "vite --mode mock --force",
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --port 4173"
   },

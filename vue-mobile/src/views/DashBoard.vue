@@ -3,7 +3,6 @@
         <van-row>
             <form action="/">
                 <van-search placeholder="请输入搜索内容" show-action v-model="searchContent" @search="search"/>
-                <input type="number" v-model="searchContent">
             </form>
         </van-row>
         <van-row gutter="10" class="content" type="flex" justify="space-around">

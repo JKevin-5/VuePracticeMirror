@@ -1,5 +1,5 @@
 /**
- * js 执行js代码，并返回执行结果
+ * js 执行js代码，并返回执行结果 test
  */
 // let code = "(function(value){return '这是js代码'+value})"
 // function looseJsonParse(obj,value){

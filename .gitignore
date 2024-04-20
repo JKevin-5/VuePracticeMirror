@@ -8,3 +8,8 @@ docs/TS/node_modules/
 vue-project/learn-jest/node_modules/
 vue-mobile/.gitignore
 vue-mobile/package-lock.json
+vue-project/demo-elevator/node_modules/
+vue-project/learn-vtu/node_modules/
+vue-project/todo-list/node_modules/
+vitepress/node_modules/
+vitepress/docs/.vitepress/cache/

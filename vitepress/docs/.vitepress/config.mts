@@ -33,12 +33,13 @@ export default defineConfig({
     },
     // 搜索
     search: {
-      provider: 'algolia',
-      options: {
-        appId: '3G9YA5HJFG',
-        apiKey: '774133dcae945ede2a86767aeb85af57',
-        indexName: 'jkevin-5io',
-      }
+      provider: 'local'
+      // provider: 'algolia',
+      // options: {
+      //   appId: '3G9YA5HJFG',
+      //   apiKey: '774133dcae945ede2a86767aeb85af57',
+      //   indexName: 'jkevin-5io',
+      // }
     }
   }
 })

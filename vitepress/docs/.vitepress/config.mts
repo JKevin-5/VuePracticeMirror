@@ -33,6 +33,7 @@ export default defineConfig({
     },
     // 搜索
     search: {
+      // 测试webhook
       provider: 'local'
       // provider: 'algolia',
       // options: {

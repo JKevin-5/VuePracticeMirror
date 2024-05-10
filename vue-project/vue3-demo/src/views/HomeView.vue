@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import { ref, onMounted } from 'vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  这是卡波游戏
 </template>

@@ -13,11 +13,18 @@
             </vant-col>
         </vant-row>
         <vant-row class="main">
-            <vant-col span="8"></vant-col>
-            <vant-col span="8" class="items">
-                <div>牌堆</div>
+            <vant-col span="4"></vant-col>
+            <vant-col span="16" class="items">
+                <vant-row gutter="10">
+                    <vant-col>
+                        <div class="stack">弃牌堆</div>
+                    </vant-col>
+                    <vant-col>
+                        <div class="stack">牌堆</div>
+                    </vant-col>
+                </vant-row>
             </vant-col>
-            <vant-col span="8"></vant-col>
+            <vant-col span="4"></vant-col>
         </vant-row>
         <vant-row class="player">
             <vant-row gutter="10">
@@ -87,7 +94,7 @@ import { Col as VantCol, Row as VantRow } from 'vant';
     background-color: rgb(124, 87, 226);
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 200px;
     display: flex;
 }
 
@@ -107,6 +114,16 @@ import { Col as VantCol, Row as VantRow } from 'vant';
     align-items: center;
     height: 100px;
     width: 70px;
+    border: 0.5px solid rgb(146, 144, 144);
+    background-color: rgb(53, 223, 53);
+}
+
+.stack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130px;
+    width: 90px;
     border: 0.5px solid rgb(146, 144, 144);
     background-color: rgb(53, 223, 53);
 }

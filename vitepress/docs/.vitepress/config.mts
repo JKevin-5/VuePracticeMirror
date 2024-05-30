@@ -1,7 +1,8 @@
 import { defineConfig } from 'vitepress'
+import { MermaidPlugin,MermaidMarkdown,withMermaid } from "vitepress-plugin-mermaid";
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default withMermaid(defineConfig({
   base:'/v3/',
   title: "JKevin's Notes",
   description: "",
@@ -30,7 +31,7 @@ export default defineConfig({
     // 页脚
     footer: {
       message: '',
-      copyright: 'Copyright © 2023-present JKevin'
+      copyright: 'Copyright © 2023-2024 JKevin'
     },
     // 搜索
     search: {
@@ -45,7 +46,7 @@ export default defineConfig({
     },
     outline: {
       label: 'Title'
-    }
-  },
-  
-})
+    },
+    
+  }
+}))

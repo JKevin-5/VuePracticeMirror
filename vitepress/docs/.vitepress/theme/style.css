@@ -137,3 +137,14 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
+
+.vp-code-group div[class*='mermaid'], .vp-block {
+  display: none;
+  margin-top: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+.vp-code-group div[class*='mermaid'].active, .vp-block.active {
+  display: block;
+}

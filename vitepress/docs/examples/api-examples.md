@@ -1,5 +1,10 @@
 ---
 outline: deep
+tag:
+    - java
+    - vue
+type: practices
+status: true
 ---
 
 # Runtime API Examples
@@ -29,7 +34,6 @@ const { theme, page, frontmatter } = useData()
 
 <script setup>
 import { useData } from 'vitepress'
-
 const { site, theme, page, frontmatter } = useData()
 </script>
 

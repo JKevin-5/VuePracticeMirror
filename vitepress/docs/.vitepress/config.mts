@@ -9,19 +9,20 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' },
-      { text: 'Test', link: '/' }
+      { text: 'Examples', link: '/examples/' },
+      { text: 'Test', link: '/test' }
     ],
-
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
-    ],
+    sidebar: {
+      "/examples/":[
+        {
+          text: 'examples',
+          items: [
+            { text: 'Markdown Examples', link: '/examples/markdown-examples' },
+            { text: 'Runtime API Examples', link: '/examples/api-examples' }
+          ]
+        }
+      ]
+    },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/JKevin-5' }
@@ -41,6 +42,10 @@ export default defineConfig({
       //   apiKey: '774133dcae945ede2a86767aeb85af57',
       //   indexName: 'jkevin-5io',
       // }
+    },
+    outline: {
+      label: 'Title'
     }
-  }
+  },
+  
 })

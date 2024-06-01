@@ -13,3 +13,4 @@ vue-project/learn-vtu/node_modules/
 vue-project/todo-list/node_modules/
 vitepress/node_modules/
 vitepress/docs/.vitepress/cache/
+vitepress/docs/.vitepress/dist/

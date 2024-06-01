@@ -25,7 +25,7 @@ classDiagram
     Animal: +getList() List~String~
 ```
 
-```mmd
+```mermaid
 classDiagram
     %% 按类型批量添加
     class Animal {

@@ -50,11 +50,8 @@ export default withMermaid(defineConfig({
         }
       ],
       "/demos/":[
-        {
-          items: [
-            { text: '1', link: '/demos/1'}
-          ]
-        }
+        { text: 'java', link: '/demos/java'},
+        { text: 'javaScript', link: '/demos/js'}
       ],
       "/notes/java/":[
         {

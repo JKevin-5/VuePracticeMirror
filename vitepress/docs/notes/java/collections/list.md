@@ -11,9 +11,6 @@
 ## 实现类
 
 ### ArrayList
-:::code-group
-```java
-```
 ```mermaid
 classDiagram
 AbstractList <|-- ArrayList : Inheritance 继承
@@ -27,9 +24,6 @@ class ArrayList {
     +Object clone()
 }
 ```
-
-
-:::
 > jdk8之前，当实现类创建了对象，对象便会创建一个长度为10的数组；
 > jdk8之后，当实现类创建了对象，对象便会创建一个长度为0的数组。
 

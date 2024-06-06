@@ -12,7 +12,11 @@ export default withMermaid(defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Posts', link: '/posts/' },
-      { text: 'Demos', link: '/demos/' },
+      { 
+        text: 'Demos',
+        link: '/demos/java',
+        activeMatch: '/demos/'
+      },
       { text: 'Projects', link: '/projects/' },
       {
         text: 'More',
@@ -26,7 +30,12 @@ export default withMermaid(defineConfig({
           { 
             text: '前端',
             items:[          
-              { text: 'JavaScript', link: '/notes/js' }
+              { text: 'JavaScript', link: '/notes/js' },
+              { 
+                text: 'Vue2',
+                link: '/notes/vue2/vuex',
+                activeMatch: '/notes/vue2/' 
+              }
             ] 
           },
         ]
@@ -65,6 +74,19 @@ export default withMermaid(defineConfig({
                 { text: 'set', link: '/notes/java/collections/set' }
               ]
             },
+          ]
+        }
+      ],
+      "/notes/vue2/":[
+        {
+          items:[
+            {
+              text:'Vue2',
+              collapsed: false,
+              items:[
+                { text: 'vuex', link: '/notes/vue2/vuex'},
+              ]
+            }
           ]
         }
       ]

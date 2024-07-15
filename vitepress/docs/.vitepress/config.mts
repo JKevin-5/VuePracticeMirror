@@ -119,5 +119,5 @@ export default withMermaid(defineConfig({
       label: 'Menu',
       level: [2,4]
     },
-  },
+  }
 }))

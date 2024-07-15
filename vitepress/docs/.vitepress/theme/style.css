@@ -148,3 +148,11 @@
 .vp-code-group div[class*='mermaid'].active, .vp-block.active {
   display: block;
 }
+
+/**
+ * Tailwind
+ * -------------------------------------------------------------------------- */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

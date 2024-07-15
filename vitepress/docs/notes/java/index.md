@@ -7,7 +7,7 @@ mindmap
   root((Java))
     基础类型
     集合
-      Collections
+      Collection
         List
           ArrayList
           LinkedList

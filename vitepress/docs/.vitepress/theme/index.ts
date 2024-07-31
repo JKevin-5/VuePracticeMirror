@@ -4,7 +4,7 @@ import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import Card from './Card.vue'
-import Home from './Home.vue'
+import Home from './views/home/Home.vue'
 import './style.css'
 
 export default {

@@ -1,3 +1,16 @@
+---
+title: Vuex文档
+date: 2024-06-01
+categories:
+    - code
+tags:
+    - JavaScript
+    - Vue
+---
+
+这里是excerpt 
+
+---
 ## Overview
 [Vuex官网](https://vuex.vuejs.org/zh/)
 

@@ -12,7 +12,7 @@ interface Post {
   }
   
 
-export default createContentLoader('../docs/**/*.md', {
+export default createContentLoader(['../docs/posts/*.md','../docs/notes/**/*.md'], {
     excerpt: true,
     transform(rawData) {
         // 根据需要对原始数据进行 map、sort 或 filter

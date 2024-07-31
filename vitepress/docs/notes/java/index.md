@@ -1,7 +1,13 @@
 ---
-outline: deep
+title: Java文档
+date: 2024-04-01
+categories:
+    - code
+tags:
+    - Java
 ---
-
+ 这是Java的文档
+---
 ```mermaid
 mindmap
   root((Java))

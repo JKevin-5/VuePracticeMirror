@@ -1,6 +1,6 @@
 <script setup>
 import { withBase } from 'vitepress'
-import {data} from './example.data.ts'
+import {data} from '../../example.data.ts'
 import {ref} from 'vue'
 
 var srcUrl = ref('');
@@ -17,12 +17,9 @@ function clickUrl(url){
         <li v-for="post of data" class="flex flex-col ">
             <!-- <a :href="post.url">{{ post.frontmatter.title }}</a>
             <span>by {{ post.frontmatter.author }}</span> -->
-            <button @click="clickUrl(withBase(post.url))">{{post}}</button>
+            <a :href='withBase(post.url)'>{{post.url}}</a>
         </li>
     </ul>
-    <iframe :src="srcUrl" frameborder="0" class="blog-card">
-
-    </iframe>
 </template>
 
 <style scoped>

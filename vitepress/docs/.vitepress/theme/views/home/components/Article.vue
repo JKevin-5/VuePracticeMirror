@@ -1,18 +1,28 @@
 <script setup>
 import { defineProps,ref } from 'vue'
 
-import { data as posts } from './posts.data.js'
-import { useData } from 'vitepress'
-
-const { frontmatter } = useData()
+const props = defineProps({
+    post: {
+        type: Object,
+        default: () => ({})
+    }
+})
+console.log(props.post)
 </script>
 
 <template>
     <div>
-        title: {{ frontmatter.title }}
+        title: {{ post.frontmatter.title }}
         <br>
-        tags: {{ frontmatter.tags }}
+        tags: {{ post.frontmatter.tags }}
         <br>
+        date: {{ post.frontmatter.date }}
+        <br>
+        description: {{ post.frontmatter.description }}
+        <br>
+        excerpt: {{ post.excerpt }}
+        <br>
+        url: {{ post.url }}
     </div>
 </template>
 

@@ -9,10 +9,11 @@ interface Post {
       string: string
     }
     excerpt: string | undefined
-  }
+}
   
+let srcs = ['../docs/posts/*.md','../docs/notes/**/*.md']
 
-export default createContentLoader(['../docs/posts/*.md','../docs/notes/**/*.md'], {
+export default createContentLoader(srcs, {
     excerpt: true,
     transform(rawData) {
         // 根据需要对原始数据进行 map、sort 或 filter
@@ -34,7 +35,7 @@ function formatDate(raw: string): Post['date'] {
     date.setUTCHours(12)
     return {
         time: +date,
-        string: date.toLocaleDateString('en-US', {
+        string: date.toLocaleDateString('zh-CN', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'

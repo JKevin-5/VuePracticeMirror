@@ -26,6 +26,9 @@ export default createContentLoader(srcs, {
             excerpt,
             date: formatDate(frontmatter.date)
         }))
+        .filter(({frontmatter})=>{
+            return frontmatter.title !== undefined
+        })
         .sort((a, b) => b.date.time - a.date.time)
     }
 });

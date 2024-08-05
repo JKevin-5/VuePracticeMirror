@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps,ref } from 'vue'
+import { ref } from 'vue'
 
 const props = defineProps({
     post: {
@@ -7,20 +7,20 @@ const props = defineProps({
         default: () => ({})
     }
 })
-console.log(props.post)
+
 </script>
 
 <template>
-    <div>
-        title: {{ post.frontmatter.title }}
+    <div class="border p-4 m-4">
+        <h3 @click="">{{ post.frontmatter.title }}</h3>
         <br>
-        tags: {{ post.frontmatter.tags }}
+        <span v-for="(tag,index) in post.frontmatter.tags" :key="index">
+            #{{ tag }}
+        </span>
         <br>
         date: {{ post.frontmatter.date }}
         <br>
-        description: {{ post.frontmatter.description }}
-        <br>
-        excerpt: {{ post.excerpt }}
+        <div v-html="post.excerpt"></div>
         <br>
         url: {{ post.url }}
     </div>

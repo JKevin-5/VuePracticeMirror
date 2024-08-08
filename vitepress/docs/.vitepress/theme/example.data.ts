@@ -1,6 +1,5 @@
 // example.data.js
 import { createContentLoader } from 'vitepress'
-
 interface Post {
     title: string
     url: string
@@ -38,7 +37,7 @@ function formatDate(raw: string): Post['date'] {
     date.setUTCHours(12)
     return {
         time: +date,
-        string: date.toLocaleDateString('zh-CN', {
+        string: date.toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'

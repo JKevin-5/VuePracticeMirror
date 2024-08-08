@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { withBase } from 'vitepress'
 
 const props = defineProps({
     post: {
@@ -8,23 +8,37 @@ const props = defineProps({
     }
 })
 
+
+
 </script>
 
 <template>
-    <div class="border p-4 m-4">
-        <h3 @click="">{{ post.frontmatter.title }}</h3>
-        <br>
-        <span v-for="(tag,index) in post.frontmatter.tags" :key="index">
+    <div class="border-b-2 p-4">
+        <div class="text-2xl leading-8 font-bold tracking-tight">
+            <a :href="withBase(post.url)" style="text-decoration: inherit;color: black;font-weight: 700; padding: 0; margin: 0;">
+                {{ post.title }}
+            </a>
+        </div>
+        {{ post.date.string }}
+        <span class="cursor-pointer hover:text-orange-400" v-for="(tag,index) in post.frontmatter.tags" :key="index" @click="$emit('setTag',tag)">
             #{{ tag }}
         </span>
-        <br>
-        date: {{ post.frontmatter.date }}
-        <br>
-        <div v-html="post.excerpt"></div>
-        <br>
-        url: {{ post.url }}
+        <div v-if="post.excerpt" class="bg-orange-50 p-1" v-html="post.excerpt"></div>
     </div>
 </template>
 
 <style scoped>
+
+.link {
+  color: var(--c-brand);
+}
+
+.link:hover {
+  color: var(--c-brand-light);
+}
+
+:root {
+  --c-brand: #3eaf7c;
+  --c-brand-light: #4abf8a;
+}
 </style>

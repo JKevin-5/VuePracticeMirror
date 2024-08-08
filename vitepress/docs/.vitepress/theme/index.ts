@@ -3,8 +3,8 @@
 import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import Card from './Card.vue'
 import Home from './views/home/Home.vue'
+import OutSource from './views/home/OutSource.vue'
 import './style.css'
 
 export default {
@@ -16,7 +16,7 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     // ...
-    app.component('Card', Card),
-    app.component('Home', Home)
+    app.component('Home', Home),
+    app.component('OutSource', OutSource)
   }
 } satisfies Theme

@@ -1,5 +1,4 @@
 <script setup>
-import { withBase } from 'vitepress'
 import {data} from '../../example.data.ts'
 import {ref,computed} from 'vue'
 import Article from './components/Article.vue'
@@ -24,8 +23,13 @@ function setFilterTags(tag){
     if(!filterTags.value.includes(tag)){
         filterTags.value.push(tag)
     }else{
-        filterTags.value.pop(tag)
+        let index = filterTags.value.indexOf(tag);
+        if (index > -1) {
+            console.log(index)
+            filterTags.value.splice(index,1);
+        }
     }
+    console.log(filterTags.value);
 }
 
 data.forEach((item) => {
@@ -34,24 +38,31 @@ data.forEach((item) => {
             tags.value.push(tag)
         }
     })
+    tags.value = tags.value.sort()
 })
 
+function selected(tag){
+    if(filterTags.value.includes(tag)){
+        return 'bg-orange-100'
+    }
+}
+
+function setTag(tag){
+    filterTags.value = [tag]
+}
 </script>
 
 <template>
-    <h1>All Blog Posts</h1>
-    <div>
-        Tags：<br>
-        <button class="bg-blue-300 m-1" v-for="tag of tags" @click="() => {setFilterTags(tag)}">{{ tag }}</button>
+    <div class="flex flex-col">
+        <div class="fixed z-1 bg-white dark:bg-slate-900 w-full">
+            <button :class="'m-1 text-sm font-bold p-1 border-2 border-solid hover:border-orange-400 rounded-md '+selected(tag)" v-for="tag of tags" @click="() => {setFilterTags(tag)}">{{ tag }}</button>
+        </div>
+        <ul class="flex-1 pt-5 m-0">
+            <li v-for="post of showData" class="flex flex-col ">
+                <Article :post="post" @setTag="setTag"></Article>
+            </li>
+        </ul>
     </div>
-    <ul>
-        <li v-for="post of showData" class="flex flex-col ">
-            <!-- <a :href="post.url">{{ post.frontmatter.title }}</a>
-            <span>by {{ post.frontmatter.author }}</span> -->
-            <!-- <a :href='withBase(post.url)'>{{post.url}}</a> -->
-            <Article :post="post"></Article>
-        </li>
-    </ul>
 </template>
 
 <style scoped>

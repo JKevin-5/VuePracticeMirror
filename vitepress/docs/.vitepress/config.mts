@@ -35,6 +35,11 @@ export default withMermaid(defineConfig({
                 text: 'Vue2',
                 link: '/notes/vue2/vuex',
                 activeMatch: '/notes/vue2/' 
+              },
+              { 
+                text: 'vitepress',
+                link: '/notes/vitepress/',
+                activeMatch: '/notes/vitepress/',
               }
             ] 
           },

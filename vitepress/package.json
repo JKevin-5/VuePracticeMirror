@@ -10,9 +10,11 @@
     "mermaid": "^10.9.1",
     "tailwindcss": "^3.4.5",
     "vitepress": "^1.0.0",
-    "vitepress-plugin-mermaid": "^2.0.16"
+    "vitepress-plugin-mermaid": "^2.0.16",
+    "vuepress-plugin-use-pages": "^1.0.5"
   },
   "dependencies": {
+    "@giscus/vue": "^3.0.0",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.39"
   }

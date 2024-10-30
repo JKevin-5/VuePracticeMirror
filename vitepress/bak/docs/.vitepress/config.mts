@@ -1,12 +1,12 @@
 import { defineConfig } from 'vitepress'
-
+import { withMermaid } from "vitepress-plugin-mermaid";
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default withMermaid(defineConfig({
   base:'',
   title: "JKevin's Notes",
   description: "",
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/v3/logo.svg' }]
   ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -125,4 +125,4 @@ export default defineConfig({
       level: [2,4]
     },
   }
-})
+}))

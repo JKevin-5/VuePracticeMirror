@@ -16,3 +16,5 @@ vitepress/docs/.vitepress/cache/
 vitepress/docs/.vitepress/dist/
 ts-test/node_modules/
 ts-test/dist/
+vitepress/bak/docs/.vitepress/cache/
+vitepress/bak/docs/.vitepress/dist/

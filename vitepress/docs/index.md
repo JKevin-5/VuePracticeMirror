@@ -30,3 +30,20 @@ features:
     title: Another cool feature
     details: Lorem ipsum...
 ---
+
+<style>
+  :root {
+    --vp-home-hero-name-color: transparent;
+    --vp-home-hero-name-background: -webkit-linear-gradient(
+      120deg,
+      #e6e6e6,
+      #ff4343
+    );
+    --vp-home-hero-image-background-image: linear-gradient(
+      -45deg,
+      #f3f3f3 50%,
+      #ffa1a1 50%
+    );
+    --vp-home-hero-image-filter: blur(44px);
+  }
+</style>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>前端在线代码编辑器沙盒</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 48%;
+            height: 300px;
+            padding: 10px;
+            font-size: 14px;
+            resize: vertical;
+        }
+        #html-editor, #css-editor {
+            float: left;
+            margin-right: 4%;
+        }
+        #css-editor {
+            margin-right: 0;
+        }
+        #output {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ccc;
+            overflow: auto;
+            clear: both;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>前端在线代码编辑器沙盒</h1>
+
+    <div>
+        <label for="html-editor">HTML 代码：</label>
+        <textarea id="html-editor">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>预览</title>
+    <style>
+        body { background-color: #f0f0f0; }
+        h1 { color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+</body>
+</html>
+        </textarea>
+    </div>
+
+    <div>
+        <label for="css-editor">CSS 代码：</label>
+        <textarea id="css-editor">
+body {
+    background-color: #ffffff;
+}
+h1 {
+    text-align: center;
+}
+        </textarea>
+    </div>
+
+    <button id="run-button">运行代码</button>
+
+    <iframe id="output" sandbox="allow-scripts allow-same-origin"></iframe>
+
+    <script>
+        const htmlEditor = document.getElementById('html-editor');
+        const cssEditor = document.getElementById('css-editor');
+        const runButton = document.getElementById('run-button');
+        const outputFrame = document.getElementById('output');
+        const outputDoc = outputFrame.contentDocument || outputFrame.contentWindow.document;
+
+        runButton.addEventListener('click', () => {
+            // 设置HTML内容
+            outputDoc.open();
+            outputDoc.write(htmlEditor.value);
+            outputDoc.close();
+
+            // 添加CSS样式
+            const style = document.createElement('style');
+            style.type = 'text/css';
+            style.textContent = cssEditor.value;
+            outputDoc.head.appendChild(style);
+        });
+
+        // 初始运行
+        runButton.click();
+    </script>
+
+</body>
+</html>

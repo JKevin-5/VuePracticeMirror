@@ -5,9 +5,9 @@ hero:
   name: VitePress
   text: Vite & Vue powered static site generator.
   tagline: Lorem ipsum...
-  image:
-    src: ../.vitepress/public/logo.svg
-    alt: VitePress
+  # image:
+  #   src: ../.vitepress/public/logo.svg
+  #   alt: VitePress
   actions:
     - theme: brand
       text: Get Started
@@ -31,7 +31,7 @@ features:
     details: Lorem ipsum...
 ---
 
-<style>
+<!-- <style>
   :root {
     --vp-home-hero-name-color: transparent;
     --vp-home-hero-name-background: -webkit-linear-gradient(
@@ -46,4 +46,4 @@ features:
     );
     --vp-home-hero-image-filter: blur(44px);
   }
-</style>
+</style> -->

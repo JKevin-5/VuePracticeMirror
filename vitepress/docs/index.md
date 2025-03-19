@@ -2,9 +2,9 @@
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
 hero:
-  name: VitePress
-  text: Vite & Vue powered static site generator.
-  tagline: Lorem ipsum...
+  name: Jkevin
+  text: Learning & Practice.
+  tagline: 持续学习...
   # image:
   #   src: ../.vitepress/public/logo.svg
   #   alt: VitePress

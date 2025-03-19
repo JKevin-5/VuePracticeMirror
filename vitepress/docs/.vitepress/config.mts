@@ -107,7 +107,7 @@ export default defineConfig({
     ],
     // 页脚
     footer: {
-      message: 'Keep Leaning',
+      message: 'ICP备案/许可证号：<a href="https://beian.miit.gov.cn/" target="_blank">闽ICP备2025091580号-1</a> ',
       copyright: `Copyright © 2023-${new Date().getFullYear()} JKevin`
     },
     // 搜索

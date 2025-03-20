@@ -8,27 +8,24 @@ hero:
   # image:
   #   src: ../.vitepress/public/logo.svg
   #   alt: VitePress
-  actions:
-    - theme: brand
-      text: Get Started
-      link: /guide/what-is-vitepress
-    - theme: alt
-      text: View on GitHub
-      link: https://github.com/vuejs/vitepress
+  # actions:
+  #   - theme: brand
+  #     text: Get Started
+  #     link: /guide/what-is-vitepress
+  #   - theme: alt
+  #     text: View on GitHub
+  #     link: https://github.com/vuejs/vitepress
 features:
   - icon: 🛠️
     title: Vitepress 配置
     details: 从0开始
     link: /guide/
-  - icon:
-      src: /cool-feature-icon.svg
-    title: Another cool feature
-    details: Lorem ipsum...
-  - icon:
-      dark: /dark-feature-icon.svg
-      light: /light-feature-icon.svg
-    title: Another cool feature
-    details: Lorem ipsum...
+  - icon: 🔋
+    title: 及时充电
+    details: Keep charging
+  - icon: 💡
+    title: 点子不能停
+    details: More Ideas
 ---
 
 <!-- <style>

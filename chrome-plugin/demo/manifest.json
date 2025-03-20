@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "CodeMirror Replacer",
+    "version": "1.0",
+    "description": "Replace the current CodeMirror with a new version.",
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "tabs"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "run_at": "document_idle",
+        "js": ["content.js"]
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": ["codemirror.js", "vue2-syntax.js", "/js/my_file.js"],
+        "matches": ["<all_urls>"]
+      }
+    ],
+    "host_permissions": ["http://*/*", "https://*/*"]
+  }

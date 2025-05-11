@@ -12,7 +12,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Posts', link: '/posts/' },
+      { text: 'Posts', link: '/posts/gsap' },
       { 
         text: 'Demos',
         link: '/demos/java',
@@ -60,7 +60,7 @@ export default defineConfig({
       "/posts/":[
         {
           items: [
-            { text: 'test', link: '/posts/test'}
+            { text: 'gsap', link: '/posts/gsap'}
           ]
         }
       ],

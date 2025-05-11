@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "@css-render/vue3-ssr": "^0.15.14",
+    "@iconify/vue": "^5.0.0",
     "naive-ui": "^2.40.1",
     "vitepress": "^1.4.2"
   },
@@ -8,5 +9,8 @@
     "docs:dev": "vitepress dev docs --open",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0"
   }
 }

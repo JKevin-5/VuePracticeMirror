@@ -1,12 +1,11 @@
-@import './base.css';
+@import "./base.css";
 
 #app {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+
   font-weight: normal;
-  height: 100vh;
-  width: 100vw;;
 }
 
 a,
@@ -14,7 +13,6 @@ a,
   text-decoration: none;
   color: hsla(160, 100%, 37%, 1);
   transition: 0.4s;
-  padding: 3px;
 }
 
 @media (hover: hover) {
@@ -31,7 +29,7 @@ a,
 
   #app {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   }
 }

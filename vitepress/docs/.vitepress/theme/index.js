@@ -1,4 +1,5 @@
 import { defineComponent, h, inject } from 'vue'
+import './style.css'
 import DefaultTheme from 'vitepress/theme'
 import { NConfigProvider } from 'naive-ui'
 import { setup } from '@css-render/vue3-ssr'

@@ -14,6 +14,7 @@ const isProjectLayout = computed(() => frontmatter.value.layout === 'project')
 <template>
   <n-config-provider :theme="isDark ? darkTheme : ''">
     <Layout>
+      <!-- doc 默认 -->
       <template #doc-bottom>
         <div v-if="isProjectLayout" class="project-tracker-wrapper">
           <ProjectTracker />

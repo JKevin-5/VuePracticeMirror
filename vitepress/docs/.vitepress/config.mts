@@ -1,6 +1,78 @@
 import { defineConfig } from 'vitepress'
+import type { Plugin } from 'vite'
+import fs from 'fs'
+import path from 'path'
+import { globSync } from 'fs'
 
 const fileAndStyles: Record<string, string> = {}
+
+// Vite 插件：扫描所有 md 文件的 frontmatter links，构建双向链接数据
+function linksPlugin(): Plugin {
+  const docsDir = path.resolve(__dirname, '..')
+  let dataCache = ''
+
+  function buildData() {
+    const mdFiles = globSync('**/*.md', { cwd: docsDir })
+    const links: Record<string, string[]> = {}
+    const titles: Record<string, string> = {}
+
+    for (const file of mdFiles) {
+      // 统一使用正斜杠，兼容 Windows
+      const normalizedFile = file.replace(/\\/g, '/')
+      const filePath = path.join(docsDir, file)
+      const content = fs.readFileSync(filePath, 'utf-8')
+      const relPath = '/' + normalizedFile.replace(/\.md$/, '').replace(/\/index$/, '/')
+
+      // 提取 title
+      const fmMatch = content.match(/^---\s*\n([\s\S]*?)\n---/)
+      if (fmMatch) {
+        const fm = fmMatch[1]
+        const titleMatch = fm.match(/^title:\s*(.+)$/m)
+        if (titleMatch) titles[relPath] = titleMatch[1].trim()
+        // 提取 links
+        const linksMatch = fm.match(/^links:\s*\n((?:\s+-\s+.+\n?)*)/m)
+        if (linksMatch) {
+          const paths = linksMatch[1]
+            .split('\n')
+            .map(l => l.replace(/^\s*-\s+/, '').trim().replace(/\\/g, '/'))
+            .filter(Boolean)
+          if (paths.length) links[relPath] = paths
+        }
+      }
+    }
+
+    // 构建反向链接索引
+    const backlinks: Record<string, string[]> = {}
+    for (const [from, tos] of Object.entries(links)) {
+      for (const to of tos) {
+        if (!backlinks[to]) backlinks[to] = []
+        backlinks[to].push(from)
+      }
+    }
+
+    return { links, backlinks, titles }
+  }
+
+  return {
+    name: 'vitepress-links-plugin',
+    resolveId(id) {
+      if (id === 'virtual:links-data') return '\0virtual:links-data'
+    },
+    load(id) {
+      if (id === '\0virtual:links-data') {
+        if (!dataCache) dataCache = JSON.stringify(buildData())
+        return `export default ${dataCache}`
+      }
+    },
+    handleHotUpdate({ file, server }) {
+      if (file.endsWith('.md')) {
+        dataCache = ''
+        const mod = server.moduleGraph.getModuleById('\0virtual:links-data')
+        if (mod) return [mod]
+      }
+    }
+  }
+}
 
 export default defineConfig({
   base:'',
@@ -10,6 +82,10 @@ export default defineConfig({
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]
   ],
   themeConfig: {
+    docFooter: {
+      prev: false,
+      next: false
+    },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Posts', link: '/posts/gsap' },
@@ -129,7 +205,8 @@ export default defineConfig({
   vite: {
     ssr: {
       noExternal: ['naive-ui', 'date-fns', 'vueuc']
-    }
+    },
+    plugins: [linksPlugin()]
   },
   postRender(context) {
     const styleRegex = /<css-render-style>((.|\s)+)<\/css-render-style>/

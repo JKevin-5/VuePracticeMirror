@@ -5,6 +5,7 @@ import { NConfigProvider } from 'naive-ui'
 import { setup } from '@css-render/vue3-ssr'
 import { useRoute } from 'vitepress'
 import MyLayout from './MyLayout.vue'
+import Home from './components/Home.vue'
 
 const { Layout } = DefaultTheme
 
@@ -38,7 +39,7 @@ const NaiveUIProvider = defineComponent({
       { abstract: true, inlineThemeDisabled: true },
       {
         default: () => [
-          h(Layout, null, { default: this.$slots.default?.() }),
+          h(MyLayout, null, { default: this.$slots.default?.() }),
           import.meta.env.SSR ? [h(CssRenderStyle), h(VitepressPath)] : null
         ]
       }
@@ -54,6 +55,7 @@ export default {
       const { collect } = setup(app)
       app.provide('css-render-collect', collect)
     }
-  },
-  Layout: MyLayout
+    // 注册全局组件
+    app.component('Home',Home)
+  }
 }

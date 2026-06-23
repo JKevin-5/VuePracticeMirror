@@ -1,8 +1,8 @@
 {
   "devDependencies": {
     "@css-render/vue3-ssr": "^0.15.14",
-    "naive-ui": "^2.40.1",
-    "vitepress": "^1.4.2"
+    "naive-ui": "^2.44.1",
+    "vitepress": "^1.6.2"
   },
   "scripts": {
     "docs:dev": "vitepress dev docs --open",

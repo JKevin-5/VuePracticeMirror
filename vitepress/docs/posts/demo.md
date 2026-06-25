@@ -1,5 +1,8 @@
 ---
 title: Demo 演示
+tags:
+  - VitePress
+  - 演示
 links:
   - /posts/rust/rust1
   - /posts/rust/rust2

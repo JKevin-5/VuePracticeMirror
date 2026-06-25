@@ -1,10 +1,11 @@
 <script setup>
 import { computed } from 'vue'
 import DefaultTheme from 'vitepress/theme'
-import { darkTheme, NConfigProvider } from 'naive-ui'
+import { darkTheme, NConfigProvider, zhCN, dateZhCN } from 'naive-ui'
 import { useData } from 'vitepress'
 import ProjectTracker from './components/ProjectTracker.vue'
 import PageLinks from './components/PageLinks.vue'
+import ArticleTags from './components/ArticleTags.vue'
 
 const { Layout } = DefaultTheme
 const { isDark, frontmatter } = useData()
@@ -14,9 +15,13 @@ const isHome = computed(() => frontmatter.value.layout === 'home')
 </script>
 
 <template>
-  <n-config-provider :theme="isDark ? darkTheme : ''">
+  <n-config-provider :theme="isDark ? darkTheme : ''" :locale="zhCN" :date-locale="dateZhCN">
     <Layout>
-      <!-- doc-after: 在内容区内部，自动与 markdown 对齐 -->
+      <!-- doc-before: 内容区顶部，标题下方 -->
+      <template #doc-before>
+        <ArticleTags />
+      </template>
+      <!-- doc-after: 内容区底部 -->
       <template #doc-after>
         <PageLinks />
       </template>

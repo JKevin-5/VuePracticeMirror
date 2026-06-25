@@ -15,6 +15,8 @@ function linksPlugin(): Plugin {
     const mdFiles = globSync('**/*.md', { cwd: docsDir })
     const links: Record<string, string[]> = {}
     const titles: Record<string, string> = {}
+    const heatmap: Record<string, { path: string; title: string }[]> = {}
+    const tags: Record<string, { path: string; title: string }[]> = {}
 
     for (const file of mdFiles) {
       // 统一使用正斜杠，兼容 Windows
@@ -23,21 +25,43 @@ function linksPlugin(): Plugin {
       const content = fs.readFileSync(filePath, 'utf-8')
       const relPath = '/' + normalizedFile.replace(/\.md$/, '').replace(/\/index$/, '/')
 
-      // 提取 title
+      // 提取 frontmatter
+      let title = ''
       const fmMatch = content.match(/^---\s*\n([\s\S]*?)\n---/)
       if (fmMatch) {
         const fm = fmMatch[1]
         const titleMatch = fm.match(/^title:\s*(.+)$/m)
-        if (titleMatch) titles[relPath] = titleMatch[1].trim()
-        // 提取 links
-        const linksMatch = fm.match(/^links:\s*\n((?:\s+-\s+.+\n?)*)/m)
-        if (linksMatch) {
-          const paths = linksMatch[1]
+        if (titleMatch) title = titleMatch[1].trim()
+
+        // 提取 tags
+        const tagsMatch = fm.match(/^tags:\s*\n((?:\s+-\s+.+\n?)*)/m)
+        if (tagsMatch) {
+          const tagList = tagsMatch[1]
             .split('\n')
-            .map(l => l.replace(/^\s*-\s+/, '').trim().replace(/\\/g, '/'))
+            .map(l => l.replace(/^\s*-\s+/, '').trim())
             .filter(Boolean)
-          if (paths.length) links[relPath] = paths
+          for (const tag of tagList) {
+            if (!tags[tag]) tags[tag] = []
+            tags[tag].push({ path: relPath, title: title || relPath })
+          }
         }
+      }
+      if (title) titles[relPath] = title
+
+      // 收集文件修改日期（热力图数据：日期 → 文件列表）
+      const stat = fs.statSync(filePath)
+      const dateStr = new Date(stat.mtime).toISOString().slice(0, 10)
+      if (!heatmap[dateStr]) heatmap[dateStr] = []
+      heatmap[dateStr].push({ path: relPath, title: title || relPath })
+
+      // 提取 links
+      const linksMatch = content.match(/^---\s*\n([\s\S]*?)\n---/)?.[1]?.match(/^links:\s*\n((?:\s+-\s+.+\n?)*)/m)
+      if (linksMatch) {
+        const paths = linksMatch[1]
+          .split('\n')
+          .map(l => l.replace(/^\s*-\s+/, '').trim().replace(/\\/g, '/'))
+          .filter(Boolean)
+        if (paths.length) links[relPath] = paths
       }
     }
 
@@ -50,7 +74,7 @@ function linksPlugin(): Plugin {
       }
     }
 
-    return { links, backlinks, titles }
+    return { links, backlinks, titles, heatmap, tags }
   }
 
   return {
@@ -88,91 +112,9 @@ export default defineConfig({
     },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Posts', link: '/posts/gsap' },
-      { 
-        text: 'Demos',
-        link: '/demos/java',
-        activeMatch: '/demos/'
-      },
-      { text: 'Projects', link: '/projects/' },
-      {
-        text: 'More',
-        items: [
-          { 
-            text: '后端',
-            items:[          
-              { text: 'Java', link: '/notes/java/' }
-            ] 
-          },
-          { 
-            text: '前端',
-            items:[          
-              { text: 'JavaScript', link: '/notes/js' },
-              { 
-                text: 'Vue2',
-                link: '/notes/vue2/vuex',
-                activeMatch: '/notes/vue2/' 
-              },
-              { 
-                text: 'vitepress',
-                link: '/notes/vitepress/',
-                activeMatch: '/notes/vitepress/',
-              }
-            ] 
-          },
-        ]
-      }
+      { text: 'Tags', link: '/tags/' }
     ],
-    sidebar: {
-      "/examples/":[
-        {
-          text: 'examples',
-          items: [
-            { text: 'Markdown Examples', link: '/examples/markdown-examples' },
-            { text: 'Runtime API Examples', link: '/examples/api-examples' }
-          ]
-        }
-      ],
-      "/posts/":[
-        {
-          items: [
-            { text: 'gsap', link: '/posts/gsap'}
-          ]
-        }
-      ],
-      "/demos/":[
-        { text: 'java', link: '/demos/java'},
-        { text: 'javaScript', link: '/demos/js'}
-      ],
-      "/notes/java/":[
-        {
-          items: [
-            { text: 'Overview 概览', link: '/notes/java/'},
-            { 
-              text: 'Collections 集合',
-              collapsed: false,
-              items: [
-                { text: 'list', link: '/notes/java/collections/list' },
-                { text: 'set', link: '/notes/java/collections/set' }
-              ]
-            },
-          ]
-        }
-      ],
-      "/notes/vue2/":[
-        {
-          items:[
-            {
-              text:'Vue2',
-              collapsed: false,
-              items:[
-                { text: 'vuex', link: '/notes/vue2/vuex'},
-              ]
-            }
-          ]
-        }
-      ]
-    },
+    sidebar: {},
     socialLinks: [
       { icon: 'github', link: 'https://github.com/JKevin-5' },
       { icon:{

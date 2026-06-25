@@ -1,5 +1,8 @@
 ---
 title: Rust 入门
+tags:
+  - Rust
+  - 入门
 links:
   - /posts/rust/rust2
 ---

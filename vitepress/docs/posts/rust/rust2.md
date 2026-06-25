@@ -1,5 +1,8 @@
 ---
 title: Rust 进阶
+tags:
+  - Rust
+  - 进阶
 ---
 
 # Rust 进阶
